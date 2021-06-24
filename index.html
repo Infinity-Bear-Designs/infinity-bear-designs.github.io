@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My custom Bulma website</title>
-    <link rel="stylesheet" href="docs/assets/css/styles.css">
-  </head>
-  <body>
-     <h1 class="title">
-        Bulma
-      </h1>
-      <div class="buttons">
-        <a class="button is-primary">Primary</a>
-        <a class="button is-link">Link</a>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My custom Bulma website</title>
+  <link rel="stylesheet" href="docs/assets/css/styles.css">
+</head>
+
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.infinitybeardesigns.com">
+        <img src="docs/assets/images/LogoText.png">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+        <a class="navbar-item">
+          Patterns
+        </a>
+        <a class="navbar-item">
+          Freebies
+        </a>
       </div>
-      <div class="columns">
-        <div class="column is-narrow">
-          <div class="box" style="width: 200px;">
-            <p class="title is-5">Narrow column</p>
-            <p class="subtitle">This column is only 200px wide.</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="box">
-            <p class="title is-5">Flexible column</p>
-            <p class="subtitle">This column will take up the remaining space available.</p>
-          </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="navbar-item" href="https://twitter.com/_InfinityBear">
+            <img src="docs/assets/images/LogoTwitter.svg"></img>
+          </a>
+          <a class="navbar-item" href="https://www.instagram.com/infinitybeardesigns/">
+            <img src="docs/assets/images/LogoInstagram.svg"></img>
+          </a>
+          <a class="navbar-item" href="https://www.reddit.com/user/Infinity-Bear/">
+            <img src="docs/assets/images/LogoReddit.svg"></img>
+          </a>
+          <a class="navbar-item" href="https://www.pinterest.ca/infinitybeardesigns">
+            <img src="docs/assets/images/LogoPinterest.svg"></img>
+          </a>
         </div>
       </div>
-  </body>
+    </div>
+  </nav>
+</body>
+
 </html>
