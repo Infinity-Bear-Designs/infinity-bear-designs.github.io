@@ -1,15 +1,50 @@
+function getJsonContents(jsonFilePath)
+{
+    var request = new XMLHttpRequest();
+    request.open("GET", jsonFilePath, false);
+    request.setRequestHeader('Content-Type', 'application/json;charset=utf-8;');
+    request.send(null);
+
+    var jsonObject = JSON.parse(request.responseText);
+
+    return jsonObject;
+}
+
+function getPatternsList(patternType)
+{
+    var patternsJson = getJsonContents("docs/assets/data/patterns.json");
+
+    if (patternType == "paid")
+    {
+        return patternsJson.paidPatterns;
+    }
+}
+
+function getPatternInfo(patternName)
+{
+    var patternPath = "docs/assets/data/paidPatterns/" + patternName + ".json";
+    var patternInfo = getJsonContents(patternPath);
+
+    return patternInfo;
+}
+
 function createPatternCard() 
 {
+    var patternsList = getPatternsList("paid");
+
     var patternSection = document.getElementById("patternSection");
     
     var parentColumnDiv = document.createElement("div");
     parentColumnDiv.classList.add("columns");
 
-    var numPatterns = 7
+    var numPatterns = patternsList.length;
+    var numPatternsPerRow = 3;
 
     for (var i = 0; i < numPatterns; i++)
     {
-        if (i % 4 == 0)
+        var patternInfo = getPatternInfo(patternsList[i])
+
+        if (i % numPatternsPerRow == 0)
         {
             var parentColumnDiv = document.createElement("div");
             parentColumnDiv.classList.add("columns");
@@ -37,7 +72,7 @@ function createPatternCard()
         cardImageDiv.appendChild(imageFigure)
 
         var image = document.createElement("img");
-        image.src = "docs/assets/images/DreamingOfOuterSpace.png"
+        image.src = "docs/assets/images/" + patternsList[i] + ".png"
 
         imageFigure.appendChild(image)
 
@@ -60,16 +95,16 @@ function createPatternCard()
         titleP.classList.add("title");
         titleP.classList.add("is-4");
 
-        titleP.innerText = "Dreaming of Outer Space";
+        titleP.innerText = patternInfo.title;
 
         mediaContentDiv.appendChild(titleP);
         
         var contentDiv = document.createElement("div");
         contentDiv.classList.add("content");
 
-        contents = "<span class=\"bold\">✦ DMC Floss:</span> 7 colours<br>";
-        contents += "<span class=\"bold\">✦ Pattern Size:</span>  100 x 100 stitches<br>";
-        contents += "<span class=\"bold\">✦ Completed Size:</span> 7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida"; 
+        contents = "<span class=\"bold\">✦ DMC Floss:</span> " + patternInfo.dmcFloss +  " colours <br>";
+        contents += "<span class=\"bold\">✦ Pattern Size:</span> " + patternInfo.patternSize + "<br>";
+        contents += "<span class=\"bold\">✦ Completed Size:</span> " + patternInfo.completedSize; 
 
         contentDiv.innerHTML = contents;
 
@@ -83,7 +118,7 @@ function createPatternCard()
         etsyLink.classList.add("etsy-background");
 
         etsyLink.innerHTML = "Etsy";
-        etsyLink.href = "#";
+        etsyLink.href = patternInfo.etsyLink;
 
         cardFooter.appendChild(etsyLink);
 
@@ -92,7 +127,7 @@ function createPatternCard()
         gumroadLink.classList.add("gumroad-background");
 
         gumroadLink.innerHTML = "Gumroad";
-        gumroadLink.href = "#";
+        gumroadLink.href = patternInfo.gumroadLink;
 
         cardFooter.appendChild(gumroadLink);
 
@@ -101,9 +136,9 @@ function createPatternCard()
         patternSection.appendChild(parentColumnDiv);
     }
 
-    var remainingColumns = 4 - (numPatterns % 4);
+    var remainingColumns = numPatternsPerRow - (numPatterns % numPatternsPerRow);
 
-    if (remainingColumns != 0 && remainingColumns % 4 != 0)
+    if (remainingColumns != 0 && remainingColumns % numPatternsPerRow != 0)
     {
         for (var i = 0; i < remainingColumns; i++)
         {
