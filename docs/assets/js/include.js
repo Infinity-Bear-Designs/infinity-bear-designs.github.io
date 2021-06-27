@@ -9,8 +9,6 @@ function includeFile(filename, elementID)
     document.getElementById(elementID).innerHTML = content
 }
 
-includeFile("header.html", elementID)
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // Get all "navbar-burger" elements
