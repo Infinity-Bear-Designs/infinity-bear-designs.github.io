@@ -6,50 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My custom Bulma website</title>
+    <link rel="stylesheet" href="docs/assets/css/bulmaStyles.css">
     <link rel="stylesheet" href="docs/assets/css/styles.css">
-    <!-- <script src="/docs/assets/js/loadPatterns.js"></script> -->
+    <script src="docs/assets/js/loadPatterns.js"></script>
 </head>
-
-<script>
-    function createPatternCard() 
-    {
-        var patternSection = document.getElementById("patternSection");
-        
-        var parentColumnDiv = document.createElement("div");
-        parentColumnDiv.classList.add("columns");
-    
-        for (var i  =0; i < 4; i++)
-        {
-            var columnDiv = document.createElement("div");
-            columnDiv.classList.add("column");
-
-            parentColumnDiv.appendChild(columnDiv);
-
-            var cardDiv = document.createElement("div");
-            cardDiv.classList.add("card");
-
-            columnDiv.appendChild(cardDiv)
-
-            var cardImageDiv = document.createElement("div");
-            cardImageDiv.classList.add("card-image");
-
-            cardDiv.appendChild(cardImageDiv)
-
-            var imageFigure = document.createElement("figure");
-            imageFigure.classList.add("image");
-            imageFigure.classList.add("is-4by3");
-
-            cardImageDiv.appendChild(imageFigure)
-
-            var image = document.createElement("img");
-            image.src = "docs/assets/images/DreamingOfOuterSpace.png"
-
-            imageFigure.appendChild(image)
-
-            patternSection.appendChild(parentColumnDiv);
-        }
-    }
-</script>
 
 <body onload="createPatternCard() ">
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -113,16 +73,16 @@
                         </div>
 
                         <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                            <a href="#">#css</a> <a href="#">#responsive</a>
+                            <span class="bold">✦ DMC Floss:</span> 7 colours
                             <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            <span class="bold">✦ Pattern Size:</span>  100 x 100 stitches
+                            <br>
+                            <span class="bold">✦ Completed Size:</span> 7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Etsy</a>
-                        <a href="#" class="card-footer-item">Gumroad</a>
+                        <a href="#" class="card-footer-item etsy-background">Etsy</a>
+                        <a href="#" class="card-footer-item gumroad-background">Gumroad</a>
                     </footer>
                 </div>
             </div>
@@ -149,8 +109,9 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Etsy</a>
-                        <a href="#" class="card-footer-item">Gumroad</a>
+                        <a href="#" class="card-footer-item etsy-background">Etsy</a>
+                        <a href="#" class="card-footer-item gumroad-background">
+                            Gumroad</a>
                     </footer>
                 </div>
             </div>
@@ -177,8 +138,9 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Etsy</a>
-                        <a href="#" class="card-footer-item">Gumroad</a>
+                        <a href="#" class="card-footer-item etsy-background">Etsy</a>
+                        <a href="#" class="card-footer-item gumroad-background">
+                            Gumroad</a>
                     </footer>
                 </div>
             </div>
@@ -196,21 +158,15 @@
                             </div>
                         </div>
 
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                            <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                        </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Etsy</a>
-                        <a href="#" class="card-footer-item">Gumroad</a>
+                        <a href="#" class="card-footer-item etsy-background">Etsy</a>
+                        <a href="#" class="card-footer-item gumroad-background">
+                            Gumroad</a>
                     </footer>
                 </div>
             </div>
-        </div>           
+        </div>
         <div class="columns">
             <div class="column">
                 <div class="card">
@@ -235,8 +191,9 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Etsy</a>
-                        <a href="#" class="card-footer-item">Gumroad</a>
+                        <a href="#" class="card-footer-item etsy-background">Etsy</a>
+                        <a href="#" class="card-footer-item gumroad-background">
+                            Gumroad</a>
                     </footer>
                 </div>
             </div>
@@ -263,8 +220,8 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Etsy</a>
-                        <a href="#" class="card-footer-item">Gumroad</a>
+                        <a href="#" class="card-footer-item etsy-background">Etsy</a>
+                        <a href="#" class="card-footer-item gumroad-background">Gumroad</a>
                     </footer>
                 </div>
             </div>
@@ -291,13 +248,14 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Etsy</a>
-                        <a href="#" class="card-footer-item">Gumroad</a>
+                        <a href="#" class="card-footer-item etsy-background">Etsy</a>
+                        <a href="#" class="card-footer-item gumroad-background">
+                            Gumroad</a>
                     </footer>
                 </div>
             </div>
             <div class="column"></div>
-        </div>                 -->
+        </div> -->
     </section>
 </body>
 
