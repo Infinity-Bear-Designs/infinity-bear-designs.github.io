@@ -18,19 +18,23 @@ function getPatternsList(patternType)
     {
         return patternsJson.paidPatterns;
     }
+    else if (patternType == "free")
+    {
+        return patternsJson.freePatterns;
+    }
 }
 
-function getPatternInfo(patternName)
+function getPatternInfo(type, patternName)
 {
-    var patternPath = "docs/assets/data/paidPatterns/" + patternName + ".json";
+    var patternPath = "docs/assets/data/" + type + "Patterns/" + patternName + ".json";
     var patternInfo = getJsonContents(patternPath);
 
     return patternInfo;
 }
 
-function createPatternCard() 
+function createPatternCard(type) 
 {
-    var patternsList = getPatternsList("paid");
+    var patternsList = getPatternsList(type);
 
     var patternSection = document.getElementById("patternSection");
     
@@ -42,7 +46,7 @@ function createPatternCard()
 
     for (var i = 0; i < numPatterns; i++)
     {
-        var patternInfo = getPatternInfo(patternsList[i])
+        var patternInfo = getPatternInfo(type, patternsList[i])
 
         if (i % numPatternsPerRow == 0)
         {
@@ -113,14 +117,17 @@ function createPatternCard()
         var cardFooter = document.createElement("footer");
         cardFooter.classList.add("card-footer");     
     
-        var etsyLink = document.createElement("a");
-        etsyLink.classList.add("card-footer-item");
-        etsyLink.classList.add("etsy-background");
+        if (type == "paid")
+        {
+            var etsyLink = document.createElement("a");
+            etsyLink.classList.add("card-footer-item");
+            etsyLink.classList.add("etsy-background");
 
-        etsyLink.innerHTML = "Etsy";
-        etsyLink.href = patternInfo.etsyLink;
+            etsyLink.innerHTML = "Etsy";
+            etsyLink.href = patternInfo.etsyLink;
 
-        cardFooter.appendChild(etsyLink);
+            cardFooter.appendChild(etsyLink);
+        }
 
         var gumroadLink = document.createElement("a");
         gumroadLink.classList.add("card-footer-item");
