@@ -1,37 +1,41 @@
 function includeFile(filename, elementID)
 {
-    var request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open("GET", "includes/" + filename, false);
     request.send(null);
 
-    var content = request.responseText;
+    const content = request.responseText;
 
-    document.getElementById(elementID).innerHTML = content;
+    const element = document.getElementById(elementID);
+    element.innerHTML = content;
 }
 
 function updateCopyright()
 {
-    var copyrightSpan = document.getElementById("copyrightYear");
-    copyrightSpan.innerText = new Date().getFullYear();
+    const currentYear = new Date().getFullYear();
+    const copyrightSpan = document.getElementById("copyrightYear");
+    copyrightSpan.innerText = currentYear;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     // Get all "navbar-burger" elements
-    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
     // Check if there are any navbar burgers
-    if ($navbarBurgers.length > 0)
+    if (navbarBurgers.length > 0)
     {
         // Add a click event on each of them
-        $navbarBurgers.forEach( el => {
-            el.addEventListener('click', () => {
+        navbarBurgers.forEach( el =>
+        {
+            el.addEventListener('click', () =>
+            {
                 // Get the target from the "data-target" attribute
                 const target = el.dataset.target;
-                const $target = document.getElementById(target);
+                const targetElement = document.getElementById(target);
 
                 // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
                 el.classList.toggle('is-active');
-                $target.classList.toggle('is-active');
+                targetElement.classList.toggle('is-active');
             });
         });
     }

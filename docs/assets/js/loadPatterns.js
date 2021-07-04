@@ -1,18 +1,19 @@
 function getJsonContents(jsonFilePath)
 {
-    var request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
+
     request.open("GET", jsonFilePath, false);
     request.setRequestHeader('Content-Type', 'application/json;charset=utf-8;');
     request.send(null);
 
-    var jsonObject = JSON.parse(request.responseText);
+    const jsonObject = JSON.parse(request.responseText);
 
     return jsonObject;
 }
 
 function getPatternsList(patternType)
 {
-    var patternsJson = getJsonContents("docs/assets/data/patterns.json");
+    const patternsJson = getJsonContents("docs/assets/data/patterns.json");
 
     if (patternType == "paid")
     {
@@ -34,74 +35,74 @@ function getPatternInfo(type, patternName)
 
 function removeProgressBar()
 {
-    var progressBar = document.getElementById("progressBar");
+    const progressBar = document.getElementById("progressBar");
     progressBar.innerHTML = "";
 }
 
 function createPatternCard(type) 
 {
-    var patternsList = getPatternsList(type);
+    const patternsList = getPatternsList(type);
 
-    var patternSection = document.getElementById("patternSection");
+    const patternSection = document.getElementById("patternSection");
     
-    var parentColumnDiv = document.createElement("div");
+    const parentColumnDiv = document.createElement("div");
     parentColumnDiv.classList.add("columns");
 
-    var numPatterns = patternsList.length;
-    var numPatternsPerRow = 3;
+    const numPatterns = patternsList.length;
+    const numPatternsPerRow = 3;
 
     for (var i = 0; i < numPatterns; i++)
     {
-        var patternInfo = getPatternInfo(type, patternsList[i])
+        const patternInfo = getPatternInfo(type, patternsList[i])
 
         if (i % numPatternsPerRow == 0)
         {
-            var parentColumnDiv = document.createElement("div");
+            const parentColumnDiv = document.createElement("div");
             parentColumnDiv.classList.add("columns");
         }
 
-        var columnDiv = document.createElement("div");
+        const columnDiv = document.createElement("div");
         columnDiv.classList.add("column");
 
         parentColumnDiv.appendChild(columnDiv);
 
-        var cardDiv = document.createElement("div");
+        const cardDiv = document.createElement("div");
         cardDiv.classList.add("card");
 
         columnDiv.appendChild(cardDiv)
 
-        var cardImageDiv = document.createElement("div");
+        const cardImageDiv = document.createElement("div");
         cardImageDiv.classList.add("card-image");
 
         cardDiv.appendChild(cardImageDiv)
 
-        var imageFigure = document.createElement("figure");
+        const imageFigure = document.createElement("figure");
         imageFigure.classList.add("image");
         imageFigure.classList.add("is-4by3");
 
         cardImageDiv.appendChild(imageFigure)
 
-        var image = document.createElement("img");
+        const image = document.createElement("img");
         image.src = "docs/assets/images/" + patternsList[i] + ".png"
 
         imageFigure.appendChild(image)
 
-        var cardContentDiv = document.createElement("div");
+        const cardContentDiv = document.createElement("div");
         cardContentDiv.classList.add("card-content");
 
         cardDiv.appendChild(cardContentDiv);
 
-        var mediaDiv = document.createElement("div");
+        const mediaDiv = document.createElement("div");
         mediaDiv.classList.add("media");
 
         cardContentDiv.appendChild(mediaDiv);
 
-        var mediaContentDiv = document.createElement("div");
+        const mediaContentDiv = document.createElement("div");
         mediaContentDiv.classList.add("media-content");
 
         mediaDiv.appendChild(mediaContentDiv);
 
-        var titleP = document.createElement("p");
+        const titleP = document.createElement("p");
         titleP.classList.add("title");
         titleP.classList.add("is-4");
 
@@ -109,7 +110,7 @@ function createPatternCard(type)
 
         mediaContentDiv.appendChild(titleP);
         
-        var contentDiv = document.createElement("div");
+        const contentDiv = document.createElement("div");
         contentDiv.classList.add("content");
 
         contents = "<span class=\"bold\">✦ DMC Floss:</span> " + patternInfo.dmcFloss +  " colours <br>";
@@ -120,12 +121,12 @@ function createPatternCard(type)
 
         cardContentDiv.appendChild(contentDiv);
 
-        var cardFooter = document.createElement("footer");
+        const cardFooter = document.createElement("footer");
         cardFooter.classList.add("card-footer");     
     
         if (type == "paid")
         {
-            var etsyLink = document.createElement("a");
+            const etsyLink = document.createElement("a");
             etsyLink.classList.add("card-footer-item");
             etsyLink.classList.add("etsy-background");
 
@@ -135,7 +136,7 @@ function createPatternCard(type)
             cardFooter.appendChild(etsyLink);
         }
 
-        var gumroadLink = document.createElement("a");
+        const gumroadLink = document.createElement("a");
         gumroadLink.classList.add("card-footer-item");
         gumroadLink.classList.add("gumroad-background");
 
@@ -149,13 +150,13 @@ function createPatternCard(type)
         patternSection.appendChild(parentColumnDiv);
     }
 
-    var remainingColumns = numPatternsPerRow - (numPatterns % numPatternsPerRow);
+    const remainingColumns = numPatternsPerRow - (numPatterns % numPatternsPerRow);
 
     if (remainingColumns != 0 && remainingColumns % numPatternsPerRow != 0)
     {
         for (var i = 0; i < remainingColumns; i++)
         {
-            var columnDiv = document.createElement("div");
+            const columnDiv = document.createElement("div");
             columnDiv.classList.add("column");
     
             parentColumnDiv.appendChild(columnDiv);            
