@@ -33,6 +33,87 @@ function getPatternInfo(type, patternName)
     return patternInfo;
 }
 
+function getParameterByName(name, url = window.location.href)
+{
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*))'), results = regex.exec(url);
+
+    if (!results)
+    {
+        return null;
+    }
+    if (!results[2])
+    {
+        return '';
+    }
+
+     return decodeURIComponent(results[2]);
+}
+
+function loadActivePattern(type)
+{
+    const pattern = getParameterByName("pattern");
+
+    if (pattern != null)
+    {
+        const patternsList = getPatternsList(type);
+        const numPatterns = patternsList.length;
+        var patternIndex = -1;
+
+        for (var i = 0; i<numPatterns; i++)
+        {
+            if (patternsList[i].toUpperCase() == pattern.toUpperCase())
+            {
+                patternIndex = i;
+                break;
+            }
+        }
+
+        if (patternIndex != -1)
+        {
+            const patternInfo = getPatternInfo(type, patternsList[patternIndex]);
+
+            const patternTitleDiv = document.getElementById("pattern-title");
+            const patternDetailsDiv = document.getElementById("pattern-details");
+
+            const breadcrumbNav = document.getElementById("breadcrumb");
+            const breadcrumbUl = breadcrumbNav.getElementsByTagName("ul")[0];
+            const breadcrumbLi = document.createElement("li");
+
+            const breadcrumbItems = breadcrumbUl.getElementsByTagName("li");
+            const numBreadcrumItems = breadcrumbItems.length;
+
+            for (var i = 0; i < numBreadcrumItems; i++)
+            {
+                breadcrumbItems[i].classList.remove("is-active");
+            }
+
+            const activePatternListLink = document.createElement("a");
+
+            activePatternListLink.innerText = patternInfo.title;
+            breadcrumbLi.classList.add("is-active");
+
+            breadcrumbLi.appendChild(activePatternListLink);
+            breadcrumbUl.appendChild(breadcrumbLi);
+
+            const activePatternImage = document.getElementById("active-pattern-image");
+            activePatternImage.src = "docs/assets/images/" + patternsList[patternIndex] + ".png";
+
+            updatePatternTitle(patternTitleDiv, patternInfo);
+            updatePatternDetails(patternDetailsDiv, patternInfo);
+
+            if (type == "paid")
+            {
+                updatePatternLink("active-pattern-etsy-link", patternInfo.etsyLink);
+            }
+
+            updatePatternLink("active-pattern-gumroad-link", patternInfo.gumroadLink);            
+
+            const activePatternDiv = document.getElementById("active-pattern");
+            activePatternDiv.style.display = "block";
+        }
+    }
+}
+
 function removeProgressBar()
 {
     const progressBar = document.getElementById("progressBar");
@@ -163,6 +244,26 @@ function addGumroadLink(patternGumroadLink)
     return gumroadLink;
 }
 
+function updatePatternLink(patternLinkId, link)
+{
+    patternLinkA = document.getElementById(patternLinkId);
+    patternLinkA.href = link;
+}      
+
+function updatePatternTitle(patternTitleDiv, patternInfo)
+{
+    patternTitleDiv.innerText = patternInfo.title;
+}
+
+function updatePatternDetails(patternDetailsDiv, patternInfo)
+{
+    var details = "<span class=\"bold\">✦ DMC Floss:</span> " + patternInfo.dmcFloss +  " colours <br>";
+    details += "<span class=\"bold\">✦ Pattern Size:</span> " + patternInfo.patternSize + "<br>";
+    details += "<span class=\"bold\">✦ Completed Size:</span> " + patternInfo.completedSize; 
+
+    patternDetailsDiv.innerHTML = details;
+}
+
 function createPatternCard(type) 
 {
     const patternsList = getPatternsList(type);
@@ -176,7 +277,7 @@ function createPatternCard(type)
 
     for (var i = 0; i < numPatterns; i++)
     {
-        const patternInfo = getPatternInfo(type, patternsList[i])
+        const patternInfo = getPatternInfo(type, patternsList[i]);
 
         if (i % numPatternsPerRow == 0)
         {
@@ -195,9 +296,22 @@ function createPatternCard(type)
         const imageFigure = addImageFigure();
         cardImageDiv.appendChild(imageFigure)
 
+        const activePatternLink = document.createElement("a");
+
+        if (type == "paid")
+        {
+            activePatternLink.href = "patterns?pattern=" + patternsList[i];
+        }
+        else if (type == "free")
+        {
+            activePatternLink.href = "freebies?pattern=" + patternsList[i];
+        }
+        
+
         const imageName = patternsList[i];
         const image = addImage(imageName);
-        imageFigure.appendChild(image)
+        activePatternLink.appendChild(image);
+        imageFigure.appendChild(activePatternLink);
 
         const cardContentDiv = addCardContentDiv();
         cardDiv.appendChild(cardContentDiv);
@@ -214,11 +328,8 @@ function createPatternCard(type)
         
         const contentDiv = addContentDiv();
 
-        var contents = "<span class=\"bold\">✦ DMC Floss:</span> " + patternInfo.dmcFloss +  " colours <br>";
-        contents += "<span class=\"bold\">✦ Pattern Size:</span> " + patternInfo.patternSize + "<br>";
-        contents += "<span class=\"bold\">✦ Completed Size:</span> " + patternInfo.completedSize; 
+        updatePatternDetails(contentDiv, patternInfo);
 
-        contentDiv.innerHTML = contents;
         cardContentDiv.appendChild(contentDiv);
 
         const cardFooter = addCardFooter();

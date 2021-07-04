@@ -12,29 +12,55 @@
     <script src="docs/assets/js/loadPatterns.js"></script>
 </head>
 
-<body onload="createPatternCard('paid'); updateCopyright();">
+<body onload="createPatternCard('paid'); updateCopyright(); loadActivePattern('paid');">
     <nav id="navContainer" class="navbar" role="navigation" aria-label="main navigation">
     </nav>
     <script>
-        includeFile('header.html', 'navContainer')
+        includeFile('header.html', 'navContainer');
     </script>
     <section id="patternSection" class="section">
         <p class="title pageTitle is-3">PATTERNS</p>
         <p class="subtitle pageTitle is-5">Fun modern cross stitch patterns we hope you'll love.</p>
         <hr>
-        <nav class="breadcrumb has-succeeds-separator is-centered" aria-label="breadcrumbs">
+        <nav id="breadcrumb" class="breadcrumb has-succeeds-separator is-centered" aria-label="breadcrumbs">
             <ul>
                 <li><a href="https://www.infinitybeardesigns.com">Home</a></li>
-                <li class="is-active"><a href="#" aria-current="page">Patterns</a></li>
+                <li class="is-active"><a href="/patterns" aria-current="page">Patterns</a></li>
             </ul>
         </nav>
         <div id="progressBar">
             <progress class="progress is-small is-primary" max="100">15%</progress>
         </div>
+        <div id="active-pattern" class="box">
+            <div class="columns">
+                <div class="column">
+                    <img id="active-pattern-image">
+                </div>
+                <div class="column">
+                    <p id="pattern-title" class="title is-3"></p>
+                    <div id="pattern-details">
+                        
+                    </div>
+                    <br>
+                    This item is a digital PDF pattern, and is only available for downloading and printing. <br><br>
+
+                    It is not a completed project or cross stitch kit. It does not contain any physical materials,
+                    including those shown in the listing imagery.<br><br>
+
+                    To view or print this pattern, you will require a PDF reader. <br><br>
+                    <div>
+                        <a id="active-pattern-etsy-link" class="button etsy-background" href="https://www.etsy.com/shop/InfinityBearDesigns">Get it on
+                            Etsy</a>
+                        <a id="active-pattern-gumroad-link" class="button gumroad-background" href="https://gumroad.com/infinitybeardesigns">Get it on
+                            Gumroad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <footer id="footerContainer" class="footer"></footer>
     <script>
-        includeFile('footer.html', 'footerContainer')
+        includeFile('footer.html', 'footerContainer');
     </script>
 </body>
 

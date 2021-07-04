@@ -38,3 +38,8 @@ hr
   height: 1px;
   background: #CCCCCC;
 }
+
+#active-pattern
+{
+  display: none;
+}
