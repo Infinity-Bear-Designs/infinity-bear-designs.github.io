@@ -32,6 +32,12 @@ function getPatternInfo(type, patternName)
     return patternInfo;
 }
 
+function removeProgressBar()
+{
+    var progressBar = getElementById("progressBar");
+    progressBar.innerHTML = "";
+}
+
 function createPatternCard(type) 
 {
     var patternsList = getPatternsList(type);
@@ -155,4 +161,6 @@ function createPatternCard(type)
             parentColumnDiv.appendChild(columnDiv);            
         }
     }
+
+    removeProgressBar();
 }
