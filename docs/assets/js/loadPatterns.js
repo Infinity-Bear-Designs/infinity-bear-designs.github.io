@@ -34,7 +34,7 @@ function getPatternInfo(type, patternName)
 
 function removeProgressBar()
 {
-    var progressBar = getElementById("progressBar");
+    var progressBar = document.getElementById("progressBar");
     progressBar.innerHTML = "";
 }
 
