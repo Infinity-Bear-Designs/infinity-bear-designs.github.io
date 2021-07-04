@@ -11,9 +11,16 @@
   <script src="docs/assets/js/include.js"></script>
 </head>
 
-<body onload="includeFile('header.html', 'navContainer')">
+<body onload="updateCopyright();">
   <nav id="navContainer" class="navbar" role="navigation" aria-label="main navigation">
   </nav>
+  <script>
+    includeFile('header.html', 'navContainer')
+</script>
+  <footer id="footerContainer" class="footer">/footer>
+    <script>
+        includeFile('footer.html', 'footerContainer')
+    </script>
 </body>
 
 </html>

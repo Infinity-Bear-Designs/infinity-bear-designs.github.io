@@ -12,7 +12,7 @@
     <script src="docs/assets/js/loadPatterns.js"></script>
 </head>
 
-<body onload="createPatternCard('paid')">
+<body onload="createPatternCard('paid'); updateCopyright();">
     <nav id="navContainer" class="navbar" role="navigation" aria-label="main navigation">
     </nav>
     <script>
@@ -23,6 +23,10 @@
         <p class="subtitle pageTitle is-5">Fun modern cross stitch patterns we hope you'll love.</p>
         <hr>
     </section>
+    <footer id="footerContainer" class="footer">/footer>
+        <script>
+            includeFile('footer.html', 'footerContainer')
+        </script>
 </body>
 
 </html>

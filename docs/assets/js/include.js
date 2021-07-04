@@ -9,6 +9,12 @@ function includeFile(filename, elementID)
     document.getElementById(elementID).innerHTML = content
 }
 
+function updateCopyright()
+{
+    var copyrightSpan = document.getElementById("copyrightYear");
+    copyrightSpan.innerText = new Date().getFullYear();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Get all "navbar-burger" elements
