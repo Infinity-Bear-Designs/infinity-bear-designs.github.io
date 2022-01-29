@@ -96,7 +96,7 @@ function loadActivePattern(type)
             breadcrumbUl.appendChild(breadcrumbLi);
 
             const activePatternImage = document.getElementById("active-pattern-image");
-            activePatternImage.src = "docs/assets/images/" + patternsList[patternIndex] + ".png";
+            activePatternImage.src = "docs/assets/images/" + patternsList[patternIndex] + "Website.png";
 
             updatePatternTitle(patternTitleDiv, patternInfo);
             updatePatternDetails(patternDetailsDiv, patternInfo);
@@ -164,7 +164,7 @@ function addImageFigure()
 function addImage(imageName)
 {
     const image = document.createElement("img");
-    image.src = "docs/assets/images/" + imageName + ".png"
+    image.src = "docs/assets/images/" + imageName + "Website.png"
 
     return image;
 }
