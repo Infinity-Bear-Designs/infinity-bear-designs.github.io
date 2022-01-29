@@ -35,6 +35,10 @@
                         "IgnoranceIsBliss",
                         "TheBeacon"
                     ],
+    "bundlePatterns": [
+                       "GalaxyCat",
+                       "GalacticFashionShow"
+                    ],
     "freePatterns": [
                         "Quackitude",
                         "ReachForTheStars"

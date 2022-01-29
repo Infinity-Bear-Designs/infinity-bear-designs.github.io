@@ -23,6 +23,10 @@ function getPatternsList(patternType)
     {
         return patternsJson.freePatterns;
     }
+    else if (patternType == "bundle")
+    {
+        return patternsJson.bundlePatterns;
+    }
 }
 
 function getPatternInfo(type, patternName)
@@ -99,9 +103,9 @@ function loadActivePattern(type)
             activePatternImage.src = "docs/assets/images/" + patternsList[patternIndex] + "Website.png";
 
             updatePatternTitle(patternTitleDiv, patternInfo);
-            updatePatternDetails(patternDetailsDiv, patternInfo);
+            updatePatternDetails(patternDetailsDiv, patternInfo, type);
 
-            if (type == "paid")
+            if (type != "free")
             {
                 updatePatternLink("active-pattern-etsy-link", patternInfo.etsyLink);
             }
@@ -255,12 +259,19 @@ function updatePatternTitle(patternTitleDiv, patternInfo)
     patternTitleDiv.innerText = patternInfo.title;
 }
 
-function updatePatternDetails(patternDetailsDiv, patternInfo)
+function updatePatternDetails(patternDetailsDiv, patternInfo, type)
 {
-    var details = "<span class=\"bold\">✦ DMC Floss:</span> " + patternInfo.dmcFloss +  " colours <br>";
-    details += "<span class=\"bold\">✦ Pattern Size:</span> " + patternInfo.patternSize + "<br>";
-    details += "<span class=\"bold\">✦ Completed Size:</span> " + patternInfo.completedSize; 
-
+    if (type != "bundle")
+    {
+        var details = "<span class=\"bold\">✦ DMC Floss:</span> " + patternInfo.dmcFloss +  " colours <br>";
+        details += "<span class=\"bold\">✦ Pattern Size:</span> " + patternInfo.patternSize + "<br>";
+        details += "<span class=\"bold\">✦ Completed Size:</span> " + patternInfo.completedSize; 
+    }
+    else
+    {
+        var details = "<span class=\"bold\">Patterns:</span><br> " + patternInfo.patterns;
+    }
+    
     patternDetailsDiv.innerHTML = details;
 }
 
@@ -306,6 +317,10 @@ function createPatternCard(type)
         {
             activePatternLink.href = "freebies?pattern=" + patternsList[i];
         }
+        else if (type == "bundle")
+        {
+            activePatternLink.href = "bundles?pattern=" + patternsList[i];
+        }
         
 
         const imageName = patternsList[i];
@@ -328,13 +343,13 @@ function createPatternCard(type)
         
         const contentDiv = addContentDiv();
 
-        updatePatternDetails(contentDiv, patternInfo);
+        updatePatternDetails(contentDiv, patternInfo, type);
 
         cardContentDiv.appendChild(contentDiv);
 
         const cardFooter = addCardFooter();
     
-        if (type == "paid")
+        if (type != "free")
         {
             const patternEtsyLink = patternInfo.etsyLink;
             const etsyLink = addEtsyLink(patternEtsyLink);
