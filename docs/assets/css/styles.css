@@ -4,13 +4,13 @@
   background: #EB6D20;
 }
 
-.gumroad-background
+.itchio-background
 {
   color: white;
-  background: #36A9AE;
+  background: #fa5c5c;
 }
 
-.bold
+a, .bold
 {
   font-weight: bold;
 }

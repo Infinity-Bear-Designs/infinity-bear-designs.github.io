@@ -110,7 +110,7 @@ function loadActivePattern(type)
                 updatePatternLink("active-pattern-etsy-link", patternInfo.etsyLink);
             }
 
-            updatePatternLink("active-pattern-gumroad-link", patternInfo.gumroadLink);            
+            updatePatternLink("active-pattern-itchio-link", patternInfo.itchioLink);            
 
             const activePatternDiv = document.getElementById("active-pattern");
             activePatternDiv.style.display = "block";
@@ -236,16 +236,16 @@ function addEtsyLink(patternEtsyLink)
     return etsyLink;
 }
 
-function addGumroadLink(patternGumroadLink)
+function addItchioLink(patternItchioLink)
 {
-    const gumroadLink = document.createElement("a");
-    gumroadLink.classList.add("card-footer-item");
-    gumroadLink.classList.add("gumroad-background");
+    const itchioLink = document.createElement("a");
+    itchioLink.classList.add("card-footer-item");
+    itchioLink.classList.add("itchio-background");
 
-    gumroadLink.innerHTML = "Gumroad";
-    gumroadLink.href = patternGumroadLink;
+    itchioLink.innerHTML = "itch.io";
+    itchioLink.href = patternItchioLink;
 
-    return gumroadLink;
+    return itchioLink;
 }
 
 function updatePatternLink(patternLinkId, link)
@@ -356,9 +356,9 @@ function createPatternCard(type)
             cardFooter.appendChild(etsyLink);
         }
 
-        const patternGumroadLink = patternInfo.gumroadLink;
-        const gumroadLink = addGumroadLink(patternGumroadLink);
-        cardFooter.appendChild(gumroadLink);
+        const patternItchioLink = patternInfo.itchioLink;
+        const itchioLink = addItchioLink(patternItchioLink);
+        cardFooter.appendChild(itchioLink);
         cardDiv.appendChild(cardFooter);
 
         patternSection.appendChild(parentColumnDiv);
