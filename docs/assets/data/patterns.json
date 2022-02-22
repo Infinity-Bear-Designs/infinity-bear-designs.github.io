@@ -33,11 +33,15 @@
                         "WizardTerrarium",
                         "MimicInTheWineRoom",
                         "IgnoranceIsBliss",
-                        "TheBeacon"
+                        "TheBeacon",
+                        "PrismPond",
+                        "PrismFalls",
+                        "PrismForest"
                     ],
     "bundlePatterns": [
                        "GalaxyCat",
-                       "GalacticFashionShow"
+                       "GalacticFashionShow",
+                       "PrismaticNature"
                     ],
     "freePatterns": [
                         "Quackitude",
