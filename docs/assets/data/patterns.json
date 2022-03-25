@@ -3,6 +3,9 @@
                         "DreamingOfOuterSpace",
                         "GalaxyCatKaleidoscope",
                         "FollowYourDreams",
+                        "WatchfulWoods",
+                        "GraspingGrove",
+                        "FungiForest",
                         "UnderTheSurface", 
                         "Cat'sNightOut", 
                         "BeachfrontHome",
@@ -18,7 +21,6 @@
                         "StarstruckScarf",
                         "SolarSystemChic",
                         "SolarWindswept",
-                        "FungiForest",
                         "StrawberryCatCone",
                         "BlueberryBearCone",
                         "Soon",
@@ -41,7 +43,8 @@
     "bundlePatterns": [
                        "GalaxyCat",
                        "GalacticFashionShow",
-                       "PrismaticNature"
+                       "PrismaticNature",
+                       "CreepyCabin"
                     ],
     "freePatterns": [
                         "Quackitude",
