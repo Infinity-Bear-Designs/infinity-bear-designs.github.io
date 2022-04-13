@@ -395,6 +395,9 @@ function updatePatternDetails(patternDetailsDiv, patternInfo, type, isActivePatt
             patternString += "✦ <a href='patterns?pattern=" + patternNameClean + "'>" + patternInfo.patterns[i] + "</a><br>";
         }
 
+        // Clean up extra <br>
+        patternString = patternString.slice(0, -4);
+
         var details = "<span class=\"bold\">Patterns:</span><br> " + patternString;
     }
 
