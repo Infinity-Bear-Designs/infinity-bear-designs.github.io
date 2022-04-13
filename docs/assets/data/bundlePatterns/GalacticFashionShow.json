@@ -1,6 +1,6 @@
 {
     "title": "Galactic Fashion Show",
-    "patterns": "✦ <a href='patterns?pattern=StarstruckScarf'>Starstruck Scarf</a><br> ✦ <a href='patterns?pattern=SolarSystemChic'>Solar System Chic</a><br> ✦ <a href='patterns?pattern=SolarWindswept'>Solar Windswept</a>",
+    "patterns": ["Starstruck Scarf", "Solar System Chic", "Solar Windswept"],
     "patternSize": "56 x 56 stitches",
     "completedSize": "Completed Size: 4.00 x 4.00 inches or 10.14 x 10.14 cm on 14 count aida",
     "etsyLink": "https://www.etsy.com/listing/1011652404/galactic-fashion-show-bundle-set-of-3",

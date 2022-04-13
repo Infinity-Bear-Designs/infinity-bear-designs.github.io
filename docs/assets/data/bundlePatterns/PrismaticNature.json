@@ -1,6 +1,6 @@
 {
     "title": "Prismatic Nature",
-    "patterns": "✦ <a href='patterns?pattern=PrismPond'>Prism Pond</a> <br> ✦ <a href='patterns?pattern=PrismFalls'>Prism Falls</a> <br> ✦ <a href='patterns?pattern=PrismForest'>Prism Forest</a>",
+    "patterns": ["Prism Pond", "Prism Falls", "Prism Forest"],
     "patternSize": "100 x 100 stitches",
     "completedSize": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida",
     "etsyLink": "https://www.etsy.com/listing/1183760325/prismatic-nature-bundle-set-of-3-modern",

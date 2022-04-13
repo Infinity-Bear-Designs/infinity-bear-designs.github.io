@@ -91,7 +91,7 @@ function addActivePatternBlock(type)
     const activeItchioLink = addActiveItchioLink(type);
     buttonBarDiv.appendChild(activeItchioLink);
 
-    if (type != "paid")
+    if (type != "free")
     {
         const activeEtsyLink = addActiveEtsyLink();
         buttonBarDiv.appendChild(activeEtsyLink);
@@ -316,7 +316,7 @@ function addActiveEtsyLink()
     return etsyLink;
 }
 
-function connectBuyButton(element, slug)
+function connectItchioBuyButton(element, slug)
 {
     Itch.attachBuyButton(element, {
         user: "infinity-bear-designs",
@@ -324,7 +324,7 @@ function connectBuyButton(element, slug)
       });
 }
 
-function addItchioLink(patternItchioLink, slug, type)
+function addItchioLink(slug, type)
 {
     const itchioLink = document.createElement("a");
     itchioLink.classList.add("card-footer-item");
@@ -339,7 +339,7 @@ function addItchioLink(patternItchioLink, slug, type)
 
     itchioLink.innerHTML = linkText;
 
-    connectBuyButton(itchioLink, slug);
+    connectItchioBuyButton(itchioLink, slug);
 
     return itchioLink;
 }
@@ -354,7 +354,7 @@ function updatePatternLink(patternLinkId, link, slug)
     }
     else
     {
-        connectBuyButton(patternLink, slug);
+        connectItchioBuyButton(patternLink, slug);
     }
 }      
 
@@ -386,7 +386,16 @@ function updatePatternDetails(patternDetailsDiv, patternInfo, type, isActivePatt
     }
     else
     {
-        var details = "<span class=\"bold\">Patterns:</span><br> " + patternInfo.patterns;
+        var patternString = "";
+        var numPatterns = patternInfo.patterns.length;
+
+        for (var i=0; i<numPatterns; i++)
+        {
+            var patternNameClean = patternInfo.patterns[i].replace(/\s/g, '');
+            patternString += "✦ <a href='patterns?pattern=" + patternNameClean + "'>" + patternInfo.patterns[i] + "</a><br>";
+        }
+
+        var details = "<span class=\"bold\">Patterns:</span><br> " + patternString;
     }
 
     var detailsContent = details;
@@ -477,10 +486,9 @@ function createPatternCard(type)
 
         const cardFooter = addCardFooter();
 
-        const patternItchioLink = patternInfo.itchioLink;
         const slug = patternInfo.slug;
 
-        const itchioLink = addItchioLink(patternItchioLink, slug, type);
+        const itchioLink = addItchioLink(slug, type);
         cardFooter.appendChild(itchioLink);
 
         if (type != "free")
