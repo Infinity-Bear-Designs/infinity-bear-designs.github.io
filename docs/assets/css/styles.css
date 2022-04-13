@@ -16,6 +16,12 @@
   background: #6eb110;
 }
 
+.finished-object-background
+{
+  color: black;
+  background: #e4e4e4;
+}
+
 a, .bold
 {
   font-weight: bold;

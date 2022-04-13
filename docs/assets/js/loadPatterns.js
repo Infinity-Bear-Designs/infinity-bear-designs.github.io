@@ -207,7 +207,7 @@ function addImageFigure()
 {
     const imageFigure = document.createElement("figure");
     imageFigure.classList.add("image");
-    imageFigure.classList.add("is-4by3");screen
+    imageFigure.classList.add("is-4by3");
     
     return imageFigure;
 }
