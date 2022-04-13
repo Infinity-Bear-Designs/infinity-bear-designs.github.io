@@ -56,7 +56,10 @@ function getParameterByName(name, url = window.location.href)
 function addActivePatternBlock(type)
 {
     const activePatternDiv = document.getElementById("active-pattern");
-    const activePatternColumnRow = addColumnnRow();
+    const activePatternColumnRow = addColumnRow();
+    
+    activePatternDiv.appendChild(activePatternColumnRow);
+    
     const activeImageColumn = addColumn();
 
     const activeImage = document.createElement("img");
@@ -81,16 +84,18 @@ function addActivePatternBlock(type)
     patternInformationColumn.appendChild(patternDetailsDiv);
 
     const buttonBarDiv = document.createElement("div");
+    buttonBarDiv.id = "button-bar";
+
+    patternInformationColumn.appendChild(buttonBarDiv);
 
     const activeItchioLink = addActiveItchioLink(type);
     buttonBarDiv.appendChild(activeItchioLink);
 
-    if (type == "paid")
+    if (type != "paid")
     {
         const activeEtsyLink = addActiveEtsyLink();
-        buttonBarDiv.appendChild(aactiveEtsyLink);
+        buttonBarDiv.appendChild(activeEtsyLink);
     }
-
 
     activePatternColumnRow.appendChild(patternInformationColumn);
 }
@@ -116,8 +121,6 @@ function loadActivePattern(type)
 
         if (patternIndex != -1)
         {
-            addActivePatternBlock(type);
-
             const patternInfo = getPatternInfo(type, patternsList[patternIndex]);
 
             const patternTitleDiv = document.getElementById("pattern-title");
@@ -147,7 +150,7 @@ function loadActivePattern(type)
             activePatternImage.src = "docs/assets/images/" + patternsList[patternIndex] + "Website.png";
 
             updatePatternTitle(patternTitleDiv, patternInfo);
-            updatePatternDetails(patternDetailsDiv, patternInfo, type);
+            updatePatternDetails(patternDetailsDiv, patternInfo, type, true);
 
             if (type != "free")
             {
@@ -168,7 +171,7 @@ function removeProgressBar()
     progressBar.innerHTML = "";
 }
 
-function addColumnnRow()
+function addColumnRow()
 {
     const parentColumnDiv = document.createElement("div");
     parentColumnDiv.classList.add("columns");
@@ -283,6 +286,7 @@ function addEtsyLink(patternEtsyLink)
 function addActiveItchioLink(type)
 {
     const itchioLink = document.createElement("a");
+    itchioLink.classList.add("button");
     itchioLink.classList.add("purchase-background");
     itchioLink.classList.add("bold");
     itchioLink.id = "active-pattern-itchio-link"
@@ -295,16 +299,21 @@ function addActiveItchioLink(type)
     }
 
     itchioLink.innerHTML = linkText;
+
+    return itchioLink;
 }
 
-function addActiveItchioLink()
+function addActiveEtsyLink()
 {
-    const itchioLink = document.createElement("a");
-    itchioLink.classList.add("etsy-background");
-    itchioLink.classList.add("bold");
-    itchioLink.id = "active-pattern-etsy-link"
+    const etsyLink = document.createElement("a");
+    etsyLink.classList.add("button");
+    etsyLink.classList.add("etsy-background");
+    etsyLink.classList.add("bold");
+    etsyLink.id = "active-pattern-etsy-link"
 
-    itchioLink.innerHTML = "Buy Now";
+    etsyLink.innerHTML = "Get it on Etsy";
+
+    return etsyLink;
 }
 
 function connectBuyButton(element, slug)
@@ -341,7 +350,7 @@ function updatePatternLink(patternLinkId, link, slug)
 
     if (slug == null)
     {
-        patternLinkA.href = link;
+        patternLink.href = link;
     }
     else
     {
@@ -356,7 +365,7 @@ function updatePatternTitle(patternTitleDiv, patternInfo)
 
 function getGenericPatternText()
 {
-    const genericPatternText = `<br>
+    const genericPatternText = `<br><br>
     This item is a digital PDF pattern, and is only available for downloading and printing. <br><br>
 
     It is not a completed project or cross stitch kit. It does not contain any physical materials,
@@ -367,7 +376,7 @@ function getGenericPatternText()
     return genericPatternText;
 }
 
-function updatePatternDetails(patternDetailsDiv, patternInfo, type)
+function updatePatternDetails(patternDetailsDiv, patternInfo, type, isActivePattern)
 {
     if (type != "bundle")
     {
@@ -379,9 +388,16 @@ function updatePatternDetails(patternDetailsDiv, patternInfo, type)
     {
         var details = "<span class=\"bold\">Patterns:</span><br> " + patternInfo.patterns;
     }
-    
-    const genericPatternText = getGenericPatternText();
-    patternDetailsDiv.innerHTML = details + genericPatternText;
+
+    var detailsContent = details;
+
+    if (isActivePattern)
+    {
+        const genericPatternText = getGenericPatternText();
+        detailsContent += genericPatternText;
+    }
+
+    patternDetailsDiv.innerHTML = detailsContent;
 }
 
 function createPatternCard(type) 
@@ -455,7 +471,7 @@ function createPatternCard(type)
         
         const contentDiv = addContentDiv();
 
-        updatePatternDetails(contentDiv, patternInfo, type);
+        updatePatternDetails(contentDiv, patternInfo, type, false);
 
         cardContentDiv.appendChild(contentDiv);
 
