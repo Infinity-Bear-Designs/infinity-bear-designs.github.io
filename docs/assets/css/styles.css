@@ -10,6 +10,12 @@
   background: #fa5c5c;
 }
 
+.purchase-background
+{
+  color: white;
+  background: #6eb110;
+}
+
 a, .bold
 {
   font-weight: bold;

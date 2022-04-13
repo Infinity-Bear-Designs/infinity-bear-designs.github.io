@@ -8,11 +8,12 @@
     <title>Infinity Bear Designs - Patterns</title>
     <link rel="stylesheet" href="docs/assets/css/bulmaStyles.css">
     <link rel="stylesheet" href="docs/assets/css/styles.css">
+    <script type="text/javascript" src="https://static.itch.io/api.js"></script>
     <script src="docs/assets/js/include.js"></script>
     <script src="docs/assets/js/loadPatterns.js"></script>
 </head>
 
-<body onload="createPatternCard('paid'); updateCopyright(); loadActivePattern('paid');">
+<body onload="createPatternCard('paid'); updateCopyright(); addActivePatternBlock('paid'); loadActivePattern('paid');">
     <nav id="navContainer" class="navbar" role="navigation" aria-label="main navigation">
     </nav>
     <script>
@@ -32,7 +33,7 @@
             <progress class="progress is-small is-primary" max="100">15%</progress>
         </div>
         <div id="active-pattern" class="box">
-            <div class="columns">
+            <!-- <div class="columns">
                 <div class="column">
                     <img id="active-pattern-image">
                 </div>
@@ -55,7 +56,7 @@
                             itch.io</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <footer id="footerContainer" class="footer"></footer>
