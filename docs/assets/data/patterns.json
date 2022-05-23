@@ -10,6 +10,8 @@
                         "Cat'sNightOut", 
                         "BeachfrontHome",
                         "InTheZone",
+                        "HeadintheClouds",
+                        "FocusedinFreeFall",
                         "PizzaKaleidoscope",
                         "WatermelonKaleidoscope",
                         "PumpkinPal",
@@ -38,13 +40,16 @@
                         "TheBeacon",
                         "PrismPond",
                         "PrismFalls",
-                        "PrismForest"
+                        "PrismForest",
+                        "TheHunger",
+                        "UnidentifiedFelineObject"
                     ],
     "bundlePatterns": [
                        "GalaxyCat",
                        "GalacticFashionShow",
                        "PrismaticNature",
-                       "CreepyCabin"
+                       "CreepyCabin",
+                       "WonderfulWindowscapes"
                     ],
     "freePatterns": [
                         "Quackitude",
