@@ -19,6 +19,9 @@ function getFinishedObjects()
 
 function addFinishedObjectCard(finishedObject)
 {
+    var patternNameClean = finishedObject.replace(/\s/g, '');
+    var linkToPattern = "patterns?pattern=" + patternNameClean;
+
     const columnDiv = document.createElement("div");
     columnDiv.classList.add("column");
     columnDiv.classList.add("is-one-quarter");
@@ -35,9 +38,13 @@ function addFinishedObjectCard(finishedObject)
     imageFigure.classList.add("image");
     cardImageDiv.appendChild(imageFigure)
 
+    const finishedObjectImageLink = document.createElement("a");
+    finishedObjectImageLink.href = linkToPattern;
+
     const finishedObjectImage = document.createElement("img");
     finishedObjectImage.src = "docs/assets/images/finishedObjects/" + finishedObject + ".jpg";
-    imageFigure.appendChild(finishedObjectImage);
+    finishedObjectImageLink.appendChild(finishedObjectImage);
+    imageFigure.appendChild(finishedObjectImageLink);
 
     const cardFooter = document.createElement("footer");
     cardFooter.classList.add("card-footer");
@@ -48,10 +55,8 @@ function addFinishedObjectCard(finishedObject)
     patternLink.classList.add("finished-object-background");
     patternLink.classList.add("bold");
 
-    var patternNameClean = finishedObject.replace(/\s/g, '');
-
     patternLink.innerHTML = finishedObject;
-    patternLink.href = "patterns?pattern=" + patternNameClean;
+    patternLink.href = linkToPattern;
 
     cardFooter.appendChild(patternLink);
 
@@ -62,17 +67,36 @@ function loadFinishedObjects()
 {
     const finishedObjects = getFinishedObjects();
     const numFinishedObjects = finishedObjects.finishedObjects.length;
+    const numPatternsPerRow = 4;
 
     const finishedObjectsDiv = document.getElementById("finished-objects");
 
-    const parentColumnDiv = document.createElement("div");
-    parentColumnDiv.classList.add("columns");
+    var parentColumnDiv;
 
-    finishedObjectsDiv.appendChild(parentColumnDiv);
-
-    for (var i=0; i<numFinishedObjects; i++)
+    for (var i = 0; i < numFinishedObjects; i++)
     {
+        if (i % numPatternsPerRow == 0)
+        {
+            parentColumnDiv = document.createElement("div");
+            parentColumnDiv.classList.add("columns");
+        }
+
         var finishedObjectCard = addFinishedObjectCard(finishedObjects.finishedObjects[i]);
         parentColumnDiv.appendChild(finishedObjectCard);
+
+        finishedObjectsDiv.appendChild(parentColumnDiv);
+    }
+
+    const remainingColumns = numPatternsPerRow - (numFinishedObjects % numPatternsPerRow);
+
+    if (remainingColumns != 0 && remainingColumns % numPatternsPerRow != 0)
+    {
+        for (var j = 0; j < remainingColumns; j++)
+        {
+            const columnDiv = document.createElement("div");
+            columnDiv.classList.add("column");
+    
+            parentColumnDiv.appendChild(columnDiv);            
+        }
     }
 }
