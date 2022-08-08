@@ -42,6 +42,9 @@
                         "PrismFalls",
                         "PrismForest",
                         "TheHunger",
+                        "Circat",
+                        "Motherbear'd",
+                        "Frogcessor",
                         "UnidentifiedFelineObject"
                     ],
     "bundlePatterns": [
@@ -49,7 +52,8 @@
                        "GalacticFashionShow",
                        "PrismaticNature",
                        "CreepyCabin",
-                       "WonderfulWindowscapes"
+                       "WonderfulWindowscapes",
+                       "ProcessorPals"
                     ],
     "freePatterns": [
                         "Quackitude",
