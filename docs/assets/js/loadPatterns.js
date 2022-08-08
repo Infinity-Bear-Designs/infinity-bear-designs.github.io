@@ -392,6 +392,7 @@ function updatePatternDetails(patternDetailsDiv, patternInfo, type, isActivePatt
         for (var i=0; i<numPatterns; i++)
         {
             var patternNameClean = patternInfo.patterns[i].replace(/\s/g, '');
+            patternNameClean = patternNameClean.replace("'", "%27");
             patternString += "✦ <a href='patterns?pattern=" + patternNameClean + "'>" + patternInfo.patterns[i] + "</a><br>";
         }
 
