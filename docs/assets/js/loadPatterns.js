@@ -14,19 +14,22 @@ function getJsonContents(jsonFilePath)
 function getPatternsList(patternType)
 {
     const patternsJson = getJsonContents("docs/assets/data/patterns.json");
+    var patternsList;
 
     if (patternType == "paid")
     {
-        return patternsJson.paidPatterns;
+        patternsList = patternsJson.paidPatterns;
     }
     else if (patternType == "free")
     {
-        return patternsJson.freePatterns;
+        patternsList = patternsJson.freePatterns;
     }
     else if (patternType == "bundle")
     {
-        return patternsJson.bundlePatterns;
+        patternsList = patternsJson.bundlePatterns;
     }
+
+    return patternsList.sort()
 }
 
 function getPatternInfo(type, patternName)
