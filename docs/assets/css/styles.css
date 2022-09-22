@@ -19,7 +19,11 @@
 .finished-object-background
 {
   color: black;
-  background: #e4e4e4;
+}
+
+.finished-object-background:hover 
+{
+  color: #a773ab;
 }
 
 a, .bold
