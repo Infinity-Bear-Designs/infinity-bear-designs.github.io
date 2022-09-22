@@ -41,7 +41,7 @@ a, .bold
 
 .pageTitle
 {
-  text-align: center;;
+  text-align: center;
 }
 
 hr
@@ -54,4 +54,16 @@ hr
 #active-pattern
 {
   display: none;
+}
+
+.subTitle
+{
+  overflow: hidden;
+}
+
+.subTitle
+{
+  background: #ffffffad;
+  padding: 12px;
+  text-align: center;
 }

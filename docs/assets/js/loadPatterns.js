@@ -29,7 +29,7 @@ function getPatternsList(patternType)
         patternsList = patternsJson.bundlePatterns;
     }
 
-    return patternsList.sort()
+    return patternsList;
 }
 
 function getPatternInfo(type, patternName)
@@ -416,14 +416,22 @@ function updatePatternDetails(patternDetailsDiv, patternInfo, type, isActivePatt
     patternDetailsDiv.innerHTML = detailsContent;
 }
 
-function createPatternCard(type) 
+function createPatternCard(type, section, sectionType) 
 {
-    const patternsList = getPatternsList(type);
-
-    const patternSection = document.getElementById("patternSection");
-
-    const numPatterns = patternsList.length;
+    var patternsList = getPatternsList(type);
+    var numPatterns = patternsList.length;
     const numPatternsPerRow = 3;
+
+    if (sectionType == "recent")
+    {
+        numPatterns = numPatternsPerRow;
+    }
+    else
+    {
+        patternsList = patternsList.sort();
+    }
+
+    const patternSection = document.getElementById(section);
 
     var parentColumnDiv;
 
@@ -524,4 +532,30 @@ function createPatternCard(type)
     }
 
     removeProgressBar();
+}
+
+function loadPatterns(type)
+{
+    createPatternCard(type, "patternSection", "full");
+    createPatternCard(type, "latestSection", "recent");
+    addActivePatternBlock(type);
+    loadActivePattern(type);
+}
+
+function loadPaidPatternsPage()
+{
+    loadPatterns("paid")
+    updateCopyright();
+}
+
+function loadBundlesPage()
+{
+    loadPatterns("bundle")
+    updateCopyright();
+}
+
+function loadFreebiesPage()
+{
+    loadPatterns("free")
+    updateCopyright();
 }

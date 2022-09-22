@@ -13,13 +13,13 @@
     <script src="docs/assets/js/loadPatterns.js"></script>
 </head>
 
-<body onload="createPatternCard('paid'); updateCopyright(); addActivePatternBlock('paid'); loadActivePattern('paid');">
+<body onload="loadPaidPatternsPage();">
     <nav id="navContainer" class="navbar" role="navigation" aria-label="main navigation">
     </nav>
     <script>
         includeFile('header.html', 'navContainer');
     </script>
-    <section id="patternSection" class="section">
+    <section class="section">
         <p class="title pageTitle is-3">PATTERNS</p>
         <p class="subtitle pageTitle is-5">Fun modern cross stitch patterns we hope you'll love.</p>
         <hr>
@@ -33,6 +33,13 @@
             <progress class="progress is-small is-primary" max="100">15%</progress>
         </div>
         <div id="active-pattern" class="box"></div>
+        <div id="latestSection">
+            <p class="title subTitle is-4">LATEST PATTERNS</p>
+        </div>
+        <br><br>
+        <div id="patternSection">
+            <p class="title subTitle is-4">ALL PATTERNS</p>
+        </div>
     </section>
     <footer id="footerContainer" class="footer"></footer>
     <script>

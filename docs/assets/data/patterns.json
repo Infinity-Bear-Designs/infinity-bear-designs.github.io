@@ -1,5 +1,8 @@
 {
     "paidPatterns": [
+                        "TheCollector",
+                        "Circat",
+                        "Frogcessor",
                         "DreamingOfOuterSpace",
                         "GalaxyCatKaleidoscope",
                         "FollowYourDreams",
@@ -43,22 +46,19 @@
                         "PrismForest",
                         "TheHunger",
                         "Circat",
-                        "Motherbear'd",
-                        "Frogcessor",
-                        "UnidentifiedFelineObject",
-                        "TheCollector"
+                        "Motherbear'd"
                     ],
     "bundlePatterns": [
+                       "ProcessorPals",
+                       "WonderfulWindowscapes",
+                       "CreepyCabin",
                        "GalaxyCat",
                        "GalacticFashionShow",
-                       "PrismaticNature",
-                       "CreepyCabin",
-                       "WonderfulWindowscapes",
-                       "ProcessorPals"
+                       "PrismaticNature"
                     ],
     "freePatterns": [
-                        "Quackitude",
+                        "FlyMeToTheMoon",
                         "ReachForTheStars",
-                        "FlyMeToTheMoon"
+                        "Quackitude"
                     ]
 }
