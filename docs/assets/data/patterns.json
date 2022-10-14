@@ -1,5 +1,6 @@
 {
     "paidPatterns": [
+                        "TheObserver",
                         "TheCollector",
                         "Circat",
                         "Frogcessor",
@@ -48,6 +49,7 @@
                         "Motherbear'd"
                     ],
     "bundlePatterns": [
+                       "CelestialCreatures",
                        "ProcessorPals",
                        "WonderfulWindowscapes",
                        "CreepyCabin",
