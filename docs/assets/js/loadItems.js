@@ -1,3 +1,5 @@
+const maxItemsPerPage = 15;
+
 function getItemsList(type, category)
 {
     const itemsJson = getJsonContents("docs/assets/data/" + category + ".json");
@@ -221,26 +223,15 @@ function getPageType(type, category)
     return pageType;
 }
 
-function createItemCard(type, section, sectionType, parameterName, category) 
+function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section, parameterName, category) 
 {
-    var itemsList = getItemsList(type, category);
-    var numItems = itemsList.length;
     const numItemsPerRow = 3;
-
-    if (sectionType == "recent")
-    {
-        numItems = numItemsPerRow;
-    }
-    else
-    {
-        itemsList = itemsList.sort();
-    }
 
     const itemSection = document.getElementById(section);
 
     var parentColumnDiv;
 
-    for (var i = 0; i < numItems; i++)
+    for (var i = startIndex; i < endIndex; i++)
     {
         const itemInfo = getItemInfo(type, category, itemsList[i]);
 
@@ -326,10 +317,85 @@ function createItemCard(type, section, sectionType, parameterName, category)
     removeProgressBar();
 }
 
+function getTotalPages(totalItems)
+{
+    return Math.ceil(totalItems/maxItemsPerPage);
+}
+
+function addPagination(totalPages, currentPage)
+{
+    const paginationNav = document.getElementById("paginationNav");
+    
+    const previousLink = document.createElement("a");
+    previousLink.classList.add("pagination-previous");
+    previousLink.innerHTML = "Previous";
+    paginationNav.appendChild(previousLink);
+
+    const nextLink = document.createElement("a");
+    nextLink.classList.add("pagination-next");
+    nextLink.innerHTML = "Next";
+    paginationNav.appendChild(nextLink);
+
+    const paginationList = document.createElement("ul");
+    paginationList.classList.add("pagination-list");
+
+    for (var i=1; i<totalPages+1; i++)
+    {
+        var pageListItem = document.createElement("li");
+        var page = document.createElement("a");
+
+        page.classList.add("pagination-link")
+        
+        if (i == currentPage)
+        {
+            page.classList.add("is-current");
+        }
+        
+        page.innerHTML = i;
+
+        pageListItem.appendChild(page);
+        paginationList.appendChild(pageListItem);
+    }
+
+    paginationNav.appendChild(paginationList);
+
+}
+
+function updatePagination(page)
+{
+
+}
+
 function loadPatterns(type)
 {
-    createItemCard(type, "itemSection", "full", "pattern", "Patterns");
-    createItemCard(type, "latestSection", "recent", "pattern", "Patterns");
+    var itemsList = getItemsList(type, "Patterns");
+    const startIndex = 0;
+    const numItems = itemsList.length;
+    const numRecentItems = 3;
+    const endRecentIndex = numRecentItems;
+    
+    var endIndex = maxItemsPerPage;
+    var numPatterns = maxItemsPerPage;
+
+    if (numItems < maxItemsPerPage)
+    {
+        endIndex = numItems;
+        numPatterns = numItems;
+    }
+
+    
+    const totalPages = getTotalPages(numItems);
+    
+    if (totalPages > 1)
+    {
+        addPagination(totalPages, 1)
+    }
+
+    loadItemCards(itemsList, startIndex, endRecentIndex, numRecentItems, type, "latestSection", "pattern", "Patterns");
+   
+    itemsList = itemsList.sort();
+    loadItemCards(itemsList, startIndex, endIndex, numPatterns, type, "itemSection", "pattern", "Patterns");
+   
     addActiveItemBlock(type);
     loadActiveItem(type, "pattern", "Patterns");
 }
