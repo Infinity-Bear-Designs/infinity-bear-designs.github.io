@@ -1,22 +1,9 @@
-function getPatternsList(patternType)
+function getItemsList(type, category)
 {
-    const patternsJson = getJsonContents("docs/assets/data/patterns.json");
-    var patternsList;
+    const itemsJson = getJsonContents("docs/assets/data/" + category + ".json");
+    const itemsList = itemsJson[type];
 
-    if (patternType == "paid")
-    {
-        patternsList = patternsJson.paidPatterns;
-    }
-    else if (patternType == "free")
-    {
-        patternsList = patternsJson.freePatterns;
-    }
-    else if (patternType == "bundle")
-    {
-        patternsList = patternsJson.bundlePatterns;
-    }
-
-    return patternsList;
+    return itemsList;
 }
 
 function getPatternInfo(type, patternName)
@@ -27,56 +14,40 @@ function getPatternInfo(type, patternName)
     return patternInfo;
 }
 
-function getParameterByName(name, url = window.location.href)
+function addActiveItemBlock(type)
 {
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*))'), results = regex.exec(url);
-
-    if (!results)
-    {
-        return null;
-    }
-    if (!results[2])
-    {
-        return '';
-    }
-
-     return decodeURIComponent(results[2]);
-}
-
-function addActivePatternBlock(type)
-{
-    const activePatternDiv = document.getElementById("active-pattern");
-    const activePatternColumnRow = addColumnRow();
+    const activeItemDiv = document.getElementById("active-item");
+    const activeItemColumnRow = addColumnRow();
     
-    activePatternDiv.appendChild(activePatternColumnRow);
+    activeItemDiv.appendChild(activeItemColumnRow);
     
     const activeImageColumn = addColumn();
 
     const activeImage = document.createElement("img");
-    activeImage.id = "active-pattern-image";
+    activeImage.id = "active-item-image";
 
     activeImageColumn.appendChild(activeImage);
 
-    activePatternColumnRow.appendChild(activeImageColumn);
+    activeItemColumnRow.appendChild(activeImageColumn);
 
-    const patternInformationColumn = addColumn();
+    const itemInformationColumn = addColumn();
 
-    const patternTitleP = document.createElement("p");
-    patternTitleP.id = "pattern-title"
-    patternTitleP.classList.add("title");
-    patternTitleP.classList.add("is-3");
+    const itemTitleP = document.createElement("p");
+    itemTitleP.id = "item-title"
+    itemTitleP.classList.add("title");
+    itemTitleP.classList.add("is-3");
 
-    patternInformationColumn.appendChild(patternTitleP);
+    itemInformationColumn.appendChild(itemTitleP);
 
-    const patternDetailsDiv = document.createElement("div");
-    patternDetailsDiv.id = "pattern-details"
+    const itemDetailsDiv = document.createElement("div");
+    itemDetailsDiv.id = "item-details"
 
-    patternInformationColumn.appendChild(patternDetailsDiv);
+    itemInformationColumn.appendChild(itemDetailsDiv);
 
     const buttonBarDiv = document.createElement("div");
     buttonBarDiv.id = "button-bar";
 
-    patternInformationColumn.appendChild(buttonBarDiv);
+    itemInformationColumn.appendChild(buttonBarDiv);
 
     const activeItchioLink = addActiveItchioLink(type);
     buttonBarDiv.appendChild(activeItchioLink);
@@ -87,34 +58,34 @@ function addActivePatternBlock(type)
         buttonBarDiv.appendChild(activeEtsyLink);
     }
 
-    activePatternColumnRow.appendChild(patternInformationColumn);
+    activeItemColumnRow.appendChild(itemInformationColumn);
 }
 
-function loadActivePattern(type)
+function loadActiveItem(type, parameterName, category)
 {
-    const pattern = getParameterByName("pattern");
+    const item = getParameterByName(parameterName);
 
-    if (pattern != null)
+    if (item != null)
     {
-        const patternsList = getPatternsList(type);
-        const numPatterns = patternsList.length;
-        var patternIndex = -1;
+        const itemsList = getItemsList(type, category);
+        const numItems = itemsList.length;
+        var itemIndex = -1;
 
-        for (var i = 0; i<numPatterns; i++)
+        for (var i = 0; i<numItems; i++)
         {
-            if (patternsList[i].toUpperCase() == pattern.toUpperCase())
+            if (itemsList[i].toUpperCase() == item.toUpperCase())
             {
-                patternIndex = i;
+                itemIndex = i;
                 break;
             }
         }
 
-        if (patternIndex != -1)
+        if (itemIndex != -1)
         {
-            const patternInfo = getPatternInfo(type, patternsList[patternIndex]);
+            const patternInfo = getPatternInfo(type, itemsList[itemIndex]);
 
-            const patternTitleDiv = document.getElementById("pattern-title");
-            const patternDetailsDiv = document.getElementById("pattern-details");
+            const item = document.getElementById("item-title");
+            const itemDetailsDiv = document.getElementById("item-details");
 
             const breadcrumbNav = document.getElementById("breadcrumb");
             const breadcrumbUl = breadcrumbNav.getElementsByTagName("ul")[0];
@@ -128,29 +99,30 @@ function loadActivePattern(type)
                 breadcrumbItems[i].classList.remove("is-active");
             }
 
-            const activePatternListLink = document.createElement("a");
+            const activeItemListLink = document.createElement("a");
 
-            activePatternListLink.innerText = patternInfo.title;
+            activeItemListLink.innerText = patternInfo.title;
             breadcrumbLi.classList.add("is-active");
 
-            breadcrumbLi.appendChild(activePatternListLink);
+            breadcrumbLi.appendChild(activeItemListLink);
             breadcrumbUl.appendChild(breadcrumbLi);
 
-            const activePatternImage = document.getElementById("active-pattern-image");
-            activePatternImage.src = "docs/assets/images/" + patternsList[patternIndex] + "Website.png";
+            const activeItemImage = document.getElementById("active-item-image");
+            activeItemImage.src = "docs/assets/images/" + itemsList[itemIndex] + "Website.png";
 
-            updatePatternTitle(patternTitleDiv, patternInfo);
-            updatePatternDetails(patternDetailsDiv, patternInfo, type, true);
+            const itemTitleDiv = document.getElementById("item-title");
+            updateCardTitle(itemTitleDiv, patternInfo);
+            updatePatternDetails(itemDetailsDiv, patternInfo, type, true);
 
             if (type != "free")
             {
-                updatePatternLink("active-pattern-etsy-link", patternInfo.etsyLink);
+                updateCardLink("active-item-etsy-link", patternInfo.etsyLink);
             }
 
-            updatePatternLink("active-pattern-itchio-link", patternInfo.itchioLink, patternInfo.slug);            
+            updateCardLink("active-item-itchio-link", patternInfo.itchioLink, patternInfo.slug);            
 
-            const activePatternDiv = document.getElementById("active-pattern");
-            activePatternDiv.style.display = "block";
+            const activeItemDiv = document.getElementById("active-item");
+            activeItemDiv.style.display = "block";
         }
     }
 }
@@ -159,198 +131,6 @@ function removeProgressBar()
 {
     const progressBar = document.getElementById("progressBar");
     progressBar.innerHTML = "";
-}
-
-function addColumnRow()
-{
-    const parentColumnDiv = document.createElement("div");
-    parentColumnDiv.classList.add("columns");
-
-    return parentColumnDiv;
-}
-
-function addColumn()
-{
-    const columnDiv = document.createElement("div");
-    columnDiv.classList.add("column");
-
-    return columnDiv;
-}
-
-function addCard()
-{
-    const cardDiv = document.createElement("div");
-    cardDiv.classList.add("card");
-    
-    return cardDiv;
-}
-
-function addCardImage()
-{
-    const cardImageDiv = document.createElement("div");
-    cardImageDiv.classList.add("card-image");
-
-    return cardImageDiv;
-}
-
-function addImageFigure()
-{
-    const imageFigure = document.createElement("figure");
-    imageFigure.classList.add("image");
-    imageFigure.classList.add("is-4by3");
-    
-    return imageFigure;
-}
-
-function addImage(imageName)
-{
-    const image = document.createElement("img");
-    image.src = "docs/assets/images/" + imageName + "Website.png"
-
-    return image;
-}
-
-function addCardContentDiv()
-{
-    const cardContentDiv = document.createElement("div");
-    cardContentDiv.classList.add("card-content");
-
-    return cardContentDiv;
-}
-
-function addMediaDiv()
-{
-    const mediaDiv = document.createElement("div");
-    mediaDiv.classList.add("media");
-
-    return mediaDiv;
-}
-
-function addMediaContentDiv()
-{
-    const mediaContentDiv = document.createElement("div");
-    mediaContentDiv.classList.add("media-content");
-
-    return mediaContentDiv;
-}
-
-function addTitle(patternTitle)
-{
-    const title = document.createElement("p");
-    title.classList.add("title");
-    title.classList.add("is-4");
-
-    title.innerText = patternTitle;
-
-    return title;
-}
-
-function addContentDiv()
-{
-    const contentDiv = document.createElement("div");
-    contentDiv.classList.add("content");
-
-    return contentDiv;
-}
-
-function addCardFooter()
-{
-    const cardFooter = document.createElement("footer");
-    cardFooter.classList.add("card-footer");
-
-    return cardFooter;
-}
-
-function addEtsyLink(patternEtsyLink)
-{
-    const etsyLink = document.createElement("a");
-    etsyLink.classList.add("card-footer-item");
-    etsyLink.classList.add("etsy-background");
-
-    etsyLink.innerHTML = "Etsy";
-    etsyLink.href = patternEtsyLink;
-
-    return etsyLink;
-}
-
-function addActiveItchioLink(type)
-{
-    const itchioLink = document.createElement("a");
-    itchioLink.classList.add("button");
-    itchioLink.classList.add("purchase-background");
-    itchioLink.classList.add("bold");
-    itchioLink.id = "active-pattern-itchio-link"
-
-    var linkText = "Buy Now";
-
-    if (type == "free")
-    {
-       linkText = "Download"
-    }
-
-    itchioLink.innerHTML = linkText;
-
-    return itchioLink;
-}
-
-function addActiveEtsyLink()
-{
-    const etsyLink = document.createElement("a");
-    etsyLink.classList.add("button");
-    etsyLink.classList.add("etsy-background");
-    etsyLink.classList.add("bold");
-    etsyLink.id = "active-pattern-etsy-link"
-
-    etsyLink.innerHTML = "Get it on Etsy";
-
-    return etsyLink;
-}
-
-function connectItchioBuyButton(element, slug)
-{
-    Itch.attachBuyButton(element, {
-        user: "infinity-bear-designs",
-        game: slug
-      });
-}
-
-function addItchioLink(slug, type)
-{
-    const itchioLink = document.createElement("a");
-    itchioLink.classList.add("card-footer-item");
-    itchioLink.classList.add("purchase-background");
-
-    var linkText = "Buy Now";
-
-    if (type == "free")
-    {
-       linkText = "Download"
-    }
-
-    itchioLink.innerHTML = linkText;
-
-    connectItchioBuyButton(itchioLink, slug);
-
-    return itchioLink;
-}
-
-function updatePatternLink(patternLinkId, link, slug)
-{
-    const patternLink = document.getElementById(patternLinkId);
-
-    if (slug == null)
-    {
-        patternLink.href = link;
-    }
-    else
-    {
-        connectItchioBuyButton(patternLink, slug);
-    }
-}      
-
-function updatePatternTitle(patternTitleDiv, patternInfo)
-{
-    patternTitleDiv.innerText = patternInfo.title;
 }
 
 function getGenericPatternText()
@@ -366,7 +146,7 @@ function getGenericPatternText()
     return genericPatternText;
 }
 
-function updatePatternDetails(patternDetailsDiv, patternInfo, type, isActivePattern)
+function updatePatternDetails(itemDetailsDiv, patternInfo, type, isActivePattern)
 {
     if (type != "bundle")
     {
@@ -377,9 +157,9 @@ function updatePatternDetails(patternDetailsDiv, patternInfo, type, isActivePatt
     else
     {
         var patternString = "";
-        var numPatterns = patternInfo.patterns.length;
+        var numItems = patternInfo.patterns.length;
 
-        for (var i=0; i<numPatterns; i++)
+        for (var i=0; i<numItems; i++)
         {
             var patternNameClean = patternInfo.patterns[i].replace(/\s/g, '');
             patternNameClean = patternNameClean.replace("'", "%27");
@@ -400,33 +180,33 @@ function updatePatternDetails(patternDetailsDiv, patternInfo, type, isActivePatt
         detailsContent += genericPatternText;
     }
 
-    patternDetailsDiv.innerHTML = detailsContent;
+    itemDetailsDiv.innerHTML = detailsContent;
 }
 
-function createPatternCard(type, section, sectionType) 
+function createPatternCard(type, section, sectionType, category) 
 {
-    var patternsList = getPatternsList(type);
-    var numPatterns = patternsList.length;
-    const numPatternsPerRow = 3;
+    var itemsList = getItemsList(type, category);
+    var numItems = itemsList.length;
+    const numItemsPerRow = 3;
 
     if (sectionType == "recent")
     {
-        numPatterns = numPatternsPerRow;
+        numItems = numItemsPerRow;
     }
     else
     {
-        patternsList = patternsList.sort();
+        itemsList = itemsList.sort();
     }
 
     const patternSection = document.getElementById(section);
 
     var parentColumnDiv;
 
-    for (var i = 0; i < numPatterns; i++)
+    for (var i = 0; i < numItems; i++)
     {
-        const patternInfo = getPatternInfo(type, patternsList[i]);
+        const patternInfo = getPatternInfo(type, itemsList[i]);
 
-        if (i % numPatternsPerRow == 0)
+        if (i % numItemsPerRow == 0)
         {
             parentColumnDiv = addColumnRow();
         }
@@ -460,9 +240,9 @@ function createPatternCard(type, section, sectionType)
             pageType = "bundles";
         }
         
-        activePatternLink.href = pageType + "?pattern=" + patternsList[i];
+        activePatternLink.href = pageType + "?pattern=" + itemsList[i];
 
-        const imageName = patternsList[i];
+        const imageName = itemsList[i];
         const image = addImage(imageName);
         activePatternLink.appendChild(image);
         imageFigure.appendChild(activePatternLink);
@@ -505,9 +285,9 @@ function createPatternCard(type, section, sectionType)
         patternSection.appendChild(parentColumnDiv);
     }
 
-    const remainingColumns = numPatternsPerRow - (numPatterns % numPatternsPerRow);
+    const remainingColumns = numItemsPerRow - (numItems % numItemsPerRow);
 
-    if (remainingColumns != 0 && remainingColumns % numPatternsPerRow != 0)
+    if (remainingColumns != 0 && remainingColumns % numItemsPerRow != 0)
     {
         for (var i = 0; i < remainingColumns; i++)
         {
@@ -523,10 +303,10 @@ function createPatternCard(type, section, sectionType)
 
 function loadPatterns(type)
 {
-    createPatternCard(type, "patternSection", "full");
-    createPatternCard(type, "latestSection", "recent");
-    addActivePatternBlock(type);
-    loadActivePattern(type);
+    createPatternCard(type, "patternSection", "full", "patterns");
+    createPatternCard(type, "latestSection", "recent", "patterns");
+    addActiveItemBlock(type);
+    loadActiveItem(type, "pattern", "patterns");
 }
 
 function loadPaidPatternsPage()

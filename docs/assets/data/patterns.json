@@ -1,5 +1,5 @@
 {
-    "paidPatterns": [
+    "paid": [
                         "PoisonousPitfall",
                         "TheObserver",
                         "TheCollector",
@@ -49,7 +49,7 @@
                         "TheHunger",
                         "Motherbear'd"
                     ],
-    "bundlePatterns": [
+    "bundle": [
                        "CelestialCreatures",
                        "ProcessorPals",
                        "WonderfulWindowscapes",
@@ -58,7 +58,7 @@
                        "GalacticFashionShow",
                        "PrismaticNature"
                     ],
-    "freePatterns": [
+    "free": [
                         "FlyMeToTheMoon",
                         "ReachForTheStars",
                         "Quackitude"
