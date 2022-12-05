@@ -13,10 +13,7 @@ function getJsonContents(jsonFilePath)
 
 function getParameterByName(parameterName, url = window.location.href)
 {
-    console.log("Name: " + parameterName)
     var regex = new RegExp('[?&]' + parameterName + '(=([^&#]*))'), results = regex.exec(url);
-    console.log(url)
-    console.log(results)
 
     if (!results)
     {
@@ -220,4 +217,27 @@ function updateCardLink(linkId, link, slug)
 function updateCardTitle(titleDiv, itemInfo)
 {
     titleDiv.innerText = itemInfo.title;
+}
+
+function updateBreadcrumbNav(itemTitle)
+{
+    const breadcrumbNav = document.getElementById("breadcrumb");
+    const breadcrumbUl = breadcrumbNav.getElementsByTagName("ul")[0];
+    const breadcrumbLi = document.createElement("li");
+
+    const breadcrumbItems = breadcrumbUl.getElementsByTagName("li");
+    const numBreadcrumItems = breadcrumbItems.length;
+
+    for (var i = 0; i < numBreadcrumItems; i++)
+    {
+        breadcrumbItems[i].classList.remove("is-active");
+    }
+
+    const activeItemListLink = document.createElement("a");
+
+    activeItemListLink.innerText = itemTitle;
+    breadcrumbLi.classList.add("is-active");
+
+    breadcrumbLi.appendChild(activeItemListLink);
+    breadcrumbUl.appendChild(breadcrumbLi);
 }

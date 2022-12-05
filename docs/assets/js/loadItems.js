@@ -6,12 +6,12 @@ function getItemsList(type, category)
     return itemsList;
 }
 
-function getPatternInfo(type, patternName)
+function getItemInfo(type, category, name)
 {
-    var patternPath = "docs/assets/data/" + type + "Patterns/" + patternName + ".json";
-    var patternInfo = getJsonContents(patternPath);
+    var itemPath = "docs/assets/data/" + type + category + "/" + name + ".json";
+    var itemInfo = getJsonContents(itemPath);
 
-    return patternInfo;
+    return itemInfo;
 }
 
 function addActiveItemBlock(type)
@@ -82,44 +82,26 @@ function loadActiveItem(type, parameterName, category)
 
         if (itemIndex != -1)
         {
-            const patternInfo = getPatternInfo(type, itemsList[itemIndex]);
+            const itemInfo = getItemInfo(type, category, itemsList[itemIndex]);
+
+            updateBreadcrumbNav(itemInfo.title);
 
             const item = document.getElementById("item-title");
             const itemDetailsDiv = document.getElementById("item-details");
-
-            const breadcrumbNav = document.getElementById("breadcrumb");
-            const breadcrumbUl = breadcrumbNav.getElementsByTagName("ul")[0];
-            const breadcrumbLi = document.createElement("li");
-
-            const breadcrumbItems = breadcrumbUl.getElementsByTagName("li");
-            const numBreadcrumItems = breadcrumbItems.length;
-
-            for (var i = 0; i < numBreadcrumItems; i++)
-            {
-                breadcrumbItems[i].classList.remove("is-active");
-            }
-
-            const activeItemListLink = document.createElement("a");
-
-            activeItemListLink.innerText = patternInfo.title;
-            breadcrumbLi.classList.add("is-active");
-
-            breadcrumbLi.appendChild(activeItemListLink);
-            breadcrumbUl.appendChild(breadcrumbLi);
-
+            
             const activeItemImage = document.getElementById("active-item-image");
             activeItemImage.src = "docs/assets/images/" + itemsList[itemIndex] + "Website.png";
 
             const itemTitleDiv = document.getElementById("item-title");
-            updateCardTitle(itemTitleDiv, patternInfo);
-            updatePatternDetails(itemDetailsDiv, patternInfo, type, true);
+            updateCardTitle(itemTitleDiv, itemInfo);
+            updateItemDetails(itemDetailsDiv, itemInfo, type, category, true);
 
             if (type != "free")
             {
-                updateCardLink("active-item-etsy-link", patternInfo.etsyLink);
+                updateCardLink("active-item-etsy-link", itemInfo.etsyLink);
             }
 
-            updateCardLink("active-item-itchio-link", patternInfo.itchioLink, patternInfo.slug);            
+            updateCardLink("active-item-itchio-link", itemInfo.itchioLink, itemInfo.slug);            
 
             const activeItemDiv = document.getElementById("active-item");
             activeItemDiv.style.display = "block";
@@ -146,27 +128,51 @@ function getGenericPatternText()
     return genericPatternText;
 }
 
-function updatePatternDetails(itemDetailsDiv, patternInfo, type, isActivePattern)
+function getGenericStlText()
+{
+    const genericStlText = `<br><br>
+    Add generic STL text here. <br><br>`;
+    
+    return genericStlText; 
+}
+
+function updateStlDetails(itemDetailsDiv, itemInfo, isActive)
+{
+    var details = "<span class=\"bold\">✦ Type:</span> " + itemInfo.type +  "<br>";
+    details += "<span class=\"bold\">✦ Dimensions:</span> " + itemInfo.dimensions + "<br>"; 
+
+    var detailsContent = details;
+
+    if (isActive)
+    {
+        const genericStlText = getGenericStlText();
+        detailsContent += genericStlText;
+    }
+
+    itemDetailsDiv.innerHTML = detailsContent;
+}
+
+function updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive)
 {
     if (type != "bundle")
     {
-        var details = "<span class=\"bold\">✦ DMC Floss:</span> " + patternInfo.dmcFloss +  " colours <br>";
-        details += "<span class=\"bold\">✦ Pattern Size:</span> " + patternInfo.patternSize + "<br>";
-        details += "<span class=\"bold\">✦ Completed Size:</span> " + patternInfo.completedSize; 
+        var details = "<span class=\"bold\">✦ DMC Floss:</span> " + itemInfo.dmcFloss +  " colours <br>";
+        details += "<span class=\"bold\">✦ Pattern Size:</span> " + itemInfo.patternSize + "<br>";
+        details += "<span class=\"bold\">✦ Completed Size:</span> " + itemInfo.completedSize; 
     }
     else
     {
         var patternString = "";
-        var numItems = patternInfo.patterns.length;
+        var numItems = itemInfo.patterns.length;
 
         for (var i=0; i<numItems; i++)
         {
-            var patternNameClean = patternInfo.patterns[i].replace(/\s/g, '');
+            var patternNameClean = itemInfo.patterns[i].replace(/\s/g, '');
             patternNameClean = patternNameClean.replace("'", "%27");
-            patternString += "✦ <a href='patterns?pattern=" + patternNameClean + "'>" + patternInfo.patterns[i] + "</a><br>";
+            patternString += "✦ <a href='patterns?pattern=" + patternNameClean + "'>" + itemInfo.patterns[i] + "</a><br>";
         }
 
-        // Clean up extra <br>
+        // Cleans up extra <br>
         patternString = patternString.slice(0, -4);
 
         var details = "<span class=\"bold\">Patterns:</span><br> " + patternString;
@@ -174,7 +180,7 @@ function updatePatternDetails(itemDetailsDiv, patternInfo, type, isActivePattern
 
     var detailsContent = details;
 
-    if (isActivePattern)
+    if (isActive)
     {
         const genericPatternText = getGenericPatternText();
         detailsContent += genericPatternText;
@@ -183,7 +189,39 @@ function updatePatternDetails(itemDetailsDiv, patternInfo, type, isActivePattern
     itemDetailsDiv.innerHTML = detailsContent;
 }
 
-function createPatternCard(type, section, sectionType, category) 
+function updateItemDetails(itemDetailsDiv, itemInfo, type, category, isActive)
+{
+    if (category == "Patterns")
+    {
+        updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive);
+    }
+    else if (category == "Stls")
+    {
+        updateStlDetails(itemDetailsDiv, itemInfo, isActive);
+    }
+}
+
+function getPageType(type, category)
+{
+    var pageType = "";
+
+    if (type == "paid")
+    {
+        pageType = category.toLowerCase();
+    }
+    else if (type == "free")
+    {
+        pageType = "freebies";
+    }
+    else if (type == "bundle")
+    {
+        pageType = "bundles";
+    }
+
+    return pageType;
+}
+
+function createItemCard(type, section, sectionType, parameterName, category) 
 {
     var itemsList = getItemsList(type, category);
     var numItems = itemsList.length;
@@ -198,13 +236,13 @@ function createPatternCard(type, section, sectionType, category)
         itemsList = itemsList.sort();
     }
 
-    const patternSection = document.getElementById(section);
+    const itemSection = document.getElementById(section);
 
     var parentColumnDiv;
 
     for (var i = 0; i < numItems; i++)
     {
-        const patternInfo = getPatternInfo(type, itemsList[i]);
+        const itemInfo = getItemInfo(type, category, itemsList[i]);
 
         if (i % numItemsPerRow == 0)
         {
@@ -223,29 +261,16 @@ function createPatternCard(type, section, sectionType, category)
         const imageFigure = addImageFigure();
         cardImageDiv.appendChild(imageFigure)
 
-        const activePatternLink = document.createElement("a");
+        const activeItemLink = document.createElement("a");
 
-        var pageType = ""
-
-        if (type == "paid")
-        {
-            pageType = "patterns";
-        }
-        else if (type == "free")
-        {
-            pageType = "freebies";
-        }
-        else if (type == "bundle")
-        {
-            pageType = "bundles";
-        }
-        
-        activePatternLink.href = pageType + "?pattern=" + itemsList[i];
+        var pageType = getPageType(type, category);
+       
+        activeItemLink.href = pageType + "?" + parameterName + "=" + itemsList[i];
 
         const imageName = itemsList[i];
         const image = addImage(imageName);
-        activePatternLink.appendChild(image);
-        imageFigure.appendChild(activePatternLink);
+        activeItemLink.appendChild(image);
+        imageFigure.appendChild(activeItemLink);
 
         const cardContentDiv = addCardContentDiv();
         cardDiv.appendChild(cardContentDiv);
@@ -256,33 +281,33 @@ function createPatternCard(type, section, sectionType, category)
         const mediaContentDiv = addMediaContentDiv();
         mediaDiv.appendChild(mediaContentDiv);
 
-        const patternTitle = patternInfo.title;
-        const title = addTitle(patternTitle);
+        const itemTitle = itemInfo.title;
+        const title = addTitle(itemTitle);
         mediaContentDiv.appendChild(title);
         
         const contentDiv = addContentDiv();
 
-        updatePatternDetails(contentDiv, patternInfo, type, false);
+        updateItemDetails(contentDiv, itemInfo, type, category, false)
 
         cardContentDiv.appendChild(contentDiv);
 
         const cardFooter = addCardFooter();
 
-        const slug = patternInfo.slug;
+        const slug = itemInfo.slug;
 
         const itchioLink = addItchioLink(slug, type);
         cardFooter.appendChild(itchioLink);
 
         if (type != "free")
         {
-            const patternEtsyLink = patternInfo.etsyLink;
-            const etsyLink = addEtsyLink(patternEtsyLink);
+            const itemEtsyLink = itemInfo.etsyLink;
+            const etsyLink = addEtsyLink(itemEtsyLink);
             cardFooter.appendChild(etsyLink);
         }
 
         cardDiv.appendChild(cardFooter);
 
-        patternSection.appendChild(parentColumnDiv);
+        itemSection.appendChild(parentColumnDiv);
     }
 
     const remainingColumns = numItemsPerRow - (numItems % numItemsPerRow);
@@ -303,10 +328,10 @@ function createPatternCard(type, section, sectionType, category)
 
 function loadPatterns(type)
 {
-    createPatternCard(type, "patternSection", "full", "patterns");
-    createPatternCard(type, "latestSection", "recent", "patterns");
+    createItemCard(type, "itemSection", "full", "pattern", "Patterns");
+    createItemCard(type, "latestSection", "recent", "pattern", "Patterns");
     addActiveItemBlock(type);
-    loadActiveItem(type, "pattern", "patterns");
+    loadActiveItem(type, "pattern", "Patterns");
 }
 
 function loadPaidPatternsPage()
