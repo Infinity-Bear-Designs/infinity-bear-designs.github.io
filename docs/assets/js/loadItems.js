@@ -223,6 +223,18 @@ function getPageType(type, category)
     return pageType;
 }
 
+function getCurrentPage()
+{
+    var currentPage = getParameterByName("page")
+        
+    if (currentPage == null)
+    {
+        currentPage = 1;
+    }
+
+    return parseInt(currentPage);
+}
+
 function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section, parameterName, category) 
 {
     const numItemsPerRow = 3;
@@ -255,8 +267,9 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
         const activeItemLink = document.createElement("a");
 
         var pageType = getPageType(type, category);
-       
-        activeItemLink.href = pageType + "?" + parameterName + "=" + itemsList[i];
+        var currentPage =  getCurrentPage();
+
+        activeItemLink.href = pageType + "?page=" + currentPage + "&" + parameterName + "=" + itemsList[i];
 
         const imageName = itemsList[i];
         const image = addImage(imageName);
@@ -325,21 +338,49 @@ function getTotalPages(totalItems)
 function addPagination(totalPages, currentPage)
 {
     const paginationNav = document.getElementById("paginationNav");
-    
-    const previousLink = document.createElement("a");
-    previousLink.classList.add("pagination-previous");
-    previousLink.innerHTML = "Previous";
-    paginationNav.appendChild(previousLink);
 
-    const nextLink = document.createElement("a");
-    nextLink.classList.add("pagination-next");
-    nextLink.innerHTML = "Next";
-    paginationNav.appendChild(nextLink);
+    if (currentPage > 1)
+    {
+        const previousLink = document.createElement("a");
+        previousLink.classList.add("pagination-previous");
+        previousLink.innerHTML = "Previous";
+
+        var url = new URL(window.location.href);
+        urlParams = url.searchParams;
+        urlParams.set('page', currentPage - 1);
+
+        url.search = urlParams.toString();
+
+        var new_url = url.toString();
+
+        previousLink.href = new_url;
+
+        paginationNav.appendChild(previousLink);
+    }
+
+    if (currentPage != totalPages)
+    {
+        const nextLink = document.createElement("a");
+        nextLink.classList.add("pagination-next");
+        nextLink.innerHTML = "Next";
+
+        var url = new URL(window.location.href);
+        urlParams = url.searchParams;
+        urlParams.set('page', currentPage + 1);
+
+        url.search = urlParams.toString();
+
+        var new_url = url.toString();
+
+        nextLink.href = new_url;
+
+        paginationNav.appendChild(nextLink);
+    }
 
     const paginationList = document.createElement("ul");
     paginationList.classList.add("pagination-list");
 
-    for (var i=1; i<totalPages+1; i++)
+    for (var i = 1; i < totalPages + 1; i++)
     {
         var pageListItem = document.createElement("li");
         var page = document.createElement("a");
@@ -353,6 +394,16 @@ function addPagination(totalPages, currentPage)
         
         page.innerHTML = i;
 
+        var url = new URL(window.location.href);
+        urlParams = url.searchParams;
+        urlParams.set('page', i);
+
+        url.search = urlParams.toString();
+
+        var new_url = url.toString();
+
+        page.href = new_url;
+
         pageListItem.appendChild(page);
         paginationList.appendChild(pageListItem);
     }
@@ -361,59 +412,59 @@ function addPagination(totalPages, currentPage)
 
 }
 
-function updatePagination(page)
+function updatePagination(totalPages, currentPage)
 {
-
+    const paginationNav = document.getElementById("paginationNav");
+    paginationNav.innerHTML = '';
+    addPagination(totalPages, currentPage)
 }
 
 function loadPatterns(type)
 {
     var itemsList = getItemsList(type, "Patterns");
-    const startIndex = 0;
-    const numItems = itemsList.length;
+    
+    const numTotalItems = itemsList.length;
+    const totalPages = getTotalPages(numTotalItems);
+    const currentPage = Math.min(getCurrentPage(), totalPages);
+    const pageIndex = currentPage - 1;
+    const startIndex = pageIndex * maxItemsPerPage;
+    const startRecentIndex = 0;
     const numRecentItems = 3;
     const endRecentIndex = numRecentItems;
-    
-    var endIndex = maxItemsPerPage;
-    var numPatterns = maxItemsPerPage;
 
-    if (numItems < maxItemsPerPage)
-    {
-        endIndex = numItems;
-        numPatterns = numItems;
-    }
-
-    
-    const totalPages = getTotalPages(numItems);
+    const endIndex = Math.min(numTotalItems, currentPage * maxItemsPerPage);
+    const numPatterns = Math.min(numTotalItems, maxItemsPerPage);
     
     if (totalPages > 1)
     {
         addPagination(totalPages, 1)
     }
 
-    loadItemCards(itemsList, startIndex, endRecentIndex, numRecentItems, type, "latestSection", "pattern", "Patterns");
+    loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, type, "latestSection", "pattern", "Patterns");
    
     itemsList = itemsList.sort();
     loadItemCards(itemsList, startIndex, endIndex, numPatterns, type, "itemSection", "pattern", "Patterns");
    
     addActiveItemBlock(type);
     loadActiveItem(type, "pattern", "Patterns");
+
+    updatePagination(totalPages, currentPage);
 }
 
 function loadPaidPatternsPage()
 {
-    loadPatterns("paid")
+    loadPatterns("paid");
     updateCopyright();
 }
 
 function loadBundlesPage()
 {
-    loadPatterns("bundle")
+    loadPatterns("bundle");
     updateCopyright();
 }
 
 function loadFreebiesPage()
 {
-    loadPatterns("free")
+    loadPatterns("free");
     updateCopyright();
 }
