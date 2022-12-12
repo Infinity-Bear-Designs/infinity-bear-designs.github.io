@@ -1,22 +1,22 @@
 const maxItemsPerPage = 15;
 
-function getItemsList(type, category)
+function getItemsList(itemType)
 {
-    const itemsJson = getJsonContents("docs/assets/data/" + category + ".json");
-    const itemsList = itemsJson[type];
+    const itemsJson = getJsonContents("docs/assets/data/items.json");
+    const itemsList = itemsJson[itemType];
 
     return itemsList;
 }
 
-function getItemInfo(type, category, name)
+function getItemInfo(itemType, name)
 {
-    var itemPath = "docs/assets/data/" + type + category + "/" + name + ".json";
+    var itemPath = "docs/assets/data/" + itemType + "/" + name + ".json";
     var itemInfo = getJsonContents(itemPath);
 
     return itemInfo;
 }
 
-function addActiveItemBlock(type)
+function addActiveItemBlock(itemType)
 {
     const activeItemDiv = document.getElementById("active-item");
     const activeItemColumnRow = addColumnRow();
@@ -51,10 +51,10 @@ function addActiveItemBlock(type)
 
     itemInformationColumn.appendChild(buttonBarDiv);
 
-    const activeItchioLink = addActiveItchioLink(type);
+    const activeItchioLink = addActiveItchioLink(itemType);
     buttonBarDiv.appendChild(activeItchioLink);
 
-    if (type != "free")
+    if (itemType != "Freebie")
     {
         const activeEtsyLink = addActiveEtsyLink();
         buttonBarDiv.appendChild(activeEtsyLink);
@@ -63,13 +63,13 @@ function addActiveItemBlock(type)
     activeItemColumnRow.appendChild(itemInformationColumn);
 }
 
-function loadActiveItem(type, parameterName, category)
+function loadActiveItem(itemType, parameterName)
 {
     const item = getParameterByName(parameterName);
 
     if (item != null)
     {
-        const itemsList = getItemsList(type, category);
+        const itemsList = getItemsList(itemType);
         const numItems = itemsList.length;
         var itemIndex = -1;
 
@@ -84,7 +84,7 @@ function loadActiveItem(type, parameterName, category)
 
         if (itemIndex != -1)
         {
-            const itemInfo = getItemInfo(type, category, itemsList[itemIndex]);
+            const itemInfo = getItemInfo(itemType, itemsList[itemIndex]);
 
             updateBreadcrumbNav(itemInfo.title);
 
@@ -96,9 +96,9 @@ function loadActiveItem(type, parameterName, category)
 
             const itemTitleDiv = document.getElementById("item-title");
             updateCardTitle(itemTitleDiv, itemInfo);
-            updateItemDetails(itemDetailsDiv, itemInfo, type, category, true);
+            updateItemDetails(itemDetailsDiv, itemInfo, itemType, true);
 
-            if (type != "free")
+            if (itemType != "free")
             {
                 updateCardLink("active-item-etsy-link", itemInfo.etsyLink);
             }
@@ -140,7 +140,7 @@ function getGenericStlText()
 
 function updateStlDetails(itemDetailsDiv, itemInfo, isActive)
 {
-    var details = "<span class=\"bold\">✦ Type:</span> " + itemInfo.type +  "<br>";
+    var details = "<span class=\"bold\">✦ itemType:</span> " + itemInfo.itemType +  "<br>";
     details += "<span class=\"bold\">✦ Dimensions:</span> " + itemInfo.dimensions + "<br>"; 
 
     var detailsContent = details;
@@ -154,9 +154,9 @@ function updateStlDetails(itemDetailsDiv, itemInfo, isActive)
     itemDetailsDiv.innerHTML = detailsContent;
 }
 
-function updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive)
+function updatePatternDetails(itemDetailsDiv, itemInfo, itemType, isActive)
 {
-    if (type != "bundle")
+    if (itemType != "bundle")
     {
         var details = "<span class=\"bold\">✦ DMC Floss:</span> " + itemInfo.dmcFloss +  " colours <br>";
         details += "<span class=\"bold\">✦ Pattern Size:</span> " + itemInfo.patternSize + "<br>";
@@ -191,36 +191,16 @@ function updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive)
     itemDetailsDiv.innerHTML = detailsContent;
 }
 
-function updateItemDetails(itemDetailsDiv, itemInfo, type, category, isActive)
+function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
 {
-    if (category == "Patterns")
+    if (itemType == "Patterns")
     {
-        updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive);
+        updatePatternDetails(itemDetailsDiv, itemInfo, itemType, isActive);
     }
-    else if (category == "STLs")
+    else if (itemType == "STLs")
     {
         updateStlDetails(itemDetailsDiv, itemInfo, isActive);
     }
-}
-
-function getPageType(type, category)
-{
-    var pageType = "";
-
-    if (type == "paid")
-    {
-        pageType = category.toLowerCase();
-    }
-    else if (type == "free")
-    {
-        pageType = "freebies";
-    }
-    else if (type == "bundle")
-    {
-        pageType = "bundles";
-    }
-
-    return pageType;
 }
 
 function getCurrentPage()
@@ -235,7 +215,7 @@ function getCurrentPage()
     return parseInt(currentPage);
 }
 
-function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section, parameterName, category) 
+function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, section, parameterName) 
 {
     const numItemsPerRow = 3;
 
@@ -245,7 +225,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
 
     for (var i = startIndex; i < endIndex; i++)
     {
-        const itemInfo = getItemInfo(type, category, itemsList[i]);
+        const itemInfo = getItemInfo(itemType, itemsList[i]);
 
         if (i % numItemsPerRow == 0)
         {
@@ -266,7 +246,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
 
         const activeItemLink = document.createElement("a");
 
-        var pageType = getPageType(type, category);
+        var pageType = itemType.toLowerCase();
         var currentPage =  getCurrentPage();
 
         activeItemLink.href = pageType + "?page=" + currentPage + "&" + parameterName + "=" + itemsList[i];
@@ -291,7 +271,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
         
         const contentDiv = addContentDiv();
 
-        updateItemDetails(contentDiv, itemInfo, type, category, false)
+        updateItemDetails(contentDiv, itemInfo, itemType, false)
 
         cardContentDiv.appendChild(contentDiv);
 
@@ -299,10 +279,10 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
 
         const slug = itemInfo.slug;
 
-        const itchioLink = addItchioLink(slug, type);
+        const itchioLink = addItchioLink(slug, itemType);
         cardFooter.appendChild(itchioLink);
 
-        if (type != "free")
+        if (itemType != "free")
         {
             const itemEtsyLink = itemInfo.etsyLink;
             const etsyLink = addEtsyLink(itemEtsyLink);
@@ -419,9 +399,9 @@ function updatePagination(totalPages, currentPage)
     addPagination(totalPages, currentPage)
 }
 
-function loadItems(type, parameterName, category)
+function loadItems(itemType, parameterName)
 {
-    var itemsList = getItemsList(type, category);
+    var itemsList = getItemsList(itemType);
     
     const numTotalItems = itemsList.length;
     const totalPages = getTotalPages(numTotalItems);
@@ -440,38 +420,37 @@ function loadItems(type, parameterName, category)
         addPagination(totalPages, 1)
     }
 
-    loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, type, "latestSection", parameterName, category);
+    loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, itemType, "latestSection", parameterName);
    
     itemsList = itemsList.sort();
-    loadItemCards(itemsList, startIndex, endIndex, numItems, type, "itemSection", parameterName, category);
+    loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, "itemSection", parameterName);
    
-    addActiveItemBlock(type);
-    loadActiveItem(type, parameterName, category);
+    addActiveItemBlock(itemType);
+    loadActiveItem(itemType, parameterName);
 
     updatePagination(totalPages, currentPage);
 }
 
-function loadPaidPatternsPage()
+function loadPatternsPage()
 {
-    loadItems("paid", "pattern", "Patterns");
+    loadItems("Patterns", "pattern");
     updateCopyright();
 }
 
 function loadBundlesPage()
 {
-    loadItems("bundle", "pattern", "Patterns");
+    loadItems("Bundles", "pattern");
     updateCopyright();
 }
 
-function loadPaidStlsPage()
+function loadStlsPage()
 {
-    loadItems("paid", "stl", "STLs");
+    loadItems("STLs", "stl");
     updateCopyright();
 }
 
 function loadFreebiesPage()
 {
-    // Likely will want to create some freebie function and restruture the jsons
-    loadItems("free", "pattern", "Patterns");
+    loadItems("Freebies", "item");
     updateCopyright();
 }
