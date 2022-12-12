@@ -92,7 +92,7 @@ function loadActiveItem(type, parameterName, category)
             const itemDetailsDiv = document.getElementById("item-details");
             
             const activeItemImage = document.getElementById("active-item-image");
-            activeItemImage.src = "docs/assets/images/" + itemsList[itemIndex] + "Website.png";
+            activeItemImage.src = "docs/assets/images/" + itemsList[itemIndex] + "Website.webp";
 
             const itemTitleDiv = document.getElementById("item-title");
             updateCardTitle(itemTitleDiv, itemInfo);
@@ -197,7 +197,7 @@ function updateItemDetails(itemDetailsDiv, itemInfo, type, category, isActive)
     {
         updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive);
     }
-    else if (category == "Stls")
+    else if (category == "STLs")
     {
         updateStlDetails(itemDetailsDiv, itemInfo, isActive);
     }
@@ -419,9 +419,9 @@ function updatePagination(totalPages, currentPage)
     addPagination(totalPages, currentPage)
 }
 
-function loadPatterns(type)
+function loadItems(type, parameterName, category)
 {
-    var itemsList = getItemsList(type, "Patterns");
+    var itemsList = getItemsList(type, category);
     
     const numTotalItems = itemsList.length;
     const totalPages = getTotalPages(numTotalItems);
@@ -433,38 +433,45 @@ function loadPatterns(type)
     const endRecentIndex = numRecentItems;
 
     const endIndex = Math.min(numTotalItems, currentPage * maxItemsPerPage);
-    const numPatterns = Math.min(numTotalItems, maxItemsPerPage);
+    const numItems = Math.min(numTotalItems, maxItemsPerPage);
     
     if (totalPages > 1)
     {
         addPagination(totalPages, 1)
     }
 
-    loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, type, "latestSection", "pattern", "Patterns");
+    loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, type, "latestSection", parameterName, category);
    
     itemsList = itemsList.sort();
-    loadItemCards(itemsList, startIndex, endIndex, numPatterns, type, "itemSection", "pattern", "Patterns");
+    loadItemCards(itemsList, startIndex, endIndex, numItems, type, "itemSection", parameterName, category);
    
     addActiveItemBlock(type);
-    loadActiveItem(type, "pattern", "Patterns");
+    loadActiveItem(type, parameterName, category);
 
     updatePagination(totalPages, currentPage);
 }
 
 function loadPaidPatternsPage()
 {
-    loadPatterns("paid");
+    loadItems("paid", "pattern", "Patterns");
     updateCopyright();
 }
 
 function loadBundlesPage()
 {
-    loadPatterns("bundle");
+    loadItems("bundle", "pattern", "Patterns");
+    updateCopyright();
+}
+
+function loadPaidStlsPage()
+{
+    loadItems("paid", "stl", "STLs");
     updateCopyright();
 }
 
 function loadFreebiesPage()
 {
-    loadPatterns("free");
+    // Likely will want to create some freebie function and restruture the jsons
+    loadItems("free", "pattern", "Patterns");
     updateCopyright();
 }

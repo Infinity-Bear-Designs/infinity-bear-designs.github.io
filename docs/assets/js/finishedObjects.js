@@ -29,7 +29,7 @@ function addFinishedObjectCard(finishedObject)
     finishedObjectImageLink.href = linkToPattern;
 
     const finishedObjectImage = document.createElement("img");
-    finishedObjectImage.src = "docs/assets/images/finishedObjects/" + finishedObject + ".jpg";
+    finishedObjectImage.src = "docs/assets/images/finishedObjects/" + finishedObject + ".webp";
     finishedObjectImageLink.appendChild(finishedObjectImage);
     imageFigure.appendChild(finishedObjectImageLink);
 

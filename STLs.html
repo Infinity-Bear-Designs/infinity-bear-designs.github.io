@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Infinity Bear Designs - STLs</title>
+    <link rel="stylesheet" href="docs/assets/css/bulmaStyles.css">
+    <link rel="stylesheet" href="docs/assets/css/styles.css">
+    <script type="text/javascript" src="https://static.itch.io/api.js"></script>
+    <script src="docs/assets/js/include.js"></script>
+    <script src="docs/assets/js/utility.js"></script>
+    <script src="docs/assets/js/loadItems.js"></script>
+</head>
+
+<body onload="loadPaidStlsPage();">
+    <nav id="navContainer" class="navbar" role="navigation" aria-label="main navigation">
+    </nav>
+    <script>
+        includeFile('header.html', 'navContainer');
+    </script>
+    <section class="section">
+        <p class="title pageTitle is-3">STLS</p>
+        <p class="subtitle pageTitle is-5">Fun modern cross stitch patterns we hope you'll love.</p>
+        <hr>
+        <nav id="breadcrumb" class="breadcrumb has-succeeds-separator is-centered" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li class="is-active"><a href="/STLs" aria-current="page">STLs</a></li>
+            </ul>
+        </nav>
+        <div id="progressBar">
+            <progress class="progress is-small is-primary" max="100">15%</progress>
+        </div>
+        <div id="active-item" class="box"></div>
+        <div id="latestSection">
+            <p class="title subTitle is-4">LATEST STLS</p>
+        </div>
+        <br><br>
+        <div id="itemSection">
+            <p class="title subTitle is-4">ALL STLS</p>
+        </div>
+        <br>
+        <nav class="pagination" id="paginationNav" role="navigation" aria-label="pagination"></nav>
+    </section>
+    <footer id="footerContainer" class="footer"></footer>
+    <script>
+        includeFile('footer.html', 'footerContainer');
+    </script>
+</body>
+
+</html>

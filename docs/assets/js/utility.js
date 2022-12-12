@@ -71,7 +71,7 @@ function addImageFigure()
 function addImage(imageName)
 {
     const image = document.createElement("img");
-    image.src = "docs/assets/images/" + imageName + "Website.png"
+    image.src = "docs/assets/images/" + imageName + "Website.webp"
 
     return image;
 }
