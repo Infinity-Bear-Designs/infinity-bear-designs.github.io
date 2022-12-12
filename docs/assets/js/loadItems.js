@@ -140,8 +140,13 @@ function getGenericStlText()
 
 function updateStlDetails(itemDetailsDiv, itemInfo, isActive)
 {
-    var details = "<span class=\"bold\">✦ itemType:</span> " + itemInfo.itemType +  "<br>";
-    details += "<span class=\"bold\">✦ Dimensions:</span> " + itemInfo.dimensions + "<br>"; 
+    var details = "";
+    var numDetails = itemInfo.details.length;
+
+    for (var i = 0; i < numDetails; i++)
+    {
+        details += "<span class=\"bold\">✦ " + itemInfo.details[i].label + ":</span> " + itemInfo.details[i].info + "<br>";
+    } 
 
     var detailsContent = details;
 
@@ -200,6 +205,17 @@ function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
     else if (itemType == "STLs")
     {
         updateStlDetails(itemDetailsDiv, itemInfo, isActive);
+    }
+    else if (itemType == "Freebies")
+    {
+        if (itemInfo.item == "STL")
+        {
+            updateStlDetails(itemDetailsDiv, itemInfo, isActive);
+        }
+        else if (itemInfo.item == "pattern")
+        {
+            updatePatternDetails(itemDetailsDiv, itemInfo, itemType, isActive);
+        }
     }
 }
 
@@ -282,7 +298,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
         const itchioLink = addItchioLink(slug, itemType);
         cardFooter.appendChild(itchioLink);
 
-        if (itemType != "free")
+        if (itemType != "Freebies")
         {
             const itemEtsyLink = itemInfo.etsyLink;
             const etsyLink = addEtsyLink(itemEtsyLink);
