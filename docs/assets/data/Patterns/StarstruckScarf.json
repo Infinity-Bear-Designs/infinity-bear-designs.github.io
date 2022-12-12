@@ -1,9 +1,21 @@
 {
     "title": "Starstruck Scarf",
-    "dmcFloss": 5,
-    "patternSize": "56 x 56 stitches",
-    "completedSize": "Completed Size: 4.00 x 4.00 inches or 10.14 x 10.14 cm on 14 count aida",
     "etsyLink": "https://www.etsy.com/listing/1025623303/starstruck-scarf-modern-cross-stitch",
     "itchioLink": "https://infinity-bear-designs.itch.io/starstruck-scarf",
-    "slug": "starstruck-scarf"
+    "slug": "starstruck-scarf",
+    "details":
+    [
+        {
+            "label": "DMC Floss",
+            "info": "5 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": "56 x 56 stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "4.00 x 4.00 inches or 10.14 x 10.14 cm on 14 count aida"
+        }
+    ]
 }

@@ -1,9 +1,21 @@
 {
     "title": "Follow Your Dreams",
-    "dmcFloss": 7,
-    "patternSize": "100 x 100 stitches",
-    "completedSize": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida",
     "etsyLink": "https://www.etsy.com/listing/991754398/follow-your-dreams-modern-cross-stitch",
     "itchioLink": "https://infinity-bear-designs.itch.io/follow-your-dreams",
-    "slug": "follow-your-dreams"
+    "slug": "follow-your-dreams",
+    "details":
+    [
+        {
+            "label": "DMC Floss",
+            "info": "7 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": "100 x 100 stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida"
+        }
+    ]
 }

@@ -1,8 +1,21 @@
 {
     "title": "Fish STL",
-    "type": "Bobbin",
-    "dimensions": "1 x 1 x 1",
     "etsyLink": "(link)",
     "itchioLink": "(link)",
-    "slug": "fish-stl"
+    "slug": "fish-stl",
+    "details":
+    [
+        {
+            "label": "Type",
+            "info": "Bobbin"
+        },
+        {
+            "label": "Dimensions",
+            "info": "1mm x 1mm x 1mm"
+        },
+        {
+            "label": "Used For",
+            "info": "3D Printing"
+        }
+    ]
 }

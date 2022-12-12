@@ -1,9 +1,21 @@
 {
     "title": "Watermelon Kaleidoscope",
-    "dmcFloss": 6,
-    "patternSize": "100 x 100 stitches",
-    "completedSize": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida",
     "etsyLink": "https://www.etsy.com/listing/994195426/watermelon-kaleidoscope-modern-cross",
     "itchioLink": "https://infinity-bear-designs.itch.io/watermelon-kaleidoscope",
-    "slug": "watermelon-kaleidoscope"
+    "slug": "watermelon-kaleidoscope",
+    "details":
+    [
+        {
+            "label": "DMC Floss",
+            "info": "6 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": "100 x 100 stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida"
+        }
+    ]
 }

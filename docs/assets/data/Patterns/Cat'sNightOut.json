@@ -1,9 +1,21 @@
 {
     "title": "Cat's Night Out",
-    "dmcFloss": 6,
-    "patternSize": "100 x 100 stitches",
-    "completedSize": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida",
     "etsyLink": "https://www.etsy.com/listing/999016885/cats-night-out-modern-cross-stitch",
     "itchioLink": "https://infinity-bear-designs.itch.io/cats-night-out",
-    "slug": "cats-night-out"
+    "slug": "cats-night-out",
+    "details":
+    [
+        {
+            "label": "DMC Floss",
+            "info": "6 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": "100 x 100 stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida"
+        }
+    ]
 }

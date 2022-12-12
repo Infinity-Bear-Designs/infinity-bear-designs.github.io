@@ -138,34 +138,33 @@ function getGenericStlText()
     return genericStlText; 
 }
 
-function updateStlDetails(itemDetailsDiv, itemInfo, isActive)
+function getGenericItemText(itemType)
 {
-    var details = "";
-    var numDetails = itemInfo.details.length;
+    var genericItemText = "";
 
-    for (var i = 0; i < numDetails; i++)
+    if (itemType == "Patterns" || itemType == "Freebies" || itemType == "Bundles")
     {
-        details += "<span class=\"bold\">✦ " + itemInfo.details[i].label + ":</span> " + itemInfo.details[i].info + "<br>";
-    } 
-
-    var detailsContent = details;
-
-    if (isActive)
-    {
-        const genericStlText = getGenericStlText();
-        detailsContent += genericStlText;
+        genericItemText = getGenericPatternText()
     }
-
-    itemDetailsDiv.innerHTML = detailsContent;
+    else if (itemType == "STLs")
+    {
+        genericItemText = getGenericStlText()
+    }
 }
 
-function updatePatternDetails(itemDetailsDiv, itemInfo, itemType, isActive)
+function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
 {
-    if (itemType != "bundle")
+    var details = "";
+
+    if (itemType != "Bundles")
     {
-        var details = "<span class=\"bold\">✦ DMC Floss:</span> " + itemInfo.dmcFloss +  " colours <br>";
-        details += "<span class=\"bold\">✦ Pattern Size:</span> " + itemInfo.patternSize + "<br>";
-        details += "<span class=\"bold\">✦ Completed Size:</span> " + itemInfo.completedSize; 
+        console.log(itemInfo)
+        var numDetails = itemInfo.details.length;
+
+        for (var i = 0; i < numDetails; i++)
+        {
+            details += "<span class=\"bold\">✦ " + itemInfo.details[i].label + ":</span> " + itemInfo.details[i].info + "<br>";
+        } 
     }
     else
     {
@@ -182,42 +181,18 @@ function updatePatternDetails(itemDetailsDiv, itemInfo, itemType, isActive)
         // Cleans up extra <br>
         patternString = patternString.slice(0, -4);
 
-        var details = "<span class=\"bold\">Patterns:</span><br> " + patternString;
+        details = "<span class=\"bold\">Patterns:</span><br> " + patternString;
     }
-
-    var detailsContent = details;
 
     if (isActive)
     {
-        const genericPatternText = getGenericPatternText();
-        detailsContent += genericPatternText;
+        const genericText = getGenericItemText(itemType);
+        details += genericText;
     }
 
-    itemDetailsDiv.innerHTML = detailsContent;
+    itemDetailsDiv.innerHTML = details;
 }
 
-function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
-{
-    if (itemType == "Patterns")
-    {
-        updatePatternDetails(itemDetailsDiv, itemInfo, itemType, isActive);
-    }
-    else if (itemType == "STLs")
-    {
-        updateStlDetails(itemDetailsDiv, itemInfo, isActive);
-    }
-    else if (itemType == "Freebies")
-    {
-        if (itemInfo.item == "STL")
-        {
-            updateStlDetails(itemDetailsDiv, itemInfo, isActive);
-        }
-        else if (itemInfo.item == "pattern")
-        {
-            updatePatternDetails(itemDetailsDiv, itemInfo, itemType, isActive);
-        }
-    }
-}
 
 function getCurrentPage()
 {

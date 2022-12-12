@@ -1,9 +1,21 @@
 ﻿{
-    "dmcFloss":  14,
     "etsyLink":  "https://www.etsy.com/ca/listing/1224506072/focused-in-free-fall-modern-cross-stitch",
-    "patternSize":  "100 x 100 stitches",
     "ithcioLink":  "https://infinity-bear-designs.itch.io/focused-in-free-fall",
     "slug":  "focused-in-free-fall",
     "title":  "Focused in Free Fall",
-    "completedSize":  "7.14 x 7.14 in or 18.14 x 18.14 cm on 14 count aida"
+    "details":
+    [
+        {
+            "label": "DMC Floss",
+            "info": "14 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": "100 x 100 stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida"
+        }
+    ]
 }
