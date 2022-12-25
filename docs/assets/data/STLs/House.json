@@ -1,21 +1,20 @@
 {
-    "title": "House STL",
-    "etsyLink": "(link)",
-    "itchioLink": "(link)",
-    "slug": "house-stl",
-    "details":
-    [
-        {
-            "label": "Type",
-            "info": "Bobbin"
-        },
-        {
-            "label": "Dimensions",
-            "info": "1mm x 1mm x 1mm"
-        },
-        {
-            "label": "Used For",
-            "info": "3D Printing"
-        }
-    ]
+	"details": [
+		{
+			"info": "Bobbin",
+			"label": "Type"
+		},
+		{
+			"info": "37.4mm x 42.9mm x 1.4mm",
+			"label": "Dimensions"
+		},
+		{
+			"info": "3D Printing",
+			"label": "Used For"
+		}
+	],
+	"etsyLink": "",
+	"itchioLink": "",
+	"slug": "house-stl",
+	"title": "House STL"
 }

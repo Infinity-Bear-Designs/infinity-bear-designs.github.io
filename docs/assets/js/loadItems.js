@@ -119,8 +119,7 @@ function removeProgressBar()
 
 function getGenericPatternText()
 {
-    const genericPatternText = `<br><br>
-    This item is a digital PDF pattern, and is only available for downloading and printing. <br><br>
+    const genericPatternText = `<br>This item is a digital PDF pattern, and is only available for downloading and printing. <br><br>
 
     It is not a completed project or cross stitch kit. It does not contain any physical materials,
     including those shown in the listing imagery.<br><br>
@@ -132,8 +131,11 @@ function getGenericPatternText()
 
 function getGenericStlText()
 {
-    const genericStlText = `<br><br>
-    Add generic STL text here. <br><br>`;
+    const genericStlText = `<br>This item is intended to be decorative and is not intended for organized floss storage. Consider using them as a visual accent for your finished cross-stitch pieces or related photography. <br><br>
+    
+    It does not contain any physical materials, including those shown in the listing imagery.
+
+    To make use of this file you will need a slicer for your 3D printer, where you will be responsible for slicing the model and configuring it for your own printer. I cannot provide assistance with these steps.<br><br>`;
     
     return genericStlText; 
 }
@@ -141,7 +143,7 @@ function getGenericStlText()
 function getGenericItemText(itemType)
 {
     var genericItemText = "";
-
+    
     if (itemType == "Patterns" || itemType == "Freebies" || itemType == "Bundles")
     {
         genericItemText = getGenericPatternText()
@@ -150,6 +152,8 @@ function getGenericItemText(itemType)
     {
         genericItemText = getGenericStlText()
     }
+
+    return genericItemText;
 }
 
 function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
@@ -158,7 +162,6 @@ function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
 
     if (itemType != "Bundles")
     {
-        console.log(itemInfo)
         var numDetails = itemInfo.details.length;
 
         for (var i = 0; i < numDetails; i++)

@@ -1,0 +1,20 @@
+{
+	"details": [
+		{
+			"info": "Bobbin",
+			"label": "Type"
+		},
+		{
+			"info": "27.6mm x 64.4mm x 1.5mm",
+			"label": "Dimensions"
+		},
+		{
+			"info": "3D Printing",
+			"label": "Used For"
+		}
+	],
+	"etsyLink": "",
+	"itchioLink": "",
+	"slug": "wine-bottle-stl",
+	"title": "Wine Bottle STL"
+}
