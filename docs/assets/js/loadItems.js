@@ -131,7 +131,7 @@ function getGenericPatternText()
 
 function getGenericStlText()
 {
-    const genericStlText = `<br>This item is intended to be decorative and is not intended for organized floss storage. Consider using them as a visual accent for your finished cross-stitch pieces or related photography. <br><br>
+    const genericStlText = `<br>This item is intended to be decorative and is not intended for organized floss storage. Consider using them as a visual accent for your finished cross stitch pieces or related photography. <br><br>
     
     It does not contain any physical materials, including those shown in the listing imagery.
 
