@@ -1,0 +1,21 @@
+﻿{
+    "etsyLink":  "https://www.etsy.com/ca/listing/1288894104/the-collector-modern-cross-stitch-design",
+    "ithcioLink":  "https://infinity-bear-designs.itch.io/the-collector",
+    "slug":  "the-collector",
+    "title":  "The Collector",
+    "details":
+    [
+        {
+            "label": "DMC Floss",
+            "info": "9 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": "100 x 100 stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida"
+        }
+    ]
+}

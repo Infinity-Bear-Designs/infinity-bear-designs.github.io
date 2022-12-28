@@ -1,0 +1,21 @@
+﻿{
+    "etsyLink":  "https://www.etsy.com/ca/listing/1268641088/frogcessor-modern-cross-stitch-design",
+    "ithcioLink":  "https://infinity-bear-designs.itch.io/frogcessor",
+    "slug":  "frogcessor",
+    "title":  "Frogcessor",
+    "details":
+    [
+        {
+            "label": "DMC Floss",
+            "info": "5 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": "56 x 56 stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "4.00 x 4.00 inches or 10.14 x 10.14 cm on 14 count aida"
+        }
+    ]
+}

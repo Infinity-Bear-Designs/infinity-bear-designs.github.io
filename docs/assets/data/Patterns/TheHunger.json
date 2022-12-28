@@ -1,0 +1,21 @@
+﻿{
+    "etsyLink":  "https://www.etsy.com/ca/listing/1224501996/the-hunger-modern-cross-stitch-design",
+    "ithcioLink":  "https://infinity-bear-designs.itch.io/the-hunger",
+    "slug":  "the-hunger",
+    "title":  "The Hunger",
+    "details":
+    [
+        {
+            "label": "DMC Floss",
+            "info": "9 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": "100 x 100 stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "7.14 x 7.14 inches or 18.14 x 18.14 cm on 14 count aida"
+        }
+    ]
+}

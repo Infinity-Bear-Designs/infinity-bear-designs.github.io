@@ -1,22 +1,22 @@
 const maxItemsPerPage = 15;
 
-function getItemsList(type, category)
+function getItemsList(itemType)
 {
-    const itemsJson = getJsonContents("docs/assets/data/" + category + ".json");
-    const itemsList = itemsJson[type];
+    const itemsJson = getJsonContents("docs/assets/data/items.json");
+    const itemsList = itemsJson[itemType];
 
     return itemsList;
 }
 
-function getItemInfo(type, category, name)
+function getItemInfo(itemType, name)
 {
-    var itemPath = "docs/assets/data/" + type + category + "/" + name + ".json";
+    var itemPath = "docs/assets/data/" + itemType + "/" + name + ".json";
     var itemInfo = getJsonContents(itemPath);
 
     return itemInfo;
 }
 
-function addActiveItemBlock(type)
+function addActiveItemBlock(itemType)
 {
     const activeItemDiv = document.getElementById("active-item");
     const activeItemColumnRow = addColumnRow();
@@ -51,10 +51,10 @@ function addActiveItemBlock(type)
 
     itemInformationColumn.appendChild(buttonBarDiv);
 
-    const activeItchioLink = addActiveItchioLink(type);
+    const activeItchioLink = addActiveItchioLink(itemType);
     buttonBarDiv.appendChild(activeItchioLink);
 
-    if (type != "free")
+    if (itemType != "Freebie")
     {
         const activeEtsyLink = addActiveEtsyLink();
         buttonBarDiv.appendChild(activeEtsyLink);
@@ -63,13 +63,13 @@ function addActiveItemBlock(type)
     activeItemColumnRow.appendChild(itemInformationColumn);
 }
 
-function loadActiveItem(type, parameterName, category)
+function loadActiveItem(itemType, parameterName)
 {
     const item = getParameterByName(parameterName);
 
     if (item != null)
     {
-        const itemsList = getItemsList(type, category);
+        const itemsList = getItemsList(itemType);
         const numItems = itemsList.length;
         var itemIndex = -1;
 
@@ -84,7 +84,7 @@ function loadActiveItem(type, parameterName, category)
 
         if (itemIndex != -1)
         {
-            const itemInfo = getItemInfo(type, category, itemsList[itemIndex]);
+            const itemInfo = getItemInfo(itemType, itemsList[itemIndex]);
 
             updateBreadcrumbNav(itemInfo.title);
 
@@ -92,13 +92,13 @@ function loadActiveItem(type, parameterName, category)
             const itemDetailsDiv = document.getElementById("item-details");
             
             const activeItemImage = document.getElementById("active-item-image");
-            activeItemImage.src = "docs/assets/images/" + itemsList[itemIndex] + "Website.png";
+            activeItemImage.src = "docs/assets/images/" + itemsList[itemIndex] + "Website.webp";
 
             const itemTitleDiv = document.getElementById("item-title");
             updateCardTitle(itemTitleDiv, itemInfo);
-            updateItemDetails(itemDetailsDiv, itemInfo, type, category, true);
+            updateItemDetails(itemDetailsDiv, itemInfo, itemType, true);
 
-            if (type != "free")
+            if (itemType != "free")
             {
                 updateCardLink("active-item-etsy-link", itemInfo.etsyLink);
             }
@@ -119,8 +119,7 @@ function removeProgressBar()
 
 function getGenericPatternText()
 {
-    const genericPatternText = `<br><br>
-    This item is a digital PDF pattern, and is only available for downloading and printing. <br><br>
+    const genericPatternText = `<br>This item is a digital PDF pattern, and is only available for downloading and printing. <br><br>
 
     It is not a completed project or cross stitch kit. It does not contain any physical materials,
     including those shown in the listing imagery.<br><br>
@@ -132,35 +131,43 @@ function getGenericPatternText()
 
 function getGenericStlText()
 {
-    const genericStlText = `<br><br>
-    Add generic STL text here. <br><br>`;
+    const genericStlText = `<br>This item is intended to be decorative and is not intended for organized floss storage. Consider using them as a visual accent for your finished cross-stitch pieces or related photography. <br><br>
+    
+    It does not contain any physical materials, including those shown in the listing imagery.
+
+    To make use of this file you will need a slicer for your 3D printer, where you will be responsible for slicing the model and configuring it for your own printer. I cannot provide assistance with these steps.<br><br>`;
     
     return genericStlText; 
 }
 
-function updateStlDetails(itemDetailsDiv, itemInfo, isActive)
+function getGenericItemText(itemType)
 {
-    var details = "<span class=\"bold\">✦ Type:</span> " + itemInfo.type +  "<br>";
-    details += "<span class=\"bold\">✦ Dimensions:</span> " + itemInfo.dimensions + "<br>"; 
-
-    var detailsContent = details;
-
-    if (isActive)
+    var genericItemText = "";
+    
+    if (itemType == "Patterns" || itemType == "Freebies" || itemType == "Bundles")
     {
-        const genericStlText = getGenericStlText();
-        detailsContent += genericStlText;
+        genericItemText = getGenericPatternText()
+    }
+    else if (itemType == "STLs")
+    {
+        genericItemText = getGenericStlText()
     }
 
-    itemDetailsDiv.innerHTML = detailsContent;
+    return genericItemText;
 }
 
-function updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive)
+function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
 {
-    if (type != "bundle")
+    var details = "";
+
+    if (itemType != "Bundles")
     {
-        var details = "<span class=\"bold\">✦ DMC Floss:</span> " + itemInfo.dmcFloss +  " colours <br>";
-        details += "<span class=\"bold\">✦ Pattern Size:</span> " + itemInfo.patternSize + "<br>";
-        details += "<span class=\"bold\">✦ Completed Size:</span> " + itemInfo.completedSize; 
+        var numDetails = itemInfo.details.length;
+
+        for (var i = 0; i < numDetails; i++)
+        {
+            details += "<span class=\"bold\">✦ " + itemInfo.details[i].label + ":</span> " + itemInfo.details[i].info + "<br>";
+        } 
     }
     else
     {
@@ -177,51 +184,18 @@ function updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive)
         // Cleans up extra <br>
         patternString = patternString.slice(0, -4);
 
-        var details = "<span class=\"bold\">Patterns:</span><br> " + patternString;
+        details = "<span class=\"bold\">Patterns:</span><br> " + patternString;
     }
-
-    var detailsContent = details;
 
     if (isActive)
     {
-        const genericPatternText = getGenericPatternText();
-        detailsContent += genericPatternText;
+        const genericText = getGenericItemText(itemType);
+        details += genericText;
     }
 
-    itemDetailsDiv.innerHTML = detailsContent;
+    itemDetailsDiv.innerHTML = details;
 }
 
-function updateItemDetails(itemDetailsDiv, itemInfo, type, category, isActive)
-{
-    if (category == "Patterns")
-    {
-        updatePatternDetails(itemDetailsDiv, itemInfo, type, isActive);
-    }
-    else if (category == "Stls")
-    {
-        updateStlDetails(itemDetailsDiv, itemInfo, isActive);
-    }
-}
-
-function getPageType(type, category)
-{
-    var pageType = "";
-
-    if (type == "paid")
-    {
-        pageType = category.toLowerCase();
-    }
-    else if (type == "free")
-    {
-        pageType = "freebies";
-    }
-    else if (type == "bundle")
-    {
-        pageType = "bundles";
-    }
-
-    return pageType;
-}
 
 function getCurrentPage()
 {
@@ -235,7 +209,7 @@ function getCurrentPage()
     return parseInt(currentPage);
 }
 
-function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section, parameterName, category) 
+function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, section, parameterName) 
 {
     const numItemsPerRow = 3;
 
@@ -245,7 +219,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
 
     for (var i = startIndex; i < endIndex; i++)
     {
-        const itemInfo = getItemInfo(type, category, itemsList[i]);
+        const itemInfo = getItemInfo(itemType, itemsList[i]);
 
         if (i % numItemsPerRow == 0)
         {
@@ -266,7 +240,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
 
         const activeItemLink = document.createElement("a");
 
-        var pageType = getPageType(type, category);
+        var pageType = itemType.toLowerCase();
         var currentPage =  getCurrentPage();
 
         activeItemLink.href = pageType + "?page=" + currentPage + "&" + parameterName + "=" + itemsList[i];
@@ -291,7 +265,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
         
         const contentDiv = addContentDiv();
 
-        updateItemDetails(contentDiv, itemInfo, type, category, false)
+        updateItemDetails(contentDiv, itemInfo, itemType, false)
 
         cardContentDiv.appendChild(contentDiv);
 
@@ -299,10 +273,10 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, type, section,
 
         const slug = itemInfo.slug;
 
-        const itchioLink = addItchioLink(slug, type);
+        const itchioLink = addItchioLink(slug, itemType);
         cardFooter.appendChild(itchioLink);
 
-        if (type != "free")
+        if (itemType != "Freebies")
         {
             const itemEtsyLink = itemInfo.etsyLink;
             const etsyLink = addEtsyLink(itemEtsyLink);
@@ -419,9 +393,9 @@ function updatePagination(totalPages, currentPage)
     addPagination(totalPages, currentPage)
 }
 
-function loadPatterns(type)
+function loadItems(itemType, parameterName)
 {
-    var itemsList = getItemsList(type, "Patterns");
+    var itemsList = getItemsList(itemType);
     
     const numTotalItems = itemsList.length;
     const totalPages = getTotalPages(numTotalItems);
@@ -433,38 +407,44 @@ function loadPatterns(type)
     const endRecentIndex = numRecentItems;
 
     const endIndex = Math.min(numTotalItems, currentPage * maxItemsPerPage);
-    const numPatterns = Math.min(numTotalItems, maxItemsPerPage);
+    const numItems = Math.min(numTotalItems, maxItemsPerPage);
     
     if (totalPages > 1)
     {
         addPagination(totalPages, 1)
     }
 
-    loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, type, "latestSection", "pattern", "Patterns");
+    loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, itemType, "latestSection", parameterName);
    
     itemsList = itemsList.sort();
-    loadItemCards(itemsList, startIndex, endIndex, numPatterns, type, "itemSection", "pattern", "Patterns");
+    loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, "itemSection", parameterName);
    
-    addActiveItemBlock(type);
-    loadActiveItem(type, "pattern", "Patterns");
+    addActiveItemBlock(itemType);
+    loadActiveItem(itemType, parameterName);
 
     updatePagination(totalPages, currentPage);
 }
 
-function loadPaidPatternsPage()
+function loadPatternsPage()
 {
-    loadPatterns("paid");
+    loadItems("Patterns", "pattern");
     updateCopyright();
 }
 
 function loadBundlesPage()
 {
-    loadPatterns("bundle");
+    loadItems("Bundles", "pattern");
+    updateCopyright();
+}
+
+function loadStlsPage()
+{
+    loadItems("STLs", "stl");
     updateCopyright();
 }
 
 function loadFreebiesPage()
 {
-    loadPatterns("free");
+    loadItems("Freebies", "item");
     updateCopyright();
 }

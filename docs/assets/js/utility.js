@@ -71,7 +71,7 @@ function addImageFigure()
 function addImage(imageName)
 {
     const image = document.createElement("img");
-    image.src = "docs/assets/images/" + imageName + "Website.png"
+    image.src = "docs/assets/images/" + imageName + "Website.webp"
 
     return image;
 }
@@ -139,7 +139,7 @@ function addEtsyLink(patternEtsyLink)
     return etsyLink;
 }
 
-function addActiveItchioLink(type)
+function addActiveItchioLink(itemType)
 {
     const itchioLink = document.createElement("a");
     itchioLink.classList.add("button");
@@ -147,12 +147,7 @@ function addActiveItchioLink(type)
     itchioLink.classList.add("bold");
     itchioLink.id = "active-item-itchio-link"
 
-    var linkText = "Buy Now";
-
-    if (type == "free")
-    {
-       linkText = "Download"
-    }
+    var linkText = getItchioLabel(itemType);
 
     itchioLink.innerHTML = linkText;
 
@@ -180,24 +175,31 @@ function connectItchioBuyButton(element, slug)
       });
 }
 
-function addItchioLink(slug, type)
+function addItchioLink(slug, itemType)
 {
     const itchioLink = document.createElement("a");
     itchioLink.classList.add("card-footer-item");
     itchioLink.classList.add("purchase-background");
 
-    var linkText = "Buy Now";
-
-    if (type == "free")
-    {
-       linkText = "Download"
-    }
+    var linkText = getItchioLabel(itemType);
 
     itchioLink.innerHTML = linkText;
 
     connectItchioBuyButton(itchioLink, slug);
 
     return itchioLink;
+}
+
+function getItchioLabel(itemType)
+{
+    var label = "Buy Now";
+
+    if (itemType == "Freebies")
+    {
+       label = "Download";
+    }    
+
+    return label;
 }
 
 function updateCardLink(linkId, link, slug)
