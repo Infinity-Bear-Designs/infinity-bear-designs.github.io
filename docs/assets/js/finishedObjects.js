@@ -7,7 +7,18 @@ function getFinishedObjects()
 function addFinishedObjectCard(finishedObject)
 {
     var patternNameClean = finishedObject.replace(/\s/g, '');
-    var linkToPattern = "patterns?pattern=" + patternNameClean;
+    var linkToPattern = ""
+
+    const itemsJson = getJsonContents("docs/assets/data/items.json");
+
+    if(itemsJson["Patterns"].includes(patternNameClean))
+    {
+        linkToPattern = "patterns?pattern=" + patternNameClean;
+    }
+    else if(itemsJson["Freebies"].includes(patternNameClean))
+    {
+        linkToPattern = "freebies?item=" + patternNameClean;
+    }
 
     const columnDiv = document.createElement("div");
     columnDiv.classList.add("column");

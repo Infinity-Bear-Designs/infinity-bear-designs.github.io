@@ -62,6 +62,7 @@
                 ],
     "STLs":
             [
+                "Mushroom",
                 "House",
                 "Fish",
                 "Spaceship",
@@ -69,6 +70,7 @@
             ],
     "Freebies":
                 [
+                    "Perseverance",
                     "Candy",
                     "FlyMeToTheMoon",
                     "ReachForTheStars",
