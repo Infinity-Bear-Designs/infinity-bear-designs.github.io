@@ -1,0 +1,20 @@
+{
+	"details": [
+		{
+			"info": "Floss Drop",
+			"label": "Type"
+		},
+		{
+			"info": "42.0mm x 51.4mm x 1.5mm",
+			"label": "Dimensions"
+		},
+		{
+			"info": "3D Printing",
+			"label": "Used For"
+		}
+	],
+	"etsyLink": "",
+	"itchioLink": "",
+	"slug": "umbrella-stl",
+	"title": "Umbrella STL"
+}
