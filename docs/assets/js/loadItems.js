@@ -54,7 +54,7 @@ function addActiveItemBlock(itemType)
     const activeItchioLink = addActiveItchioLink(itemType);
     buttonBarDiv.appendChild(activeItchioLink);
 
-    if (itemType != "Freebie")
+    if (itemType != "Freebies")
     {
         const activeEtsyLink = addActiveEtsyLink();
         buttonBarDiv.appendChild(activeEtsyLink);
@@ -98,7 +98,7 @@ function loadActiveItem(itemType, parameterName)
             updateCardTitle(itemTitleDiv, itemInfo);
             updateItemDetails(itemDetailsDiv, itemInfo, itemType, true);
 
-            if (itemType != "free")
+            if (itemType != "Freebies")
             {
                 updateCardLink("active-item-etsy-link", itemInfo.etsyLink);
             }
