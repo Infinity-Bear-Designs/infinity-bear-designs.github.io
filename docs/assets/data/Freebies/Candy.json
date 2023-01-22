@@ -17,5 +17,6 @@
             "label": "Used For",
             "info": "3D Printing"
         }
-    ]
+    ],
+    "descriptionType": "STL"
 }
