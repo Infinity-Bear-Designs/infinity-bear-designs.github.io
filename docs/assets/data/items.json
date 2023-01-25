@@ -63,6 +63,7 @@
     "STLs":
             [
                 "Umbrella",
+                "Mushroom",
                 "House",
                 "Fish",
                 "Spaceship",
@@ -70,6 +71,8 @@
             ],
     "Freebies":
                 [
+                    "FlossSwatchOrganizer",
+                    "Perseverance",
                     "Candy",
                     "FlyMeToTheMoon",
                     "ReachForTheStars",

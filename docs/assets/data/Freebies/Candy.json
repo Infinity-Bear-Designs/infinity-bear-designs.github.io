@@ -11,11 +11,12 @@
         },
         {
             "label": "Dimensions",
-            "info": "1mm x 1mm x 1mm"
+            "info": "24.2mm x 61.3mm x 1.5mm"
         },
         {
             "label": "Used For",
             "info": "3D Printing"
         }
-    ]
+    ],
+    "descriptionType": "STL"
 }

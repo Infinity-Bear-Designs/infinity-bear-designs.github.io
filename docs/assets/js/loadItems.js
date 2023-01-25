@@ -54,7 +54,7 @@ function addActiveItemBlock(itemType)
     const activeItchioLink = addActiveItchioLink(itemType);
     buttonBarDiv.appendChild(activeItchioLink);
 
-    if (itemType != "Freebie")
+    if (itemType != "Freebies")
     {
         const activeEtsyLink = addActiveEtsyLink();
         buttonBarDiv.appendChild(activeEtsyLink);
@@ -98,7 +98,7 @@ function loadActiveItem(itemType, parameterName)
             updateCardTitle(itemTitleDiv, itemInfo);
             updateItemDetails(itemDetailsDiv, itemInfo, itemType, true);
 
-            if (itemType != "free")
+            if (itemType != "Freebies")
             {
                 updateCardLink("active-item-etsy-link", itemInfo.etsyLink);
             }
@@ -117,43 +117,13 @@ function removeProgressBar()
     progressBar.innerHTML = "";
 }
 
-function getGenericPatternText()
+function getGenericItemText(descriptionType)
 {
-    const genericPatternText = `<br>This item is a digital PDF pattern, and is only available for downloading and printing. <br><br>
-
-    It is not a completed project or cross stitch kit. It does not contain any physical materials,
-    including those shown in the listing imagery.<br><br>
-
-    To view or print this pattern, you will require a PDF reader. <br><br>`;
+    var jsonFilePath = "docs/assets/data/itemDescriptions.json";
+    var descriptionJson = getJsonContents(jsonFilePath);
+    var genericItemText = descriptionJson[descriptionType];
     
-    return genericPatternText;
-}
-
-function getGenericStlText()
-{
-    const genericStlText = `<br>This item is intended to be decorative and is not intended for organized floss storage. Consider using them as a visual accent for your finished cross stitch pieces or related photography. <br><br>
-    
-    It does not contain any physical materials, including those shown in the listing imagery.
-
-    To make use of this file you will need a slicer for your 3D printer, where you will be responsible for slicing the model and configuring it for your own printer. I cannot provide assistance with these steps.<br><br>`;
-    
-    return genericStlText; 
-}
-
-function getGenericItemText(itemType)
-{
-    var genericItemText = "";
-    
-    if (itemType == "Patterns" || itemType == "Freebies" || itemType == "Bundles")
-    {
-        genericItemText = getGenericPatternText()
-    }
-    else if (itemType == "STLs")
-    {
-        genericItemText = getGenericStlText()
-    }
-
-    return genericItemText;
+    return genericItemText
 }
 
 function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
@@ -181,15 +151,12 @@ function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
             patternString += "✦ <a href='patterns?pattern=" + patternNameClean + "'>" + itemInfo.patterns[i] + "</a><br>";
         }
 
-        // Cleans up extra <br>
-        patternString = patternString.slice(0, -4);
-
         details = "<span class=\"bold\">Patterns:</span><br> " + patternString;
     }
 
     if (isActive)
     {
-        const genericText = getGenericItemText(itemType);
+        const genericText = getGenericItemText(itemInfo.descriptionType);
         details += genericText;
     }
 
