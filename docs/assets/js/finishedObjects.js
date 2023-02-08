@@ -1,3 +1,5 @@
+const maxItemsPerPage = 8;
+
 function getFinishedObjects()
 {
     const finishedObjectsJson = getJsonContents("docs/assets/data/finishedObjects.json");

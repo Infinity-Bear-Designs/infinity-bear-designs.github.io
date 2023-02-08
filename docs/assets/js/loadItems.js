@@ -163,19 +163,6 @@ function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
     itemDetailsDiv.innerHTML = details;
 }
 
-
-function getCurrentPage()
-{
-    var currentPage = getParameterByName("page")
-        
-    if (currentPage == null)
-    {
-        currentPage = 1;
-    }
-
-    return parseInt(currentPage);
-}
-
 function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, section, parameterName) 
 {
     const numItemsPerRow = 3;
@@ -271,101 +258,12 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
     removeProgressBar();
 }
 
-function getTotalPages(totalItems)
-{
-    return Math.ceil(totalItems/maxItemsPerPage);
-}
-
-function addPagination(totalPages, currentPage)
-{
-    const paginationNav = document.getElementById("paginationNav");
-
-    if (currentPage > 1)
-    {
-        const previousLink = document.createElement("a");
-        previousLink.classList.add("pagination-previous");
-        previousLink.innerHTML = "Previous";
-
-        var url = new URL(window.location.href);
-        urlParams = url.searchParams;
-        urlParams.set('page', currentPage - 1);
-
-        url.search = urlParams.toString();
-
-        var new_url = url.toString();
-
-        previousLink.href = new_url;
-
-        paginationNav.appendChild(previousLink);
-    }
-
-    if (currentPage != totalPages)
-    {
-        const nextLink = document.createElement("a");
-        nextLink.classList.add("pagination-next");
-        nextLink.innerHTML = "Next";
-
-        var url = new URL(window.location.href);
-        urlParams = url.searchParams;
-        urlParams.set('page', currentPage + 1);
-
-        url.search = urlParams.toString();
-
-        var new_url = url.toString();
-
-        nextLink.href = new_url;
-
-        paginationNav.appendChild(nextLink);
-    }
-
-    const paginationList = document.createElement("ul");
-    paginationList.classList.add("pagination-list");
-
-    for (var i = 1; i < totalPages + 1; i++)
-    {
-        var pageListItem = document.createElement("li");
-        var page = document.createElement("a");
-
-        page.classList.add("pagination-link")
-        
-        if (i == currentPage)
-        {
-            page.classList.add("is-current");
-        }
-        
-        page.innerHTML = i;
-
-        var url = new URL(window.location.href);
-        urlParams = url.searchParams;
-        urlParams.set('page', i);
-
-        url.search = urlParams.toString();
-
-        var new_url = url.toString();
-
-        page.href = new_url;
-
-        pageListItem.appendChild(page);
-        paginationList.appendChild(pageListItem);
-    }
-
-    paginationNav.appendChild(paginationList);
-
-}
-
-function updatePagination(totalPages, currentPage)
-{
-    const paginationNav = document.getElementById("paginationNav");
-    paginationNav.innerHTML = '';
-    addPagination(totalPages, currentPage)
-}
-
 function loadItems(itemType, parameterName)
 {
     var itemsList = getItemsList(itemType);
     
     const numTotalItems = itemsList.length;
-    const totalPages = getTotalPages(numTotalItems);
+    const totalPages = getTotalPages(numTotalItems, maxItemsPerPage);
     const currentPage = Math.min(getCurrentPage(), totalPages);
     const pageIndex = currentPage - 1;
     const startIndex = pageIndex * maxItemsPerPage;
