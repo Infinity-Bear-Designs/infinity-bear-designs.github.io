@@ -68,12 +68,23 @@ function loadFinishedObjects()
     const finishedObjects = getFinishedObjects();
     const numFinishedObjects = finishedObjects.finishedObjects.length;
     const numPatternsPerRow = 4;
-
+    const totalPages = getTotalPages(numFinishedObjects, maxItemsPerPage);
+    const currentPage = Math.min(getCurrentPage(), totalPages);
+    const pageIndex = currentPage - 1;
+    const startIndex = pageIndex * maxItemsPerPage;
+    const endIndex = Math.min(numFinishedObjects, currentPage * maxItemsPerPage);
+    const numItems = Math.min(numFinishedObjects, maxItemsPerPage);
+    
     const finishedObjectsDiv = document.getElementById("finished-objects");
+
+    if (totalPages > 1)
+    {
+        addPagination(totalPages, 1)
+    }
 
     var parentColumnDiv;
 
-    for (var i = 0; i < numFinishedObjects; i++)
+    for (var i = startIndex; i < endIndex; i++)
     {
         if (i % numPatternsPerRow == 0)
         {
@@ -99,4 +110,6 @@ function loadFinishedObjects()
             parentColumnDiv.appendChild(columnDiv);            
         }
     }
+
+    updatePagination(totalPages, currentPage);
 }
