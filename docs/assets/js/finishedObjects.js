@@ -6,18 +6,16 @@ function getFinishedObjects()
     return finishedObjectsJson;
 }
 
-function addFinishedObjectCard(finishedObject)
+function addFinishedObjectCard(finishedObject, patternsList, freebiesList)
 {
     var patternNameClean = finishedObject.replace(/\s/g, '');
     var linkToPattern = ""
 
-    const itemsJson = getJsonContents("docs/assets/data/items.json");
-
-    if(itemsJson["Patterns"].includes(patternNameClean))
+    if(patternsList.includes(patternNameClean.toUpperCase()))
     {
         linkToPattern = "patterns?pattern=" + patternNameClean;
     }
-    else if(itemsJson["Freebies"].includes(patternNameClean))
+    else if(freebiesList.includes(patternNameClean.toUpperCase()))
     {
         linkToPattern = "freebies?item=" + patternNameClean;
     }
@@ -75,6 +73,11 @@ function loadFinishedObjects()
     const endIndex = Math.min(numFinishedObjects, currentPage * maxItemsPerPage);
     const numItems = Math.min(numFinishedObjects, maxItemsPerPage);
     
+    const itemsJson = getJsonContents("docs/assets/data/items.json");
+
+    var formattedPatterns = getArrayInUpperCase(itemsJson["Patterns"]);
+    var formattedFreebies = getArrayInUpperCase(itemsJson["Freebies"]);
+
     const finishedObjectsDiv = document.getElementById("finished-objects");
 
     if (totalPages > 1)
@@ -92,7 +95,7 @@ function loadFinishedObjects()
             parentColumnDiv.classList.add("columns");
         }
 
-        var finishedObjectCard = addFinishedObjectCard(finishedObjects.finishedObjects[i]);
+        var finishedObjectCard = addFinishedObjectCard(finishedObjects.finishedObjects[i], formattedPatterns, formattedFreebies);
         parentColumnDiv.appendChild(finishedObjectCard);
 
         finishedObjectsDiv.appendChild(parentColumnDiv);

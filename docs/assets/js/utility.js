@@ -344,3 +344,8 @@ function getCurrentPage()
 
     return parseInt(currentPage);
 }
+
+function getArrayInUpperCase(array)
+{
+    return array.map(array => array.toUpperCase());
+}
