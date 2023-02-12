@@ -53,6 +53,7 @@
                 ],
     "Bundles": 
                 [
+                    "TemptingTreasures",
                     "CelestialCreatures",
                     "ProcessorPals",
                     "WonderfulWindowscapes",
