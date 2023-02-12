@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "SliceofPond",
                     "PoisonousPitfall",
                     "TheObserver",
                     "TheCollector",
