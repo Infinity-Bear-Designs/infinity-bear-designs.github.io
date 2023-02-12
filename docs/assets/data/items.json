@@ -1,7 +1,6 @@
 {
     "Patterns":
                 [
-                    "LavaLure",
                     "PoisonousPitfall",
                     "TheObserver",
                     "TheCollector",
