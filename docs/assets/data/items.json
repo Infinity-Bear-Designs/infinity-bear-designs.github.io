@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "LavaLure",
                     "IcyIntrigue",
                     "PoisonousPitfall",
                     "TheObserver",
@@ -53,6 +54,7 @@
                 ],
     "Bundles": 
                 [
+                    "TemptingTreasures",
                     "CelestialCreatures",
                     "ProcessorPals",
                     "WonderfulWindowscapes",
