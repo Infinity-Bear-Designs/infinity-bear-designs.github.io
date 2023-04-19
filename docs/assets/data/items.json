@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "SliceofPond",
                     "LavaLure",
                     "IcyIntrigue",
                     "PoisonousPitfall",
