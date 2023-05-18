@@ -242,7 +242,8 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
         itemSection.appendChild(parentColumnDiv);
     }
 
-    const remainingColumns = numItemsPerRow - (numItems % numItemsPerRow);
+    const numLastPageItems = endIndex - startIndex;
+    const remainingColumns = numItemsPerRow - (numLastPageItems % numItemsPerRow);
 
     if (remainingColumns != 0 && remainingColumns % numItemsPerRow != 0)
     {
