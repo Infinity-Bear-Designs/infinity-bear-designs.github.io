@@ -100,7 +100,7 @@ function loadActiveItem(itemType, parameterName)
 
             if (itemType != "Freebies")
             {
-                updateCardLink("active-item-etsy-link", itemInfo.etsyLink);
+                updateCardLink("active-item-etsy-link", itemInfo.saveAndShareEtsyLink);
             }
 
             updateCardLink("active-item-itchio-link", itemInfo.itchioLink, itemInfo.slug);            
@@ -232,7 +232,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
 
         if (itemType != "Freebies")
         {
-            const itemEtsyLink = itemInfo.etsyLink;
+            const itemEtsyLink = itemInfo.saveAndShareEtsyLink;
             const etsyLink = addEtsyLink(itemEtsyLink);
             cardFooter.appendChild(etsyLink);
         }
