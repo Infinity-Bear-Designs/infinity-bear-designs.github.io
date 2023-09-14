@@ -1,0 +1,21 @@
+﻿{
+    "title":  "Kintsugi",
+    "etsyLink":  "",
+    "itchioLink":  "https://infinity-bear-designs.itch.io/kintsugi-cross-stitch",
+    "slug":  "kintsugi-cross-stitch",
+    "details":  [
+                    {
+                        "label":  "DMC Floss",
+                        "info":  "12 colours"
+                    },
+                    {
+                        "label":  "Pattern Size",
+                        "info":  "52 x 48 stitches"
+                    },
+                    {
+                        "label":  "Completed Size",
+                        "info":  "4.00 x 4.00 in or 10.14 x 10.14 cm on 14 count aida"
+                    }
+                ],
+    "descriptionType":  "Pattern"
+}
