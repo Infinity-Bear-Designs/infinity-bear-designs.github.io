@@ -128,6 +128,11 @@ function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
     {
         var numDetails = itemInfo.details.length;
 
+        if (itemInfo.story !== undefined)
+        {
+            details += "<i>" + itemInfo.story + "</i><br><br>"
+        }
+
         for (var i = 0; i < numDetails; i++)
         {
             details += "<span class=\"bold\">✦ " + itemInfo.details[i].label + ":</span> " + itemInfo.details[i].info + "<br>";
