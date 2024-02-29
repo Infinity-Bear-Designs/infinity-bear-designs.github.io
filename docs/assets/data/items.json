@@ -69,11 +69,11 @@
                 ],
     "Bundles": 
                 [
+                    "CreepyCabin",
                     "TemptingTreasures",
                     "CelestialCreatures",
                     "ProcessorPals",
                     "WonderfulWindowscapes",
-                    "CreepyCabin",
                     "GalaxyCat",
                     "GalacticFashionShow",
                     "PrismaticNature"
@@ -92,10 +92,10 @@
     "Freebies":
                 [
                     "Appreciation",
-                    "FlossSwatchOrganizer",
                     "Perseverance",
-                    "Candy",
                     "FlyMeToTheMoon",
+                    "Candy",
+                    "FlossSwatchOrganizer",
                     "ReachForTheStars",
                     "Quackitude"        
                 ]

@@ -8,12 +8,13 @@
   <title>Infinity Bear Designs</title>
   <link rel="stylesheet" href="docs/assets/css/bulmaStyles.css">
   <link rel="stylesheet" href="docs/assets/css/styles.css">
+  <script type="text/javascript" src="https://static.itch.io/api.js"></script>
   <script src="docs/assets/js/include.js"></script>
   <script src="docs/assets/js/utility.js"></script>
-  <script src="docs/assets/js/finishedObjects.js"></script>
+  <script src="docs/assets/js/loadItems.js"></script>
 </head>
 
-<body onload="updateCopyright(); loadFinishedObjects();">
+<body onload="loadHomepage();">
   <nav id="navContainer" class="navbar" role="navigation" aria-label="main navigation">
   </nav>
   <section class="section">
@@ -28,10 +29,20 @@
     </div>
     <br>
     <hr>
-    <br>
-    <div id="finished-objects"></div>
-    <br>
-    <nav class="pagination" id="paginationNav" role="navigation" aria-label="pagination"></nav>
+    <div id="latestSectionPatterns">
+      <p class="title subTitle is-4">LATEST PATTERNS</p>
+    </div>
+    <br><br>
+    <hr>
+    <div id="latestSectionFreebies">
+      <p class="title subTitle is-4">LATEST FREEBIES</p>
+    </div>
+    <br><br>
+    <hr>
+    <div id="latestSectionBundles">
+      <p class="title subTitle is-4">LATEST BUNDLES</p>
+    </div>
+    <br><br>
 </section>
 
 

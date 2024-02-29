@@ -111,12 +111,6 @@ function loadActiveItem(itemType, parameterName)
     }
 }
 
-function removeProgressBar()
-{
-    const progressBar = document.getElementById("progressBar");
-    progressBar.innerHTML = "";
-}
-
 function getGenericItemText(descriptionType)
 {
     var jsonFilePath = "docs/assets/data/itemDescriptions.json";
@@ -226,7 +220,6 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
         const cardFooter = addCardFooter();
 
         const slug = itemInfo.slug;
-
         const itchioLink = addItchioLink(slug, itemType);
         cardFooter.appendChild(itchioLink);
 
@@ -255,8 +248,6 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
             parentColumnDiv.appendChild(columnDiv);            
         }
     }
-
-    removeProgressBar();
 }
 
 function loadItems(itemType, parameterName)
@@ -312,5 +303,22 @@ function loadStlsPage()
 function loadFreebiesPage()
 {
     loadItems("Freebies", "item");
+    updateCopyright();
+}
+
+function loadHomepage()
+{
+    var itemsListPatterns = getItemsList("Patterns");
+    var itemsListFreebies = getItemsList("Freebies");
+    var itemsListBundles = getItemsList("Bundles");
+    
+    const startRecentIndex = 0;
+    const numRecentItems = 3;
+    const endRecentIndex = numRecentItems;
+
+    loadItemCards(itemsListPatterns, startRecentIndex, endRecentIndex, numRecentItems, "Patterns", "latestSectionPatterns", "pattern");
+    loadItemCards(itemsListFreebies, startRecentIndex, endRecentIndex, numRecentItems, "Freebies", "latestSectionFreebies", "item");
+    loadItemCards(itemsListBundles, startRecentIndex, endRecentIndex, numRecentItems, "Bundles", "latestSectionBundles", "pattern");
+
     updateCopyright();
 }
