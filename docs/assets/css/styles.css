@@ -71,3 +71,8 @@ hr
   padding: 12px;
   text-align: center;
 }
+
+#logo-div img
+{
+  width: 200px;
+}
