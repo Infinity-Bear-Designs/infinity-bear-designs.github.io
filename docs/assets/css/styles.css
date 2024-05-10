@@ -76,3 +76,8 @@ hr
 {
   width: 200px;
 }
+
+.footer-link
+{
+  display: block !important;
+}
