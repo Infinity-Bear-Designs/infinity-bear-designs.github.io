@@ -1,13 +1,47 @@
-.etsy-background
+
+.icon 
 {
-  color: white;
-  background: #d0692a;
+  padding-right: 5px;
 }
 
-.itchio-background
+.ib-background
 {
   color: white;
-  background: #fa5c5c;
+  background: #434140;
+}
+
+.etsy-hover:hover, .etsy-hover:hover path
+{
+  color: #d0692a;
+  fill: #d0692a;
+}
+
+.itchio-hover:hover, .itchio-hover:hover path
+{ 
+  color: #fa5c5c;
+  fill: #fa5c5c;
+}
+
+.patreon-hover:hover, .patreon-hover:hover path
+{
+  color:  rgb(211, 211, 211);
+  fill: rgb(211, 211, 211);
+}
+
+.footerlink .mastodon-hover:hover, .mastodon-hover:hover path
+{
+  color: #6364FF;
+  fill: #6364FF;
+}
+
+.instagram-hover:hover, .instagram-hover:hover path
+{
+  fill: #f77737
+}
+
+.youtube-hover:hover, .youtube-hover:hover path
+{
+  fill: #FF0000;
 }
 
 .purchase-background
