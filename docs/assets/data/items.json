@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "SideQuest",
                     "TheConstellationWitch",
                     "Daydream",
                     "SnuginaScarf",
@@ -100,5 +101,11 @@
                     "FlossSwatchOrganizer",
                     "ReachForTheStars",
                     "Quackitude"        
+                ],
+    "Patreon": 
+                [
+                    "AftertheRain",
+                    "Daydream",
+                    "Umbrellake"
                 ]
 }

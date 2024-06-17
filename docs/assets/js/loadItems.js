@@ -10,6 +10,11 @@ function getItemsList(itemType)
 
 function getItemInfo(itemType, name)
 {
+    if (itemType == "Patreon")
+    { 
+        itemType = "Patterns"
+    }
+
     var itemPath = "docs/assets/data/" + itemType + "/" + name + ".json";
     var itemInfo = getJsonContents(itemPath);
 
@@ -196,7 +201,14 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
         var pageType = itemType.toLowerCase();
         var currentPage =  getCurrentPage();
 
-        activeItemLink.href = pageType + "?page=" + currentPage + "&" + parameterName + "=" + itemsList[i];
+        if (itemType == "Patreon")
+        {
+            activeItemLink.href = "https://www.patreon.com/InfinityBearDesigns"
+        }
+        else
+        {
+            activeItemLink.href = pageType + "?page=" + currentPage + "&" + parameterName + "=" + itemsList[i];
+        }
 
         const imageName = itemsList[i];
         const image = addImage(imageName);
@@ -224,15 +236,23 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
 
         const cardFooter = addCardFooter();
 
-        const slug = itemInfo.slug;
-        const itchioLink = addItchioLink(slug, itemType);
-        cardFooter.appendChild(itchioLink);
-
-        if (itemType != "Freebies")
+        if (itemType == "Patreon")
         {
-            const itemEtsyLink = itemInfo.saveAndShareEtsyLink;
-            const etsyLink = addEtsyLink(itemEtsyLink);
-            cardFooter.appendChild(etsyLink);
+            const patreonLink = addPatreonLink();
+            cardFooter.appendChild(patreonLink);
+        }
+        else
+        {
+            const slug = itemInfo.slug;
+            const itchioLink = addItchioLink(slug, itemType);
+            cardFooter.appendChild(itchioLink);
+
+            if (itemType != "Freebies")
+            {
+                const itemEtsyLink = itemInfo.saveAndShareEtsyLink;
+                const etsyLink = addEtsyLink(itemEtsyLink);
+                cardFooter.appendChild(etsyLink);
+            }
         }
 
         cardDiv.appendChild(cardFooter);
@@ -313,6 +333,7 @@ function loadFreebiesPage()
 
 function loadHomepage()
 {
+    var itemsListPatreon = getItemsList("Patreon");
     var itemsListPatterns = getItemsList("Patterns");
     var itemsListFreebies = getItemsList("Freebies");
     var itemsListBundles = getItemsList("Bundles");
@@ -321,6 +342,7 @@ function loadHomepage()
     const numRecentItems = 3;
     const endRecentIndex = numRecentItems;
 
+    loadItemCards(itemsListPatreon, startRecentIndex, endRecentIndex, numRecentItems, "Patreon", "latestSectionPatreon", "pattern");
     loadItemCards(itemsListPatterns, startRecentIndex, endRecentIndex, numRecentItems, "Patterns", "latestSectionPatterns", "pattern");
     loadItemCards(itemsListFreebies, startRecentIndex, endRecentIndex, numRecentItems, "Freebies", "latestSectionFreebies", "item");
     loadItemCards(itemsListBundles, startRecentIndex, endRecentIndex, numRecentItems, "Bundles", "latestSectionBundles", "pattern");
