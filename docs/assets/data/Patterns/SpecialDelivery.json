@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Special Delivery",
+    "saveAndShareEtsyLink":  "",
+    "etsyLink":  "",
+    "itchioLink":  "https://infinity-bear-designs.itch.io/special-delivery-cross-stitch",
+    "slug":  "special-delivery-cross-stitch",
+    "details":  [
+                    {
+                        "label":  "DMC Floss",
+                        "info":  "18 colours"
+                    },
+                    {
+                        "label":  "Pattern Size",
+                        "info":  "60 x 60 stitches"
+                    },
+                    {
+                        "label":  "Completed Size",
+                        "info":  "4.00 x 4.00 in or 10.14 x 10.14 cm on 14 count aida"
+                    }
+                ],
+    "descriptionType":  "Pattern",
+    "story": "A cat makes its way along a wrought iron fence, guided by the gentle shimmer of fireflies. With determined strides, it carries a delivery of utmost importance, each step measured and deliberate, reflecting a quiet confidence in the face of the approaching storm."
+}
