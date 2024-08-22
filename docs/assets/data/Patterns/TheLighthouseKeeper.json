@@ -5,19 +5,19 @@
     "itchioLink":  "https://infinity-bear-designs.itch.io/the-lighthouse-keeper-cross-stitch",
     "slug":  "the-lighthouse-keeper-cross-stitch",
     "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "11 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "54 x 56 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "3.86 x 4.00 in or 9.80 x 10.16 cm on 14 count aida"
-                    }
-                ],
+        {
+            "label":  "DMC Floss",
+            "info":  "11 colours"
+        },
+        {
+            "label":  "Pattern Size",
+            "info":  " 56w x 54h stitches"
+        },
+        {
+            "label":  "Completed Size",
+            "info":  "4.0 x 3.9 inches or 10.2 x 9.8 cm on 14 count aida"
+        }
+    ],
     "descriptionType":  "Pattern",
     "story": "In the twilight haze, the gentle hum of the colossal cat's purrs harmonizes with the lighthouse's swirling light, weaving a lullaby for the restless sea."
 }
