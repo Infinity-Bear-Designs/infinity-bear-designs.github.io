@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "Appreciation",
-    "saveAndShareEtsyLink":  "",
-    "etsyLink":  "",
-    "itchioLink":  "https://infinity-bear-designs.itch.io/appreciation-cross-stitch",
-    "slug":  "appreciation-cross-stitch",
+    "title": "Appreciation",
+    "saveAndShareEtsyLink": "",
+    "etsyLink": "",
+    "itchioLink": "https://infinity-bear-designs.itch.io/appreciation-cross-stitch",
+    "slug": "appreciation-cross-stitch",
     "story": "Beneath the waves, the jellyfish is mesmerized by the form of a tiny orange fish, admiring its hues as one would a sunset.",
-    "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "6 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "53 x 54 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "3.86 x 3.79 in or 9.80 x 9.62 cm on 14 count aida"
-                    }
-                ],
-    "descriptionType":  "Pattern"
+    "details": [
+        {
+            "label": "DMC Floss",
+            "info": "6 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": " 54w x 53h stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "3.9 x 3.8 inches or 9.8 x 9.6 cm on 14 count aida"
+        }
+    ],
+    "descriptionType": "Pattern"
 }

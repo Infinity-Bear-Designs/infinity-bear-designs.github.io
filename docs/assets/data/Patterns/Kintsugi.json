@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "Kintsugi",
-    "saveAndShareEtsyLink": "https://infinitybeardesigns.etsy.com/ca/listing/1552339654/kintsugi-modern-cross-stitch-design?utm_source=Copy&utm_medium=ListingManager&utm_campaign=Share&utm_term=so.lmsm&share_time=1695212625720",
-    "etsyLink":  "https://www.etsy.com/ca/listing/1552339654/kintsugi-modern-cross-stitch-design",
-    "itchioLink":  "https://infinity-bear-designs.itch.io/kintsugi-cross-stitch",
-    "slug":  "kintsugi-cross-stitch",
+    "title": "Kintsugi",
+    "saveAndShareEtsyLink": "https://infinitybeardesigns.etsy.com/ca/listing/1552339654/kintsugi-modern-cross-stitch-design?utm_source=Copy\u0026utm_medium=ListingManager\u0026utm_campaign=Share\u0026utm_term=so.lmsm\u0026share_time=1695212625720",
+    "etsyLink": "https://www.etsy.com/ca/listing/1552339654/kintsugi-modern-cross-stitch-design",
+    "itchioLink": "https://infinity-bear-designs.itch.io/kintsugi-cross-stitch",
+    "slug": "kintsugi-cross-stitch",
     "story": "Atop a windowsill of a cozy cottage sits a daffodil, cradled in a bowl with gold-mended cracks, a silent ode to the strength found in healing.",
-    "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "12 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "52 x 48 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "3.43 x 3.71 in or 8.71 x 9.43 cm on 14 count aida"
-                    }
-                ],
-    "descriptionType":  "Pattern"
+    "details": [
+        {
+            "label": "DMC Floss",
+            "info": "12 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": " 48w x 52h stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "3.4 x 3.7 inches or 8.7 x 9.4 cm on 14 count aida"
+        }
+    ],
+    "descriptionType": "Pattern"
 }

@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "After the Rain",
-    "saveAndShareEtsyLink":  "",
-    "etsyLink":  "",
+    "title": "After the Rain",
+    "saveAndShareEtsyLink": "",
+    "etsyLink": "",
     "story": "The sky's mood shifted from a somber grey to vibrant hues, and the cats, snug under their umbrella, felt the warmth of the changing canvas on their whiskered faces.",
-    "itchioLink":  "https://infinity-bear-designs.itch.io/after-the-rain-cross-stitch",
-    "slug":  "after-the-rain-cross-stitch",
-    "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "20 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "60 x 60 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "4.00 x 4.00 in or 10.14 x 10.14 cm on 14 count aida"
-                    }
-                ],
-    "descriptionType":  "Pattern"
+    "itchioLink": "https://infinity-bear-designs.itch.io/after-the-rain-cross-stitch",
+    "slug": "after-the-rain-cross-stitch",
+    "details": [
+        {
+            "label": "DMC Floss",
+            "info": "20 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": " 60w x 60h stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "4.3 x 4.3 inches or 10.9 x 10.9 cm on 14 count aida"
+        }
+    ],
+    "descriptionType": "Pattern"
 }

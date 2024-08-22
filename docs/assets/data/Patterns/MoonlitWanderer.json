@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "Moonlit Wanderer",
-    "saveAndShareEtsyLink":  "",
-    "etsyLink":  "",
-    "itchioLink":  "https://infinity-bear-designs.itch.io/moonlit-wanderer-cross-stitch",
-    "slug":  "moonlit-wanderer-cross-stitch",
-    "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "11 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "57 x 57 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "4.07 x 4.07 in or 10.34 x 10.34 cm on 14 count aida"
-                    }
-                ],
-    "descriptionType":  "Pattern",
+    "title": "Moonlit Wanderer",
+    "saveAndShareEtsyLink": "",
+    "etsyLink": "",
+    "itchioLink": "https://infinity-bear-designs.itch.io/moonlit-wanderer-cross-stitch",
+    "slug": "moonlit-wanderer-cross-stitch",
+    "details": [
+        {
+            "label": "DMC Floss",
+            "info": "11 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": " 57w x 57h stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "4.1 x 4.1 inches or 10.3 x 10.3 cm on 14 count aida"
+        }
+    ],
+    "descriptionType": "Pattern",
     "story": "Alone but never lonely, the tiny duck relished the solitude of the night sky, his balloon drifting peacefully among the stars that illuminated his path."
 }

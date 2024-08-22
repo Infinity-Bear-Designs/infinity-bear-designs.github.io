@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "Cosmic Harvest",
-    "saveAndShareEtsyLink":  "",
-    "etsyLink":  "",
-    "itchioLink":  "https://infinity-bear-designs.itch.io/cosmic-harvest-cross-stitch",
-    "slug":  "cosmic-harvest-cross-stitch",
+    "title": "Cosmic Harvest",
+    "saveAndShareEtsyLink": "",
+    "etsyLink": "",
+    "itchioLink": "https://infinity-bear-designs.itch.io/cosmic-harvest-cross-stitch",
+    "slug": "cosmic-harvest-cross-stitch",
     "story": "Tucked between ordinary garden herbs, the purple pot secretly nurtured a new universe, its tiny planets and their elegant rings rotating in peaceful harmony.",
-    "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "8 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "54 x 50 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "3.57 x 3.86 in or 9.07 x 9.80 cm on 14 count aida"
-                    }
-                ],
-    "descriptionType":  "Pattern"
+    "details": [
+        {
+            "label": "DMC Floss",
+            "info": "8 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": " 50w x 54h stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "3.6 x 3.9 inches or 9.1 x 9.8 cm on 14 count aida"
+        }
+    ],
+    "descriptionType": "Pattern"
 }

@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "Daydream",
+    "title": "Daydream",
     "story": "At first light, the city wakes to a cold stone wall reborn as a canvas of dreams. Rainbow flowers, painted in lively strokes, lure onlookers into a world filled with enchanting colour.",
-    "saveAndShareEtsyLink":  "https://infinitybeardesigns.etsy.com/ca/listing/1603878732/daydream-modern-cross-stitch-design",
-    "etsyLink":  "https://www.etsy.com/ca/listing/1603878732/daydream-modern-cross-stitch-design",
-    "itchioLink":  "https://infinity-bear-designs.itch.io/daydream-cross-stitch",
-    "slug":  "daydream-cross-stitch",
-    "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "10 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "56 x 56 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "4.00 x 4.00 in or 10.14 x 10.14 cm on 14 count aida"
-                    }
-                ],
-    "descriptionType":  "Pattern"
+    "saveAndShareEtsyLink": "https://infinitybeardesigns.etsy.com/ca/listing/1603878732/daydream-modern-cross-stitch-design",
+    "etsyLink": "https://www.etsy.com/ca/listing/1603878732/daydream-modern-cross-stitch-design",
+    "itchioLink": "https://infinity-bear-designs.itch.io/daydream-cross-stitch",
+    "slug": "daydream-cross-stitch",
+    "details": [
+        {
+            "label": "DMC Floss",
+            "info": "10 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": " 56w x 56h stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "4.0 x 4.0 inches or 10.2 x 10.2 cm on 14 count aida"
+        }
+    ],
+    "descriptionType": "Pattern"
 }

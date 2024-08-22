@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "Slice of Sea",
-    "saveAndShareEtsyLink":  "https://infinitybeardesigns.etsy.com/ca/listing/1601811461/slice-of-sea-modern-cross-stitch-design",
-    "etsyLink":  "https://www.etsy.com/ca/listing/1601811461/slice-of-sea-modern-cross-stitch-design",
-    "itchioLink":  "https://infinity-bear-designs.itch.io/slice-of-sea-cross-stitch",
-    "slug":  "slice-of-sea-cross-stitch",
+    "title": "Slice of Sea",
+    "saveAndShareEtsyLink": "https://infinitybeardesigns.etsy.com/ca/listing/1601811461/slice-of-sea-modern-cross-stitch-design",
+    "etsyLink": "https://www.etsy.com/ca/listing/1601811461/slice-of-sea-modern-cross-stitch-design",
+    "itchioLink": "https://infinity-bear-designs.itch.io/slice-of-sea-cross-stitch",
+    "slug": "slice-of-sea-cross-stitch",
     "story": "Hovering over the abyss, the wreck's hollow frame echoed with silent screams. In the depths, dark tendrils lovingly embraced the accursed spoils of the deep.",
-    "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "21 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "99 x 100 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "7.14 x 7.14 in or 18.14 x 18.14 cm on 14 count aida"
-                    }
-                ],
-    "descriptionType":  "Pattern"
+    "details": [
+        {
+            "label": "DMC Floss",
+            "info": "21 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": " 100w x 99h stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "7.1 x 7.1 inches or 18.1 x 18.0 cm on 14 count aida"
+        }
+    ],
+    "descriptionType": "Pattern"
 }

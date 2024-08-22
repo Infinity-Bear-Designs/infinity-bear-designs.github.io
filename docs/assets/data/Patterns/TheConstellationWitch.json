@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "The Constellation Witch",
-    "saveAndShareEtsyLink":  "https://infinitybeardesigns.etsy.com/ca/listing/1678652650/the-constellation-witch-modern-cross",
-    "etsyLink":  "https://www.etsy.com/ca/listing/1678652650/the-constellation-witch-modern-cross",
-    "itchioLink":  "https://infinity-bear-designs.itch.io/the-constellation-witch-cross-stitch",
-    "slug":  "the-constellation-witch-cross-stitch",
+    "title": "The Constellation Witch",
+    "saveAndShareEtsyLink": "https://infinitybeardesigns.etsy.com/ca/listing/1678652650/the-constellation-witch-modern-cross",
+    "etsyLink": "https://www.etsy.com/ca/listing/1678652650/the-constellation-witch-modern-cross",
+    "itchioLink": "https://infinity-bear-designs.itch.io/the-constellation-witch-cross-stitch",
+    "slug": "the-constellation-witch-cross-stitch",
     "story": "On her celestial canvas, she pens tales with starlit stokes, each story frolicking freely in the boundless playground of the universe.",
-    "details":  [
-                    {
-                        "label":  "DMC Floss",
-                        "info":  "5 colours"
-                    },
-                    {
-                        "label":  "Pattern Size",
-                        "info":  "92 x 95 stitches"
-                    },
-                    {
-                        "label":  "Completed Size",
-                        "info":  "6.79 x 6.57 in or 17.24 x 16.69 cm on 14 count aida"
-                    }
-                ],
-    "descriptionType":  "Pattern"
+    "details": [
+        {
+            "label": "DMC Floss",
+            "info": "5 colours"
+        },
+        {
+            "label": "Pattern Size",
+            "info": " 95w x 92h stitches"
+        },
+        {
+            "label": "Completed Size",
+            "info": "6.8 x 6.6 inches or 17.2 x 16.7 cm on 14 count aida"
+        }
+    ],
+    "descriptionType": "Pattern"
 }
