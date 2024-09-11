@@ -256,7 +256,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
             {
                 if (itemInfo.stitchWitLink !== undefined)
                 {
-                    const itemStitchWitLink = itemInfo.StitchWitLink;
+                    const itemStitchWitLink = itemInfo.stitchWitLink;
                     const stitchWitLink = addStitchWitLink(itemStitchWitLink);
                     cardFooter.appendChild(stitchWitLink);
                 }
