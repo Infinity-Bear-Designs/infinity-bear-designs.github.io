@@ -150,6 +150,29 @@ function addEtsyLink(patternEtsyLink)
     return etsyLink;
 }
 
+function addStitchWitLink(patternStitchWitLink)
+{
+    const stitchWitLink = document.createElement("a");
+    const stitchWitIconSpan = document.createElement("span")
+    const stitchWitLinkSpan = document.createElement("span")
+
+    stitchWitLink.classList.add("card-footer-item");
+    stitchWitLink.classList.add("ib-background");
+    stitchWitLink.classList.add("patreon-hover");
+    stitchWitLink.classList.add("bold");
+    stitchWitIconSpan.classList.add("icon")
+
+    stitchWitIconSpan.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M0 80L0 229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7L48 32C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>'
+    stitchWitLinkSpan.innerHTML = "Stitch Wit";
+
+    stitchWitLink.appendChild(stitchWitIconSpan)
+    stitchWitLink.appendChild(stitchWitLinkSpan)
+
+    stitchWitLink.href = patternStitchWitLink;
+
+    return stitchWitLink;
+}
+
 function addPatreonLink()
 {
     const patreonLinkURL = "https://www.patreon.com/InfinityBearDesigns";

@@ -112,6 +112,10 @@ function loadActiveItem(itemType, parameterName)
                 {
                     updateCardLink("active-item-stitch-wit-link", itemInfo.stitchWitLink);
                 }
+                else
+                {
+                    document.getElementById("active-item-stitch-wit-link").remove();
+                }
 
                 updateCardLink("active-item-etsy-link", itemInfo.saveAndShareEtsyLink);
             }
@@ -257,6 +261,13 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
 
             if (itemType != "Freebies")
             {
+                if (itemInfo.stitchWitLink !== undefined)
+                {
+                    const itemStitchWitLink = itemInfo.StitchWitLink;
+                    const stitchWitLink = addStitchWitLink(itemStitchWitLink);
+                    cardFooter.appendChild(stitchWitLink);
+                }
+
                 const itemEtsyLink = itemInfo.saveAndShareEtsyLink;
                 const etsyLink = addEtsyLink(itemEtsyLink);
                 cardFooter.appendChild(etsyLink);
