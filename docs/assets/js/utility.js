@@ -31,6 +31,7 @@ function addColumnRow()
 {
     const parentColumnDiv = document.createElement("div");
     parentColumnDiv.classList.add("columns");
+    parentColumnDiv.classList.add("is-multiline");
 
     return parentColumnDiv;
 }
@@ -39,6 +40,9 @@ function addColumn()
 {
     const columnDiv = document.createElement("div");
     columnDiv.classList.add("column");
+    columnDiv.classList.add("is-full-mobile");
+    columnDiv.classList.add("is-half-tablet");
+    columnDiv.classList.add("is-one-third-desktop");
 
     return columnDiv;
 }

@@ -181,20 +181,13 @@ function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
 
 function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, section, parameterName) 
 {
-    const numItemsPerRow = 3;
-
     const itemSection = document.getElementById(section);
 
-    var parentColumnDiv;
+    var parentColumnDiv = addColumnRow();
 
     for (var i = startIndex; i < endIndex; i++)
     {
         const itemInfo = getItemInfo(itemType, itemsList[i]);
-
-        if (i % numItemsPerRow == 0)
-        {
-            parentColumnDiv = addColumnRow();
-        }
 
         const columnDiv = addColumn();
         parentColumnDiv.appendChild(columnDiv);
@@ -277,20 +270,6 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
         cardDiv.appendChild(cardFooter);
 
         itemSection.appendChild(parentColumnDiv);
-    }
-
-    const numLastPageItems = endIndex - startIndex;
-    const remainingColumns = numItemsPerRow - (numLastPageItems % numItemsPerRow);
-
-    if (remainingColumns != 0 && remainingColumns % numItemsPerRow != 0)
-    {
-        for (var i = 0; i < remainingColumns; i++)
-        {
-            const columnDiv = document.createElement("div");
-            columnDiv.classList.add("column");
-    
-            parentColumnDiv.appendChild(columnDiv);            
-        }
     }
 }
 
