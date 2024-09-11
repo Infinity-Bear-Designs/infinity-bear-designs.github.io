@@ -24,11 +24,11 @@ function getItemInfo(itemType, name)
 function addActiveItemBlock(itemType)
 {
     const activeItemDiv = document.getElementById("active-item");
-    const activeItemColumnRow = addColumnRow();
+    const activeItemColumnRow = addActiveColumnRow();
     
     activeItemDiv.appendChild(activeItemColumnRow);
     
-    const activeImageColumn = addColumn();
+    const activeImageColumn = addActiveColumn();
 
     const activeImage = document.createElement("img");
     activeImage.id = "active-item-image";
@@ -37,7 +37,7 @@ function addActiveItemBlock(itemType)
 
     activeItemColumnRow.appendChild(activeImageColumn);
 
-    const itemInformationColumn = addColumn();
+    const itemInformationColumn = addActiveColumn();
 
     const itemTitleP = document.createElement("p");
     itemTitleP.id = "item-title"

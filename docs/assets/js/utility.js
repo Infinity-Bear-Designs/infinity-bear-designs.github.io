@@ -47,6 +47,22 @@ function addColumn()
     return columnDiv;
 }
 
+function addActiveColumnRow()
+{
+    const parentColumnDiv = document.createElement("div");
+    parentColumnDiv.classList.add("columns");
+  
+    return parentColumnDiv;
+}
+
+function addActiveColumn()
+{
+    const columnDiv = document.createElement("div");
+    columnDiv.classList.add("column");
+  
+    return columnDiv;
+}
+
 function addCard()
 {
     const cardDiv = document.createElement("div");
