@@ -61,6 +61,9 @@ function addActiveItemBlock(itemType)
 
     if (itemType != "Freebies")
     {
+        const activeStitchWitLink = addActiveStitchWitLink();
+        buttonBarDiv.appendChild(activeStitchWitLink);
+
         const activeEtsyLink = addActiveEtsyLink();
         buttonBarDiv.appendChild(activeEtsyLink);
     }
@@ -105,6 +108,11 @@ function loadActiveItem(itemType, parameterName)
 
             if (itemType != "Freebies")
             {
+                if (itemInfo.stitchWitLink !== undefined)
+                {
+                    updateCardLink("active-item-stitch-wit-link", itemInfo.stitchWitLink);
+                }
+
                 updateCardLink("active-item-etsy-link", itemInfo.saveAndShareEtsyLink);
             }
 
