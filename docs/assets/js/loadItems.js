@@ -25,10 +25,12 @@ function addActiveItemBlock(itemType)
 {
     const activeItemDiv = document.getElementById("active-item");
     const activeItemColumnRow = addActiveColumnRow();
-    
+    activeItemColumnRow.classList.add("is-vcentered");
+
     activeItemDiv.appendChild(activeItemColumnRow);
     
     const activeImageColumn = addActiveColumn();
+    activeImageColumn.classList.add("is-align-items-center");
 
     const activeImage = document.createElement("img");
     activeImage.id = "active-item-image";
