@@ -120,3 +120,16 @@ hr
 {
   font-size: 0.9em;
 }
+
+.mailing-list-banner
+{
+  background-color: #000000bf;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0px;
+  cursor: pointer;
+}
