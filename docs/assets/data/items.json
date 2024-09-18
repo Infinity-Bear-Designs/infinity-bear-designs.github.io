@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "TheLighthouseKeeper",
                     "GalacticOrchids",
                     "SideQuest",
                     "TheConstellationWitch",
@@ -83,14 +84,7 @@
                 ],
     "STLs":
             [
-                "Skull",
-                "ShootingStar",
-                "Umbrella",
-                "Mushroom",
-                "House",
-                "Fish",
-                "Spaceship",
-                "WineBottle"
+
             ],
     "Freebies":
                 [
@@ -101,7 +95,15 @@
                     "Appreciation",
                     "Perseverance",
                     "FlyMeToTheMoon",
-                    "Candy",
+                    "Candy",                
+                    "Skull",
+                    "ShootingStar",
+                    "Umbrella",
+                    "Mushroom",
+                    "House",
+                    "Fish",
+                    "Spaceship",
+                    "WineBottle",
                     "FlossSwatchOrganizer",
                     "ReachForTheStars",
                     "Quackitude"        

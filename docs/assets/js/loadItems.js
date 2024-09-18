@@ -24,11 +24,13 @@ function getItemInfo(itemType, name)
 function addActiveItemBlock(itemType)
 {
     const activeItemDiv = document.getElementById("active-item");
-    const activeItemColumnRow = addColumnRow();
-    
+    const activeItemColumnRow = addActiveColumnRow();
+    activeItemColumnRow.classList.add("is-vcentered");
+
     activeItemDiv.appendChild(activeItemColumnRow);
     
-    const activeImageColumn = addColumn();
+    const activeImageColumn = addActiveColumn();
+    activeImageColumn.classList.add("is-align-items-center");
 
     const activeImage = document.createElement("img");
     activeImage.id = "active-item-image";
@@ -37,7 +39,7 @@ function addActiveItemBlock(itemType)
 
     activeItemColumnRow.appendChild(activeImageColumn);
 
-    const itemInformationColumn = addColumn();
+    const itemInformationColumn = addActiveColumn();
 
     const itemTitleP = document.createElement("p");
     itemTitleP.id = "item-title"
@@ -61,6 +63,9 @@ function addActiveItemBlock(itemType)
 
     if (itemType != "Freebies")
     {
+        const activeStitchWitLink = addActiveStitchWitLink();
+        buttonBarDiv.appendChild(activeStitchWitLink);
+
         const activeEtsyLink = addActiveEtsyLink();
         buttonBarDiv.appendChild(activeEtsyLink);
     }
@@ -105,6 +110,15 @@ function loadActiveItem(itemType, parameterName)
 
             if (itemType != "Freebies")
             {
+                if (itemInfo.stitchWitLink !== undefined)
+                {
+                    updateCardLink("active-item-stitch-wit-link", itemInfo.stitchWitLink);
+                }
+                else
+                {
+                    document.getElementById("active-item-stitch-wit-link").remove();
+                }
+
                 updateCardLink("active-item-etsy-link", itemInfo.saveAndShareEtsyLink);
             }
 
@@ -169,20 +183,13 @@ function updateItemDetails(itemDetailsDiv, itemInfo, itemType, isActive)
 
 function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, section, parameterName) 
 {
-    const numItemsPerRow = 3;
-
     const itemSection = document.getElementById(section);
 
-    var parentColumnDiv;
+    var parentColumnDiv = addColumnRow();
 
     for (var i = startIndex; i < endIndex; i++)
     {
         const itemInfo = getItemInfo(itemType, itemsList[i]);
-
-        if (i % numItemsPerRow == 0)
-        {
-            parentColumnDiv = addColumnRow();
-        }
 
         const columnDiv = addColumn();
         parentColumnDiv.appendChild(columnDiv);
@@ -249,6 +256,13 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
 
             if (itemType != "Freebies")
             {
+                if (itemInfo.stitchWitLink !== undefined)
+                {
+                    const itemStitchWitLink = itemInfo.stitchWitLink;
+                    const stitchWitLink = addStitchWitLink(itemStitchWitLink);
+                    cardFooter.appendChild(stitchWitLink);
+                }
+
                 const itemEtsyLink = itemInfo.saveAndShareEtsyLink;
                 const etsyLink = addEtsyLink(itemEtsyLink);
                 cardFooter.appendChild(etsyLink);
@@ -258,20 +272,6 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
         cardDiv.appendChild(cardFooter);
 
         itemSection.appendChild(parentColumnDiv);
-    }
-
-    const numLastPageItems = endIndex - startIndex;
-    const remainingColumns = numItemsPerRow - (numLastPageItems % numItemsPerRow);
-
-    if (remainingColumns != 0 && remainingColumns % numItemsPerRow != 0)
-    {
-        for (var i = 0; i < remainingColumns; i++)
-        {
-            const columnDiv = document.createElement("div");
-            columnDiv.classList.add("column");
-    
-            parentColumnDiv.appendChild(columnDiv);            
-        }
     }
 }
 
