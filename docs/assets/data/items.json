@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "SecretAdmirer",
                     "WrappedinWinter",
                     "ForEternity",
                     "AftertheRain",
@@ -75,7 +76,13 @@
                     "TheHunger",
                     "Motherbear'd"
                 ],
-    "Bundles": 
+        "TrackerPatterns":
+                [
+                    "SecretAdmirer",
+                    "StarstruckKittyTracker",
+                    "WrappedinWinter"
+                ],
+        "Bundles":  
                 [
                     "CreepyCabin",
                     "CelestialCreatures",
