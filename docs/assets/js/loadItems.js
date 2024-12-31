@@ -116,7 +116,7 @@ function loadActiveItem(itemType, parameterName)
                 }
                 else
                 {
-                    document.getElementById("active-item-stitch-wit-link").remove();
+                    //document.getElementById("active-item-stitch-wit-link").remove();
                 }
 
                 updateCardLink("active-item-etsy-link", itemInfo.saveAndShareEtsyLink);
