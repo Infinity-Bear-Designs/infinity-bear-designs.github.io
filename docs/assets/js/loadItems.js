@@ -205,7 +205,13 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
 
         const activeItemLink = document.createElement("a");
 
-        var pageType = itemType.toLowerCase();
+        var pageType = itemType
+
+        if (itemType != "trackerPatterns")
+        {
+            pageType = itemType.toLowerCase();
+        }
+
         var currentPage =  getCurrentPage();
 
         if (itemType == "Patreon")
