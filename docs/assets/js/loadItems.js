@@ -10,7 +10,7 @@ function getItemsList(itemType)
 
 function getItemInfo(itemType, name)
 {
-    if (itemType == "Patreon")
+    if (itemType == "Patreon" || itemType == "TrackerPatterns")
     { 
         itemType = "Patterns"
     }
@@ -190,7 +190,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
     for (var i = startIndex; i < endIndex; i++)
     {
         const itemInfo = getItemInfo(itemType, itemsList[i]);
-
+        
         const columnDiv = addColumn();
         parentColumnDiv.appendChild(columnDiv);
 
@@ -278,7 +278,7 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
 function loadItems(itemType, parameterName)
 {
     var itemsList = getItemsList(itemType);
-    
+
     const numTotalItems = itemsList.length;
     const totalPages = getTotalPages(numTotalItems, maxItemsPerPage);
     const currentPage = Math.min(getCurrentPage(), totalPages);
@@ -310,6 +310,12 @@ function loadItems(itemType, parameterName)
 function loadPatternsPage()
 {
     loadItems("Patterns", "pattern");
+    updateCopyright();
+}
+
+function loadTrackerPatternsPage()
+{
+    loadItems("TrackerPatterns", "pattern");
     updateCopyright();
 }
 
