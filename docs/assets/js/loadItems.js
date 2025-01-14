@@ -10,7 +10,7 @@ function getItemsList(itemType)
 
 function getItemInfo(itemType, name)
 {
-    if (itemType == "Patreon" || itemType == "TrackerPatterns")
+    if (itemType == "Patreon" || itemType == "trackerPatterns")
     { 
         itemType = "Patterns"
     }
@@ -321,7 +321,7 @@ function loadPatternsPage()
 
 function loadTrackerPatternsPage()
 {
-    loadItems("TrackerPatterns", "pattern");
+    loadItems("trackerPatterns", "pattern");
     updateCopyright();
 }
 
