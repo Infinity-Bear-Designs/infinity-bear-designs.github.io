@@ -34,9 +34,9 @@
   fill: #6364FF;
 }
 
-.instagram-hover:hover, .instagram-hover:hover path
+.bluesky-hover:hover, .bluesky-hover:hover path
 {
-  fill: #f77737
+  fill: #08f
 }
 
 .youtube-hover:hover, .youtube-hover:hover path
