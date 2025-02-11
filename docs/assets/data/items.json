@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "SpecialDelivery",
                     "SecretAdmirer",
                     "StarstruckKittyTracker",
                     "WrappedinWinter",
