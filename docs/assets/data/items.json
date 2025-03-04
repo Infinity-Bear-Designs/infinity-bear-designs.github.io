@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "ButterflyBliss",
                     "DaffodilDelight",
                     "SpecialDelivery",
                     "SecretAdmirer",
@@ -81,6 +82,7 @@
                 ],
         "trackerPatterns":
                 [
+                    "ButterflyBliss",
                     "DaffodilDelight",
                     "SecretAdmirer",
                     "StarstruckKittyTracker",
