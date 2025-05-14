@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "FireflyFields",
                     "PensivePearl",
                     "RipplesandWhiskers",
                     "ButterflyBliss",
@@ -86,6 +87,7 @@
                 ],
         "trackerPatterns":
                 [
+                    "FireflyFields",
                     "PensivePearl",
                     "ButterflyBliss",
                     "WaitingforRain",
