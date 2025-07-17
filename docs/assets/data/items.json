@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "SereneSnooze",
                     "Stargazing",
                     "FireflyFields",
                     "DigitalDelight",
@@ -89,6 +90,7 @@
                 ],
         "trackerPatterns":
                 [
+                    "SereneSnooze",
                     "FireflyFields",
                     "PensivePearl",
                     "ButterflyBliss",
