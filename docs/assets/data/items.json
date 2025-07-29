@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "AlluringApples",
                     "SereneSnooze",
                     "Stargazing",
                     "FireflyFields",
@@ -90,6 +91,7 @@
                 ],
         "trackerPatterns":
                 [
+                    "AlluringApples",
                     "SereneSnooze",
                     "FireflyFields",
                     "PensivePearl",
