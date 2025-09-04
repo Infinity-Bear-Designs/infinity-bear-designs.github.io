@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "BetweenPawsandPlanets",
                     "BeforetheWinterSleep",
                     "AlluringApples",
                     "SereneSnooze",
@@ -155,8 +156,8 @@
                 ],
     "Patreon": 
                 [
+                    "TemporalTides",
                     "JourneyforJoy",
-                    "TheWayoftheWaterfall",
-                    "TheMoonKnows"
+                    "TheWayoftheWaterfall"
                 ]
 }
