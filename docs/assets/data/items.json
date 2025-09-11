@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "PumpkinParadise",
                     "BetweenPawsandPlanets",
                     "BeforetheWinterSleep",
                     "AlluringApples",
@@ -93,6 +94,7 @@
                 ],
         "trackerPatterns":
                 [
+                    "PumpkinParadise",
                     "AlluringApples",
                     "SereneSnooze",
                     "FireflyFields",
