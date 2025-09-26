@@ -10,7 +10,7 @@ function getItemsList(itemType)
 
 function getItemInfo(itemType, name)
 {
-    if (itemType == "Patreon" || itemType == "trackerPatterns")
+    if (itemType == "Patreon" || itemType == "trackerPatterns" || itemType == "TheNoirDimension")
     { 
         itemType = "Patterns"
     }
@@ -225,8 +225,17 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
 
         const imageName = itemsList[i];
         const image = addImage(imageName);
-        activeItemLink.appendChild(image);
-        imageFigure.appendChild(activeItemLink);
+        
+        
+        if (parameterName != "zine")
+        {
+            activeItemLink.appendChild(image);
+            imageFigure.appendChild(activeItemLink);
+        }
+        else
+        {
+            imageFigure.appendChild(image);
+        }
 
         const cardContentDiv = addCardContentDiv();
         cardDiv.appendChild(cardContentDiv);
@@ -275,7 +284,10 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
             }
         }
 
-        cardDiv.appendChild(cardFooter);
+       if (parameterName != "zine")
+       {
+           cardDiv.appendChild(cardFooter);
+       }
 
         itemSection.appendChild(parentColumnDiv);
     }
@@ -297,20 +309,26 @@ function loadItems(itemType, parameterName)
     const endIndex = Math.min(numTotalItems, currentPage * maxItemsPerPage);
     const numItems = Math.min(numTotalItems, maxItemsPerPage);
     
-    if (totalPages > 1)
+    if (parameterName != "zine" && totalPages > 1)
     {
         addPagination(totalPages, 1)
     }
 
-    loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, itemType, "latestSection", parameterName);
-   
-    itemsList = itemsList.sort();
-    loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, "itemSection", parameterName);
-   
-    addActiveItemBlock(itemType);
-    loadActiveItem(itemType, parameterName);
+    if(parameterName != "zine")
+    {
+        loadItemCards(itemsList, startRecentIndex, endRecentIndex, numRecentItems, itemType, "latestSection", parameterName);
+        itemsList = itemsList.sort();
+    }
 
-    updatePagination(totalPages, currentPage);
+    loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, "itemSection", parameterName);
+
+    if(parameterName != "zine")
+    {
+        addActiveItemBlock(itemType);
+        loadActiveItem(itemType, parameterName);
+
+        updatePagination(totalPages, currentPage);
+    }
 }
 
 function loadPatternsPage()
@@ -322,6 +340,12 @@ function loadPatternsPage()
 function loadTrackerPatternsPage()
 {
     loadItems("trackerPatterns", "pattern");
+    updateCopyright();
+}
+
+function loadTheNoirDimensionPage()
+{
+    loadItems("TheNoirDimension", "zine");
     updateCopyright();
 }
 
