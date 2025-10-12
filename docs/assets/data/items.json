@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "LazyLog",
                     "PumpkinParadise",
                     "BetweenPawsandPlanets",
                     "BeforetheWinterSleep",
@@ -94,6 +95,7 @@
                 ],
         "trackerPatterns":
                 [
+                    "LazyLog",
                     "PumpkinParadise",
                     "AlluringApples",
                     "SereneSnooze",
