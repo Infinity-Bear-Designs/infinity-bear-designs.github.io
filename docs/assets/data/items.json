@@ -1,6 +1,15 @@
 {
     "Patterns":
                 [
+
+                    "DisappointingAcorn",
+                    "RestinPansies",
+                    "AFowlEnd",
+                    "AllSystemsGo",
+                    "AnEtherealEscape",
+                    "AnUnlikelyFan",
+                    "LongingforLight",
+                    "DaisiesforDays",
                     "LazyLog",
                     "PumpkinParadise",
                     "BetweenPawsandPlanets",
@@ -164,5 +173,17 @@
                     "HauntingHues",
                     "TemporalTides",
                     "JourneyforJoy"
+                ],
+    "TheNoirDimension":
+                 [
+                    "DisappointingAcorn",
+                    "AFowlEnd",
+                    "DaisiesforDays",
+                    "LongingforLight",
+                    "AnUnlikelyFan",
+                    "AnEtherealEscape",
+                    "AllSystemsGo",
+                    "RestinPansies"
                 ]
-}
+            }
+
