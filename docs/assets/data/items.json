@@ -1,7 +1,7 @@
 {
     "Patterns":
                 [
-
+                    "CozyCocoa",
                     "DisappointingAcorn",
                     "RestinPansies",
                     "AFowlEnd",
@@ -104,6 +104,7 @@
                 ],
         "trackerPatterns":
                 [
+                    "CozyCocoa",
                     "LazyLog",
                     "PumpkinParadise",
                     "AlluringApples",
