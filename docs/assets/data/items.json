@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "NorthernNights",
                     "MoonlitMischief",
                     "CozyCocoa",
                     "CosmicCookies",
@@ -106,6 +107,7 @@
                 ],
         "trackerPatterns":
                 [
+                    "NorthernNights",
                     "CozyCocoa",
                     "LazyLog",
                     "PumpkinParadise",
