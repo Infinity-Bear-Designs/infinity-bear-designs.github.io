@@ -63,9 +63,6 @@ function addActiveItemBlock(itemType)
 
     if (itemType != "Freebies")
     {
-        // const activeStitchWitLink = addActiveStitchWitLink();
-        // buttonBarDiv.appendChild(activeStitchWitLink);
-
         const activeEtsyLink = addActiveEtsyLink();
         buttonBarDiv.appendChild(activeEtsyLink);
     }
@@ -110,16 +107,14 @@ function loadActiveItem(itemType, parameterName)
 
             if (itemType != "Freebies")
             {
-                if (itemInfo.stitchWitLink !== undefined)
+                if (itemInfo.saveAndShareEtsyLink != "")
                 {
-                    //updateCardLink("active-item-stitch-wit-link", itemInfo.stitchWitLink);
+                    updateCardLink("active-item-etsy-link", itemInfo.saveAndShareEtsyLink);
                 }
                 else
                 {
-                    //document.getElementById("active-item-stitch-wit-link").remove();
+                    hideCardLink("active-item-etsy-link");
                 }
-
-                updateCardLink("active-item-etsy-link", itemInfo.saveAndShareEtsyLink);
             }
 
             updateCardLink("active-item-itchio-link", itemInfo.itchioLink, itemInfo.slug);            
@@ -278,9 +273,12 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
                     // cardFooter.appendChild(stitchWitLink);
                 }
 
-                const itemEtsyLink = itemInfo.saveAndShareEtsyLink;
-                const etsyLink = addEtsyLink(itemEtsyLink);
-                cardFooter.appendChild(etsyLink);
+                if (itemInfo.saveAndShareEtsyLink != "")
+                {
+                    const itemEtsyLink = itemInfo.saveAndShareEtsyLink;
+                    const etsyLink = addEtsyLink(itemEtsyLink);
+                    cardFooter.appendChild(etsyLink);
+                }
             }
         }
 

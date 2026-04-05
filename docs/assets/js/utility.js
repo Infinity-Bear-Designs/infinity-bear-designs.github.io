@@ -341,6 +341,7 @@ function getItchioLabel(itemType)
 function updateCardLink(linkId, link, slug)
 {
     const linkElement = document.getElementById(linkId);
+    linkElement.style.display = 'flex';
 
     if (slug == null)
     {
@@ -351,6 +352,12 @@ function updateCardLink(linkId, link, slug)
         connectItchioBuyButton(linkElement, slug);
     }
 }      
+
+function hideCardLink(linkId)
+{
+    const linkElement = document.getElementById(linkId);
+    linkElement.style.display = 'none';
+} 
 
 function updateCardTitle(titleDiv, itemInfo)
 {
