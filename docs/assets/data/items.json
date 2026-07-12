@@ -1,6 +1,7 @@
 {
     "Patterns":
                 [
+                    "ReturningHome",
                     "TemporalTides",
                     "TheBuddySystem",
                     "JourneyforJoy",
