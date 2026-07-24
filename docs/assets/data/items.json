@@ -1,6 +1,18 @@
 {
     "Patterns":
                 [
+                    "ChromaBlooms",
+                    "Night'sGaze",
+                    "Heart'sGrip",
+                    "Sunburst",
+                    "Purlip",
+                    "Succulent",
+                    "OrangeTentacle",
+                    "AbnormalGrasper",
+                    "ParlourHand",
+                    "ClamberingReds",
+                    "LumShroom",
+                    "AfternoonAster",
                     "ReturningHome",
                     "TemporalTides",
                     "TheBuddySystem",
@@ -209,6 +221,21 @@
                     "AnEtherealEscape",
                     "AllSystemsGo",
                     "RestinPansies"
+                ],
+    "ThePlantsOfAsterPebble":
+                 [
+                    "Sunburst",
+                    "Purlip",
+                    "Succulent",
+                    "OrangeTentacle",
+                    "AbnormalGrasper",
+                    "ParlourHand",
+                    "Night'sGaze",
+                    "ChromaBlooms",
+                    "ClamberingReds",
+                    "LumShroom",
+                    "Heart'sGrip",
+                    "AfternoonAster"
                 ]
-            }
+}
 

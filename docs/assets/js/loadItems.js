@@ -10,7 +10,7 @@ function getItemsList(itemType)
 
 function getItemInfo(itemType, name)
 {
-    if (itemType == "Patreon" || itemType == "trackerPatterns" || itemType == "TheNoirDimension")
+    if (itemType == "Patreon" || itemType == "trackerPatterns" || itemType == "TheNoirDimension" || itemType == "ThePlantsOfAsterPebble")
     { 
         itemType = "Patterns"
     }
@@ -294,7 +294,6 @@ function loadItemCards(itemsList, startIndex, endIndex, numItems, itemType, sect
 function loadItems(itemType, parameterName)
 {
     var itemsList = getItemsList(itemType);
-
     const numTotalItems = itemsList.length;
     const totalPages = getTotalPages(numTotalItems, maxItemsPerPage);
     const currentPage = Math.min(getCurrentPage(), totalPages);
@@ -344,6 +343,12 @@ function loadTrackerPatternsPage()
 function loadTheNoirDimensionPage()
 {
     loadItems("TheNoirDimension", "zine");
+    updateCopyright();
+}
+
+function loadThePlantsOfAsterPebblePage()
+{
+    loadItems("ThePlantsOfAsterPebble", "zine");
     updateCopyright();
 }
 
